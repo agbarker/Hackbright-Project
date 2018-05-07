@@ -194,6 +194,7 @@ class StudentSurvey(db.Model):
     survey_id = db.Column(db.Integer, db.ForeignKey('surveys.survey_id'))
     student_id = db.Column(db.Integer, db.ForeignKey('students.student_id'))
     completed_at = db.Column(db.DateTime, nullable=True, default=datetime.utcnow)
+    student_comment = mp3_src = db.Column(db.Text)
 
     # Define relationship to surveys
     survey_id = db.relationship("Survey", backref=db.backref("surveys", order_by=assigned_listening_id))

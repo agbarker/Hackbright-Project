@@ -16,7 +16,7 @@ class Teacher(db.Model):
     username = db.Column(db.String(64))
     password = db.Column(db.String(64))
     fname = db.Column(db.String(64))
-	lname = db.Column(db.String(64))
+    lname = db.Column(db.String(64))
 
     def __repr__(self):
         """Provide helpful representation when printed."""
@@ -33,9 +33,9 @@ class Classroom(db.Model):
     teacher_id = db.Column(db.Integer, db.ForeignKey('teachers.teacher_id'))
     registration_code = db.Column(db.String(64))
     name = db.Column(db.String(64))
-	type_class = db.Column(db.String(64))
+    type_class = db.Column(db.String(64))
 
-	# Define relationship to teacher
+    # Define relationship to teacher
     teacher = db.relationship("Teacher", backref=db.backref("teachers", order_by=class_id))
 
     def __repr__(self):
@@ -53,8 +53,8 @@ class Student(db.Model):
     username = db.Column(db.String(64))
     password = db.Column(db.String(64))
     fname = db.Column(db.String(64))
-	lname = db.Column(db.String(64))
-	instrument = db.Column(db.String(64))
+    lname = db.Column(db.String(64))
+    instrument = db.Column(db.String(64))
     class_id = db.Column(db.Integer, db.ForeignKey('classrooms.class_id'))
 
     # Define relationship to classroom
@@ -76,7 +76,7 @@ class Group(db.Model):
     name = db.Column(db.String(64))
 
     # Define relationship to classroom
-    classroom = db.relationship("Classroom", backref=db.backref("classrooms", order_by=student_id))
+    classroom = db.relationship("Classroom", backref=db.backref("classrooms", order_by=group_id))
 
     def __repr__(self):
         """Provide helpful representation when printed."""
@@ -183,8 +183,6 @@ class ClassroomSurvey(db.Model):
         return "<Survey survey_id={} is assigned to Classroom class_id={}>".format(self.survey_id, self.class_id)
 
 
-
-
 class StudentSurvey(db.Model):
     """Relational database between Students and Surveys."""
 
@@ -194,17 +192,15 @@ class StudentSurvey(db.Model):
     survey_id = db.Column(db.Integer, db.ForeignKey('surveys.survey_id'))
     student_id = db.Column(db.Integer, db.ForeignKey('students.student_id'))
     completed_at = db.Column(db.DateTime, nullable=True, default=datetime.utcnow)
-    student_comment = mp3_src = db.Column(db.Text)
+    student_comment = db.Column(db.Text, nullable=True)
 
     # Define relationship to surveys
     survey_id = db.relationship("Survey", backref=db.backref("surveys", order_by=assigned_listening_id))
 
     # Define relationship to classrooms
-    student_id = db.relationship("Student", backref=db.backref("students", order_by=assigned_listening_id)
+    student_id = db.relationship("Student", backref=db.backref("students", order_by=assigned_listening_id))
 
     def __repr__(self):
         """Provide helpful representation when printed."""
 
         return "<Survey survey_id={} is assigned to Classroom class_id={}>".format(self.survey_id, self.class_id)
-
-

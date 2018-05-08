@@ -4,8 +4,15 @@
 <div class="well spaced" style="width:97%">
   <h2>{{ classroom.name }} ({{ classroom.teacher.lname }})</h2>
 
+  <h3>Students</h3>
   {% for student in students %}
   	<p>{{ student.fname }} {{ student.lname }}</p>
+
+  {% endfor %}
+
+  <h3>Instruments</h3>
+    {% for instrument in instruments %}
+  	<p>{{ instrument.name }}</p>
 
   {% endfor %}
 

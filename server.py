@@ -305,12 +305,19 @@ def classroom_profile_page(class_id):
 
     classroom = Classroom.query.get(class_id)
     students = Student.query.filter_by(class_id=class_id)
-    return render_template("class_profile.html", classroom=classroom, students=students)
+    classroominstrumenttype = ClassroomInstrumentType.query.filter_by(class_id=class_id)
+    instruments = []
+    for item in classroominstrumenttype:
+        instruments.append(item.instrument)
+
+    return render_template("class_profile.html", classroom=classroom, students=students, instruments=instruments)
 
 
 @app.route("/instrument-checkin", methods=['GET'])
 def instrument_checkin_form():
     """Show form for instrument checkin."""
+
+    #BROKEN
 
     return render_template("instrument_checkin_form.html")
 

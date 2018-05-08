@@ -5,7 +5,7 @@ from jinja2 import StrictUndefined
 from flask import Flask, render_template, request, flash, redirect, session
 from flask_debugtoolbar import DebugToolbarExtension
 
-from model import connect_to_db, db, Teacher, Classroom, Student, Group, StudentGroup, Music, ListeningSurvey, GroupSurvey, ClassroomSurvey, StudentSurvey
+from model import connect_to_db, db, Teacher, Classroom, Student, Group, StudentGroup, Music, ListeningSurvey, GroupSurvey, ClassroomSurvey, StudentSurvey, Instrument, InstrumentType, ClassroomInstrumentType
 
 
 app = Flask(__name__)
@@ -223,6 +223,73 @@ def teacher_detail(teacher_id):
 
     teacher = Teacher.query.get(teacher_id)
     return render_template("teacher_profile.html", teacher=teacher)
+
+
+@app.route("/change-password", methods=['GET'])
+def change_password_form():
+    """Displays change password form."""
+
+    return render_template("change_password.html")
+
+
+@app.route("/change-password", methods=['POST'])
+def change_password():
+    """Allows user to change password after confirmation."""
+
+    #get variables from form
+    old_password = request.form["old_password"]
+    new_password1 = request.form["new_password1"]
+    new_password2 = request.form["new_password2"]
+
+    #check that newpassword1 == new password2
+    if new_password1 != new_password2:
+        flash("New password does not match confirmation, try again.")
+        return redirect("/change-password")
+
+    #querys for building dictionary
+    # teacher_query = Teacher.query.filter_by(teacher_id=session["teacher_id"])
+    # student_query = Student.query.filter_by(student_id=session["student_id"])
+
+    #dictionary with objects and ids
+    # id_check = {"teacher_id": Teacher.query.get(session["teacher_id"]), "student_id": Student.query.get(session["student_id"])}
+
+    if "teacher_id" in session:
+        user = Teacher.query.get(session["teacher_id"])
+    else:
+        user = Student.query.get(session["student_id"])
+
+    if user.password == old_password:
+        user.password = new_password1
+        db.session.commit()
+        flash("Password successfully changed!")
+        return redirect("/")
+    else:
+        flash("Current password incorrect, please try again.")
+        return redirect("/change-password")
+
+    #check that old password is correct
+    #reset attribute
+
+    # if "teacher_id" in session:
+    #     teacher = Teacher.query.get(session["teacher_id"])
+    #     if teacher.password == old_password:
+    #         teacher.password = new_password1
+    #         flash("Password successfully changed!")
+    #         return redirect("/")
+    #     else:
+    #         flash("Current password incorrect, please try again.")
+    #         return redirect("/change_password")
+    # else:
+    #     student = Student.query.get(session["student_id"])
+    #     if student.password == old_password:
+    #         student.password = new_password1
+    #         flash("Password successfully changed!")
+    #         return redirect("/")
+    #     else:
+    #         flash("Current password incorrect, please try again.")
+    #         return redirect("/change_password")
+
+
 
 
 if __name__ == "__main__":

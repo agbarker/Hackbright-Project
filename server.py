@@ -290,6 +290,30 @@ def change_password():
     #         return redirect("/change_password")
 
 
+@app.route("/classes", methods=['GET'])
+def teacher_view_classes():
+    """Displays list of all teacher classes"""
+
+    my_classes = Classroom.query.filter_by(teacher_id = session["teacher_id"]).all()
+
+    return render_template("view_classes.html", my_classes=my_classes)
+
+
+@app.route("/classes/<int:class_id>", methods=['GET'])
+def classroom_profile_page(class_id):
+    """Displays classroom profile."""
+
+    classroom = Classroom.query.get(class_id)
+    students = Student.query.filter_by(class_id=class_id)
+    return render_template("class_profile.html", classroom=classroom, students=students)
+
+
+@app.route("/instrument-checkin", methods=['GET'])
+def instrument_checkin_form():
+    """Show form for instrument checkin."""
+
+    return render_template("instrument_checkin_form.html")
+
 
 
 if __name__ == "__main__":

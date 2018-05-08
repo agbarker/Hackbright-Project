@@ -54,7 +54,6 @@ class Student(db.Model):
     password = db.Column(db.String(64))
     fname = db.Column(db.String(64))
     lname = db.Column(db.String(64))
-    instrument = db.Column(db.String(64))
     class_id = db.Column(db.Integer, db.ForeignKey('classrooms.class_id'))
 
     # Define relationship to classroom
@@ -64,6 +63,66 @@ class Student(db.Model):
         """Provide helpful representation when printed."""
 
         return "<Student fname={} lname={} in Classroom class_id={}>".format(self.fname, self.lname, self.class_id)
+
+
+class Instrument(db.Model):
+    """Individual instruments."""
+
+    __tablename__ = "instruments"
+
+    serial_number = db.Column(db.String(64), primary_key=True)
+    student_id = db.Column(db.Integer, db.ForeignKey('students.student_id'), nullable=True)
+    instrument_name = db.Column(db.String(64), db.ForeignKey('instrument-types.name'))
+
+    # Define relationship to students
+    student = db.relationship("Student", backref=db.backref("instruments", order_by=serial_number))
+
+    # Define relationship to instrumenttype
+    name = db.relationship("InstrumentType", backref=db.backref("instruments", order_by=serial_number))
+
+    def __repr__(self):
+        """Provide helpful representation when printed."""
+
+        return "<Instrument serial_number={} is a instrument_name={}>".format(self.serial_number, self.instrument_name)
+
+
+
+class InstrumentType(db.Model):
+    """Types of instruments"""
+
+    __tablename__ = "instrument-types"
+
+    name = db.Column(db.String(64), primary_key=True)
+    family = db.Column(db.String(64))
+
+    def __repr__(self):
+            """Provide helpful representation when printed."""
+
+            return "<Instrument name={} is in the family={}>".format(self.name, self.family)
+
+
+
+class ClassroomInstrumentType(db.Model):
+    """A relational table between classroom and instrument types"""
+
+    __tablename__ = "classroom-instrument-types"
+
+    classroom_instrument_type_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    instrument_id = db.Column(db.String(64), db.ForeignKey("instrument-types.name"))
+    class_id = db.Column(db.Integer, db.ForeignKey('classrooms.class_id'))
+
+    # Define relationship to instrumenttype
+    instrument = db.relationship("InstrumentType", backref=db.backref("classroom-instrument-types", order_by=classroom_instrument_type_id))
+
+    # Define relationship to classroom
+    classroom = db.relationship("Classroom", backref=db.backref("classroom-instrument-types", order_by=classroom_instrument_type_id))
+
+
+    def __repr__(self):
+            """Provide helpful representation when printed."""
+
+            return "<Instrument name={} is in the class={}>".format(self.instrument_id, self.class_id)
+
 
 
 class Group(db.Model):
@@ -124,7 +183,7 @@ class Music(db.Model):
         return "<Piece name={} is composed by composer={}>".format(self.name, self.composer)
 
 
-class Listening_Survey(db.Model):
+class ListeningSurvey(db.Model):
     """Listening surveys (not yet assigned)."""
 
     __tablename__ = "surveys"
@@ -151,7 +210,7 @@ class GroupSurvey(db.Model):
     group_id = db.Column(db.Integer, db.ForeignKey('groups.group_id'))
 
     # Define relationship to surveys
-    survey = db.relationship("Listening_Survey", backref=db.backref("group-survey", order_by=group_survey_id))
+    survey = db.relationship("ListeningSurvey", backref=db.backref("group-survey", order_by=group_survey_id))
 
     # Define relationship to groups
     group = db.relationship("Group", backref=db.backref("group-survey", order_by=group_survey_id))
@@ -172,7 +231,7 @@ class ClassroomSurvey(db.Model):
     class_id = db.Column(db.Integer, db.ForeignKey('classrooms.class_id'))
 
     # Define relationship to surveys
-    survey = db.relationship("Listening_Survey", backref=db.backref("class-survey", order_by=class_survey_id))
+    survey = db.relationship("ListeningSurvey", backref=db.backref("class-survey", order_by=class_survey_id))
 
     # Define relationship to classrooms
     classroomm = db.relationship("Classroom", backref=db.backref("class-survey", order_by=class_survey_id))
@@ -195,7 +254,7 @@ class StudentSurvey(db.Model):
     student_comment = db.Column(db.Text, nullable=True)
 
     # Define relationship to surveys
-    survey = db.relationship("Listening_Survey", backref=db.backref("student-survey", order_by=assigned_listening_id))
+    survey = db.relationship("ListeningSurvey", backref=db.backref("student-survey", order_by=assigned_listening_id))
 
     # Define relationship to classrooms
     student = db.relationship("Student", backref=db.backref("student-survey", order_by=assigned_listening_id))

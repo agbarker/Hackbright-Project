@@ -6,6 +6,11 @@
 
   <b><p>Username: {{ student.username }}</p>
   <p>Classroom: {{ student.classroom.name }}</p></b>
+  <h3>Instruments</h3>
+    {% for instrument in instruments %}
+  	<p>{{ instrument.instrument_name }} Serial Number: {{ instrument.serial_number }}</p>
+  	<p></p>
+  	{% endfor %}
 
   
 </div>

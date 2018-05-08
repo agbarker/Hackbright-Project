@@ -214,7 +214,10 @@ def student_detail(student_id):
     """Show info about student."""
 
     student = Student.query.get(student_id)
-    return render_template("student_profile.html", student=student)
+
+    instruments = Instrument.query.filter_by(student_id=student_id).all()
+
+    return render_template("student_profile.html", student=student, instruments=instruments)
 
 
 @app.route("/teachers/<int:teacher_id>")

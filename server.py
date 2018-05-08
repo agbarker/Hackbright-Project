@@ -5,7 +5,7 @@ from jinja2 import StrictUndefined
 from flask import Flask, render_template, request, flash, redirect, session
 from flask_debugtoolbar import DebugToolbarExtension
 
-from model import connect_to_db, db, Teacher, Classroom, Student, Group, StudentGroup, Music, Listening_Survey, GroupSurvey, ClassroomSurvey, StudentSurvey
+from model import connect_to_db, db, Teacher, Classroom, Student, Group, StudentGroup, Music, ListeningSurvey, GroupSurvey, ClassroomSurvey, StudentSurvey
 
 
 app = Flask(__name__)
@@ -28,7 +28,7 @@ def index():
 def student_register_form():
     """Show form for user signup."""
 
-    return render_template("student_code_check.html")
+    return render_template("student_register_form.html")
 
 
 @app.route('/student-register', methods=['POST'])
@@ -38,7 +38,6 @@ def student_register_process():
     # Get form variables
     class_code = request.form["class-code"]
 
-
     #Get vars from form
     username = request.form["username"]
     password = request.form["password"]
@@ -46,27 +45,29 @@ def student_register_process():
     lname = request.form["lname"]
 
     #Query to get classroom object from registration code
-    class_id_query = Classroom.query.get(registration_code=class_code)
+    class_query_object = Classroom.query.filter_by(registration_code=class_code).one()
 
-    #Create new student object
-    new_student = Student(username=email, password=password, fname=fname, lname=lname, class_id=class_id_query.class_id)
+    if class_query_object is None:
+        #Flash registration denial
+        flash("Class does not exist.  Please check your registration code.")
 
-    #Add to database and commit
-    db.session.add(new_student)
-    db.session.commit()
+        #Redirect back to student register page
+        return redirect("/student-register")
+    else:
 
-    #Flash registration confirmation and redirect to homepage (later to student profile)
+        #Create new student object
+        new_student = Student(username=username, password=password, fname=fname, lname=lname, class_id=class_query_object.class_id)
 
-    flash("Student {} {} added.".format(fname, lname))
-    return redirect("/")
+        #Add to database and commit
+        db.session.add(new_student)
+        db.session.commit()
 
-    # return redirect("/users/{}".format(new_user.user_id))
+        #Flash registration confirmation and redirect to homepage (later to student profile)
 
+        flash("Student {} {} added.".format(fname, lname))
+        return redirect("/")
 
-
-
-
-
+        # return redirect("/users/{}".format(new_user.user_id))
 
 
 @app.route('/teacher-register', methods=['GET'])
@@ -74,8 +75,6 @@ def teacher_register_form():
     """Show form for user signup."""
 
     return render_template("teacher_register_form.html")    
-
-
 
 
 @app.route('/teacher-register', methods=['POST'])
@@ -107,7 +106,7 @@ def create_class_form():
 
 
     #FIX ME
-	return render_template("create_class_form.html", available_instruments=available_instruments)
+	return render_template("create_class_form.html")
 
 
 @app.route('/create-class', methods=['POST'])
@@ -127,7 +126,103 @@ def create_class_process():
     db.session.commit()
 
     #Redirect to class profile to choose instruments, etc.
+    return redirect("/")
 
+
+@app.route('/teacher-login', methods=['GET'])
+def teacher_login_form():
+    """Show login form."""
+
+    return render_template("login_form.html")
+
+
+@app.route('/teacher-login', methods=['POST'])
+def teacher_login_process():
+    """Process login."""
+
+    # Get form variables
+    username = request.form["username"]
+    password = request.form["password"]
+
+    teacher = Teacher.query.filter_by(username=username).first()
+
+    if not teacher:
+        flash("No such user")
+        return redirect("/teacher-login")
+
+    if teacher.password != password:
+        flash("Incorrect password")
+        return redirect("/teacher-login")
+
+    session["teacher_id"] = teacher.teacher_id
+
+    flash("Logged in")
+    return redirect("/create-class")
+
+    # return redirect("/users/{}".format(user.user_id))
+
+
+@app.route('/student-login', methods=['GET'])
+def student_login_form():
+    """Show login form."""
+
+    return render_template("student_login_form.html")
+
+
+@app.route('/student-login', methods=['POST'])
+def student_login_process():
+    """Process login."""
+
+    # Get form variables
+    username = request.form["username"]
+    password = request.form["password"]
+
+    student = Student.query.filter_by(username=username).first()
+
+    if not student:
+        flash("No such user")
+        return redirect("/student-login")
+
+    if student.password != password:
+        flash("Incorrect password")
+        return redirect("/student-login")
+
+    session["student_id"] = student.student_id
+
+    flash("Logged in")
+    return redirect("/")
+
+    # return redirect("/users/{}".format(user.user_id))
+
+
+@app.route('/logout')
+def logout():
+    """Log out."""
+
+    if "student_id" in session:
+        del session["student_id"]
+    elif "teacher_id" in session:
+        del session["teacher_id"]
+    else:
+        return redirect("/")
+    flash("Logged Out.")
+    return redirect("/")
+
+
+@app.route("/students/<int:student_id>")
+def student_detail(student_id):
+    """Show info about student."""
+
+    student = Student.query.get(student_id)
+    return render_template("student_profile.html", student=student)
+
+
+@app.route("/teachers/<int:teacher_id>")
+def teacher_detail(teacher_id):
+    """Show info about student."""
+
+    teacher = Teacher.query.get(teacher_id)
+    return render_template("teacher_profile.html", teacher=teacher)
 
 
 if __name__ == "__main__":

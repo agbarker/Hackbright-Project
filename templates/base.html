@@ -5,12 +5,15 @@
 </head>
 <body>
 
-Music Class
+Music Class<br>
 
-{% if "user_id" in session %}
+{% if "student_id" in session %}
+  <a href="/logout">Logout</a>
+{% elif "teacher_id" in session %}
   <a href="/logout">Logout</a>
 {% else %}
-  <a href="/login">Login</a>
+  <a href="/teacher-login">Teacher Login</a> <br>
+  <a href="/student-login">Student Login</a>
 {% endif %}
 
 <hr>

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<div class="well spaced" style="width:97%">
+  <h2>{{ student.fname }} {{ student.lname }}</h2>
+
+  <b><p>Username: {{ student.username }}</p>
+  <p>Classroom: {{ student.classroom.name }}</p></b>
+
+  
+</div>
+{% endblock %}

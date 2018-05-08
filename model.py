@@ -36,7 +36,7 @@ class Classroom(db.Model):
     type_class = db.Column(db.String(64))
 
     # Define relationship to teacher
-    teacher = db.relationship("Teacher", backref=db.backref("teachers", order_by=class_id))
+    teacher = db.relationship("Teacher", backref=db.backref("classrooms", order_by=class_id))
 
     def __repr__(self):
         """Provide helpful representation when printed."""
@@ -58,7 +58,7 @@ class Student(db.Model):
     class_id = db.Column(db.Integer, db.ForeignKey('classrooms.class_id'))
 
     # Define relationship to classroom
-    classroom = db.relationship("Classroom", backref=db.backref("classrooms", order_by=student_id))
+    classroom = db.relationship("Classroom", backref=db.backref("students", order_by=student_id))
 
     def __repr__(self):
         """Provide helpful representation when printed."""
@@ -76,7 +76,7 @@ class Group(db.Model):
     name = db.Column(db.String(64))
 
     # Define relationship to classroom
-    classroom = db.relationship("Classroom", backref=db.backref("classrooms", order_by=group_id))
+    classroom = db.relationship("Classroom", backref=db.backref("groups", order_by=group_id))
 
     def __repr__(self):
         """Provide helpful representation when printed."""
@@ -94,10 +94,10 @@ class StudentGroup(db.Model):
     group_id = db.Column(db.Integer, db.ForeignKey('groups.group_id'))
 
     # Define relationship to students
-    student_id = db.relationship("Student", backref=db.backref("students", order_by=student_group_id))
+    student = db.relationship("Student", backref=db.backref("student-group", order_by=student_group_id))
 
     # Define relationship to groups
-    group_id = db.relationship("Group", backref=db.backref("groups", order_by=student_group_id))
+    group = db.relationship("Group", backref=db.backref("student-group", order_by=student_group_id))
 
     def __repr__(self):
         """Provide helpful representation when printed."""
@@ -133,7 +133,7 @@ class Listening_Survey(db.Model):
     music_id = db.Column(db.Integer, db.ForeignKey('music.music_id'))
 
     # Define relationship to music
-    music = db.relationship("Music", backref=db.backref("music", order_by=survey_id))
+    music = db.relationship("Music", backref=db.backref("surveys", order_by=survey_id))
 
     def __repr__(self):
         """Provide helpful representation when printed."""
@@ -151,10 +151,10 @@ class GroupSurvey(db.Model):
     group_id = db.Column(db.Integer, db.ForeignKey('groups.group_id'))
 
     # Define relationship to surveys
-    survey_id = db.relationship("Survey", backref=db.backref("surveys", order_by=group_survey_id))
+    survey = db.relationship("Listening_Survey", backref=db.backref("group-survey", order_by=group_survey_id))
 
     # Define relationship to groups
-    group_id = db.relationship("Group", backref=db.backref("groups", order_by=group_survey_id))
+    group = db.relationship("Group", backref=db.backref("group-survey", order_by=group_survey_id))
 
     def __repr__(self):
         """Provide helpful representation when printed."""
@@ -172,10 +172,10 @@ class ClassroomSurvey(db.Model):
     class_id = db.Column(db.Integer, db.ForeignKey('classrooms.class_id'))
 
     # Define relationship to surveys
-    survey_id = db.relationship("Survey", backref=db.backref("surveys", order_by=class_survey_id))
+    survey = db.relationship("Listening_Survey", backref=db.backref("class-survey", order_by=class_survey_id))
 
     # Define relationship to classrooms
-    class_id = db.relationship("Classroom", backref=db.backref("classrooms", order_by=class_survey_id))
+    classroomm = db.relationship("Classroom", backref=db.backref("class-survey", order_by=class_survey_id))
 
     def __repr__(self):
         """Provide helpful representation when printed."""
@@ -195,15 +195,15 @@ class StudentSurvey(db.Model):
     student_comment = db.Column(db.Text, nullable=True)
 
     # Define relationship to surveys
-    survey_id = db.relationship("Survey", backref=db.backref("surveys", order_by=assigned_listening_id))
+    survey = db.relationship("Listening_Survey", backref=db.backref("student-survey", order_by=assigned_listening_id))
 
     # Define relationship to classrooms
-    student_id = db.relationship("Student", backref=db.backref("students", order_by=assigned_listening_id))
+    student = db.relationship("Student", backref=db.backref("student-survey", order_by=assigned_listening_id))
 
     def __repr__(self):
         """Provide helpful representation when printed."""
 
-        return "<Survey survey_id={} is assigned to Classroom class_id={}>".format(self.survey_id, self.class_id)
+        return "<Survey survey_id={} is assigned to Student student_id={}>".format(self.survey_id, self.student_id)
 
 
 

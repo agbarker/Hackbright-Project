@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="well spaced" style="width:40%;">
+<h1>Create New Class</h1>
+
+<form action="/create-class" method="POST">
+
+  <div class="form-group">
+    <label>
+        Enter Class Registration Code
+        <input type="code" name="class-code" class="form-control">
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label>
+        Class Name
+        <input type="text" name="class-name" class="form-control">
+    </label>
+  </div>
+
+  <div>
+    <label>
+      Class Type
+      <select name="classes">
+        <option value="concert_band">Concert Band/Wind Ensemble</option>
+        <option value="marching_band">Marching Band</option>
+        <option value="clarinet">Clarinet</option>
+        <option value="fiat">Alto Saxophone</option>
+        <option value="audi">Audi</option>
+      </select>
+    </label>
+  </div>
+
+<div class="form-group">
+    <label>
+        Available Instruments<br>
+
+        {% for instrument in available_instruments %}
+          <input type="checkbox" name="{{ instrument }}" value="{{ instrument }}"> {{ instrument }}<br>
+
+        {% endfor %}
+
+      <input type="submit" value="Submit">
+
+
+  <div class="form-group">
+    <input type="submit" value="Register, Mortal" class="btn btn-danger">
+  </div>
+
+</form>
+</div>
+{% endblock %}

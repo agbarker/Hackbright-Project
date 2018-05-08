@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="well spaced" style="width:40%;">
+<h1>Register</h1>
+
+<form action="/student-register" method="POST">
+
+  <div class="form-group">
+    <label>
+        Enter Class Registration Code
+        <input type="code" name="class-code" class="form-control">
+    </label>
+  </div>
+
+
+
+</form>
+</div>
+{% endblock %}

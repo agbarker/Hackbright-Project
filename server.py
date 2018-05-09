@@ -1,4 +1,6 @@
 """Music Classroom."""
+import xml.etree.cElementTree as ET
+import xlsxwriter
 
 from jinja2 import StrictUndefined
 
@@ -550,6 +552,56 @@ def get_groups_by_teacher(teacher_id):
 def auto_create_groups_by_instrument_family():
     """Create groups by instrument family."""
     pass
+
+
+def export_xml_file():
+    """Exports list of students as xml file."""
+
+    root = ET.Element("root")
+    doc = ET.SubElement(root, "doc")
+
+    #experimenting with the library for xml -- music files
+
+    tree = ET.ElementTree(root)
+    tree.write("filename.xml")
+
+    pass
+
+def export_student_list_xls():
+    """Exports list of students in xls format."""
+
+
+
+    # Create a workbook and add a worksheet.
+    workbook = xlsxwriter.Workbook('Student_List.xlsx')
+    worksheet = workbook.add_worksheet()
+
+    # Some data we want to write to the worksheet.
+    students = get_students_by_teacher(1)
+
+    students_list = []
+
+    for student in students:
+        student_attributes = [student.fname, student.lname]
+        students_list.append(student_attributes)
+
+    students_list=tuple(students_list)
+    # Start from the first cell. Rows and columns are zero indexed.
+    row = 0
+    col = 0
+
+    # Iterate over the data and write it out row by row.
+    for fname, lname in (students_list):
+        worksheet.write(row, col,     fname)
+        worksheet.write(row, col + 1, lname)
+        row += 1
+
+    # # Write a total using a formula.
+    # worksheet.write(row, 0, 'Total')
+    # worksheet.write(row, 1, '=SUM(B1:B4)')
+
+    workbook.close()
+
 
 
 

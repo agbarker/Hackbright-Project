@@ -38,7 +38,6 @@ def student_register_process():
     # Get form variables
     class_code = request.form["class-code"]
 
-    #Get vars from form
     username = request.form["username"]
     password = request.form["password"]
     fname = request.form["fname"]
@@ -54,7 +53,6 @@ def student_register_process():
         #Redirect back to student register page
         return redirect("/student-register")
     else:
-
         #Create new student object
         new_student = Student(username=username, password=password, fname=fname, lname=lname, class_id=class_query_object.class_id)
 
@@ -62,12 +60,10 @@ def student_register_process():
         db.session.add(new_student)
         db.session.commit()
 
-        #Flash registration confirmation and redirect to homepage (later to student profile)
-
+        #Flash registration confirmation, log student in, and redirect to student profile
         flash("Student {} {} added.".format(fname, lname))
-        return redirect("/")
-
-        # return redirect("/users/{}".format(new_user.user_id))
+        session["student_id"] = new_student.student_id
+        return redirect("/students/{{ session['student_id'] }}")
 
 
 @app.route('/teacher-register', methods=['GET'])
@@ -94,8 +90,10 @@ def teacher_register_process():
     db.session.add(new_teacher)
     db.session.commit()
 
+    #flash confirmation, log teacher in, redirect to teacher profile
     flash("Teacher {} {} added.".format(fname, lname))
-    return redirect("/teachers/{}".format(new_teacher.teacher_id))
+    session["teacher_id"] = new_teacher.teacher_id
+    return redirect("/teachers/{}".format(session["teacher_id"]))
 
 
 @app.route('/create-class', methods=['GET'])
@@ -110,6 +108,7 @@ def create_class_form():
 
 @app.route('/create-class', methods=['POST'])
 def create_class_process():
+    """Creates a classroom."""
 
     #Get variables from form
     teacher_id = session["teacher_id"]
@@ -124,8 +123,9 @@ def create_class_process():
     db.session.add(new_class)
     db.session.commit()
 
-    #Redirect to class profile to choose instruments, etc.
-    return redirect("/")
+    #Flash confirmation and redirect to class profile
+    flash("Class successfully created.")
+    return redirect("/classes/{}".format(new_class.class_id))
 
 
 @app.route('/teacher-login', methods=['GET'])
@@ -143,22 +143,25 @@ def teacher_login_process():
     username = request.form["username"]
     password = request.form["password"]
 
+    #query teacher database
     teacher = Teacher.query.filter_by(username=username).first()
 
+    #check if teacher exists
     if not teacher:
         flash("No such user")
         return redirect("/teacher-login")
 
+    #check if password is correct
     if teacher.password != password:
         flash("Incorrect password")
         return redirect("/teacher-login")
 
+    #add teacher to session
     session["teacher_id"] = teacher.teacher_id
 
+    #flash confirmation, redirect to profile
     flash("Logged in")
     return redirect("/teachers/{}".format(teacher.teacher_id))
-
-    # return redirect("/users/{}".format(user.user_id))
 
 
 @app.route('/student-login', methods=['GET'])
@@ -176,43 +179,78 @@ def student_login_process():
     username = request.form["username"]
     password = request.form["password"]
 
+    #query student database
     student = Student.query.filter_by(username=username).first()
 
+    #check if student exists
     if not student:
         flash("No such user")
         return redirect("/student-login")
 
+    #check if password is correct
     if student.password != password:
         flash("Incorrect password")
         return redirect("/student-login")
 
+    #add student to session
     session["student_id"] = student.student_id
 
+    #flash confirmation, redirect to profile
     flash("Logged in")
-    return redirect("/")
-
-    # return redirect("/users/{}".format(user.user_id))
+    return redirect("/students/{}".format(student.student_id))
 
 
 @app.route('/logout')
 def logout():
     """Log out."""
 
+    #account for both types of users.  They shouldn't be able to see a Log Out if they are not logged in, but just in case?
     if "student_id" in session:
         del session["student_id"]
     elif "teacher_id" in session:
         del session["teacher_id"]
     else:
         return redirect("/")
+
+    #flash confirmation, redirect to homepage
     flash("Logged Out.")
     return redirect("/")
 
 
 @app.route("/students/<int:student_id>")
 def student_detail(student_id):
-    """Show info about student."""
-
+    """Show info about student, student profile page."""
     student = Student.query.get(student_id)
+
+    # if "teacher_id" in session:
+    #     #create filtering objects and lists
+    #     teacher = Teacher.query.get(session["teacher_id"])
+    #     classroom_list = Classroom.query.filter_by(teacher_id=teacher.teacher_id).all()
+    #     print classroom_list
+    #     students_by_teacher_list = []
+
+    #     for classroom in classroom_list:
+    #         class_students = Student.query.filter_by(class_id=classroom.class_id).all()
+    #         students_by_teacher_list.append(class_students)
+
+    #     print students_by_teacher_list
+
+    #     if student in students_by_teacher_list:
+    #         instruments = Instrument.query.filter_by(student_id=student_id).all()
+
+    #         return render_template("student_profile.html", student=student, instruments=instruments)
+
+    # elif "student_id" in session:
+
+    #     #check if student is logged in and is that student.
+    #     if "student_id" in session and student_id == session["student_id"]:
+    #         instruments = Instrument.query.filter_by(student_id=student_id).all()
+
+    #         return render_template("student_profile.html", student=student, instruments=instruments)
+
+    # else:
+    #     flash("You must be logged in to access")
+    #     return redirect('/')
 
     instruments = Instrument.query.filter_by(student_id=student_id).all()
 
@@ -221,9 +259,17 @@ def student_detail(student_id):
 
 @app.route("/teachers/<int:teacher_id>")
 def teacher_detail(teacher_id):
-    """Show info about student."""
+    """Show info about teacher, teacher profile."""
 
+    #check if teacher_id above is in session
+    if teacher_id != session["teacher_id"]:
+        flash("You must be logged in to access this page.")
+        return redirect("/")
+
+    #query teacher based on teacher_id
     teacher = Teacher.query.get(teacher_id)
+
+    #display HTML page based on that teacher
     return render_template("teacher_profile.html", teacher=teacher)
 
 
@@ -440,10 +486,30 @@ def create_group_process():
 def add_student_to_group_form():
     """Displays add student to group form."""
 
+    #get form variables
     fname = request.form["fname"]
     lname = request.form["lname"]
 
-    pass
+    group = request.form["group_name"]
+
+    #query student and group by name
+    student = Student.query.filter_by(lname=lname).filter_by(fname=fname).one()
+    group = Group.query.filter_by(name=group_name).one()
+
+    #check if student and group exist
+    if student is None:
+        flash("Student does not exist.")
+        return redirect("/add-student-to-group")
+
+    if group is None:
+        flash("Group does not exist.")
+        return redirect("/add-student-to-group")
+
+    #should this be a helper function?  Creates new row in relational student-group table.
+    add_student_to_group(student, group)
+
+    flash("Student successfully added!")
+    return redirect("/add-student-to-group")
 
 
 
@@ -459,6 +525,15 @@ def add_student_to_group(student, group):
     db.session.commit()
 
     pass
+
+
+# def display_student_profile(student_id):
+#     """Displays student profile page.  Helper function."""
+
+#         #create list of all instruments checked out to student
+#     instruments = Instrument.query.filter_by(student_id=student_id).all()
+
+#     return render_template("student_profile.html", student=student, instruments=instruments)
 
 
 

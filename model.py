@@ -74,6 +74,9 @@ class Instrument(db.Model):
     student_id = db.Column(db.Integer, db.ForeignKey('students.student_id'), nullable=True)
     instrument_name = db.Column(db.String(64), db.ForeignKey('instrument-types.name'))
     teacher_id = db.Column(db.Integer, db.ForeignKey('teachers.teacher_id'))
+    maker = db.Column(db.String(64), nullable=True)
+    model = db.Column(db.String(64), nullable=True)
+    year_manufactured = db.Column(db.String(64), nullable=True)
 
     # Define relationship to students
     student = db.relationship("Student", backref=db.backref("instruments", order_by=serial_number))
@@ -267,7 +270,6 @@ class StudentSurvey(db.Model):
         """Provide helpful representation when printed."""
 
         return "<Survey survey_id={} is assigned to Student student_id={}>".format(self.survey_id, self.student_id)
-
 
 
 #####################################################################

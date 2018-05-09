@@ -381,8 +381,8 @@ def instrument_checkout_process():
     flash("Instrument Successfully checked out.")
     return redirect("/instrument-checkout")
 
-@app.route("/instrument-inventory", methods=['GET'])
-def instrument_inventory():
+# @app.route("/instrument-inventory", methods=['GET'])
+# def instrument_inventory():
     
 
 

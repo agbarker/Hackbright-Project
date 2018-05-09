@@ -100,9 +100,6 @@ def teacher_register_process():
 def create_class_form():
     """Show form for class creation."""  
 
-
-
-    #FIX ME
     return render_template("create_class_form.html")
 
 
@@ -354,8 +351,6 @@ def instrument_checkin_process():
 
     instrument = Instrument.query.get(serial_number)
 
-
-
     #update instrument.student_id = Null
 
     instrument.student_id = None
@@ -485,27 +480,24 @@ def create_group_process():
 def add_student_to_group_form():
     """Displays add student to group form."""
 
+    teacher_id = session["teacher_id"]
+    students = get_students_by_teacher(teacher_id)
+    groups = get_groups_by_teacher(teacher_id)
+
+    return render_template("add_student_to_group_form.html", students=students, groups=groups)
+
+
+
+@app.route("/add-student-to-group", methods=['POST'])
+def add_student_to_group():
+    """Adds student to group."""
+
+
     #get form variables
-    fname = request.form["fname"]
-    lname = request.form["lname"]
+    student_id = int(request.form["student"])
+    group_id = int(request.form["group"])
 
-    group = request.form["group_name"]
-
-    #query student and group by name
-    student = Student.query.filter_by(lname=lname).filter_by(fname=fname).one()
-    group = Group.query.filter_by(name=group_name).one()
-
-    #check if student and group exist
-    if student is None:
-        flash("Student does not exist.")
-        return redirect("/add-student-to-group")
-
-    if group is None:
-        flash("Group does not exist.")
-        return redirect("/add-student-to-group")
-
-    #should this be a helper function?  Creates new row in relational student-group table.
-    add_student_to_group(student, group)
+    add_student_to_group(student_id, group_id)
 
     flash("Student successfully added!")
     return redirect("/add-student-to-group")
@@ -516,14 +508,50 @@ def add_student_to_group_form():
 #####################################################################
 # Helper functions
 
-def add_student_to_group(student, group):
+def add_student_to_group(student_id, group_id):
     """Adds student to group.  Helper function."""
 
-    new_student_group = StudentGroup(student=student, group=group)
+    new_student_group = StudentGroup(student_id=student_id, group_id=group_id)
     db.session.add(new_student_group)
     db.session.commit()
 
     pass
+
+def get_students_by_teacher(teacher_id):
+    """Creates list of students that belong to specified teacher."""
+
+    # teacher = Teacher.query.get(teacher_id)
+    classroom_list = Classroom.query.filter_by(teacher_id=teacher_id).all()
+
+    students_by_teacher_list = []
+
+    for classroom in classroom_list:
+        class_students = Student.query.filter_by(class_id=classroom.class_id).all()
+        students_by_teacher_list.extend(class_students)
+
+    return students_by_teacher_list
+
+
+def get_groups_by_teacher(teacher_id):
+    """Creates list of students that belong to specified teacher."""
+
+    teacher = Teacher.query.get(teacher_id)
+    classroom_list = Classroom.query.filter_by(teacher_id=teacher_id).all()
+
+    groups_by_teacher_list = []
+
+    for classroom in classroom_list:
+        class_groups = Group.query.filter_by(class_id=classroom.class_id).all()
+        groups_by_teacher_list.extend(class_groups)
+
+    return groups_by_teacher_list
+
+
+def auto_create_groups_by_instrument_family():
+    """Create groups by instrument family."""
+    pass
+
+
 
 
 # def display_student_profile(student_id):

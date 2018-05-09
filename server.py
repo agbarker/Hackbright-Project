@@ -364,9 +364,103 @@ def instrument_inventory():
     return render_template("instrument_inventory.html", my_instruments=my_instruments)
 
 
+@app.route("/add-instrument-type", methods=['GET'])
+def add_instrument_type_form():
+    """Displays add instrument type form."""
+
+    return render_template("add_instrument_type_form.html")
+
+
+@app.route("/add-instrument-type", methods=['POST'])
+def add_instrument_type():
+    """Adds instrument type."""
+
+    name = request.form["instrument_name"]
+    family = request.form["family"]
+
+    new_instrument = InstrumentType(name=name, family=family)
+
+    db.session.add(new_instrument)
+    db.session.commit()
+    flash("Instrument successfully added.")
+    return redirect("/add-instrument-type")
+
+
+@app.route("/add-instrument-to-class", methods=['GET'])
+def add_instrument_to_class_form():
+    """Displays add instrument type to class form."""
+
+#     instrument_name = request.form["name"]
+
+#     classroom = request.form["classroom"]
+
+#     if instrument_name in InstrumentType.query.:
+#         if classroom in 
+
+    pass
+    pass
+
+
+@app.route("/add-instrument-to-class", methods=['POST'])
+def add_instrument_to_class():
+    """Adds instrument type to class."""
+
+    pass
+
+
+@app.route("/create-group", methods=['GET'])
+def create_group_form():
+    """Displays create group form"""
+
+    return render_template("create_group_form.html")
+
+
+
+@app.route("/create-group", methods=['POST'])
+def create_group_process():
+    """Creates group."""
+
+    #get form variables
+    class_id = request.form["class_id"]
+    name = request.form["name"]
+
+    #create new group object
+    new_group = Group(class_id=class_id, name=name)
+
+    #add new group to session and commit
+    db.session.add(new_group)
+    db.session.commit()
+
+    #flash confirmation and redirect to add another group
+    flash("New Group successfully created.")
+    return redirect("/create-group")
+
+
+@app.route("/add-student-to-group", methods=['GET'])
+def add_student_to_group_form():
+    """Displays add student to group form."""
+
+    fname = request.form["fname"]
+    lname = request.form["lname"]
+
+    pass
+
+
+
 
 #####################################################################
 # Helper functions
+
+def add_student_to_group(student, group):
+    """Adds student to group.  Helper function."""
+
+    new_student_group = StudentGroup(student=student, group=group)
+    db.session.add(new_student_group)
+    db.session.commit()
+
+    pass
+
+
 
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the point

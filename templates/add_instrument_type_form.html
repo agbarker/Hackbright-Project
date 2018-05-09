@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="well spaced" style="width:40%;">
+<h1>Add New Instrument Type</h1>
+
+
+<form action="/add-instrument-type" method="POST">
+
+  <div class="form-group">
+    <label>
+        Enter Instrument Name
+        <input type="text" name="instrument_name" class="form-control">
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label>
+        Enter Family
+        <input type="text" name="family" class="form-control">
+    </label>
+  </div>
+
+
+  <div class="form-group">
+    <input type="submit" value="Create Type" class="btn btn-danger">
+  </div>
+
+</form>
+</div>
+{% endblock %}

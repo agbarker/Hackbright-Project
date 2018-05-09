@@ -73,12 +73,16 @@ class Instrument(db.Model):
     serial_number = db.Column(db.String(64), primary_key=True)
     student_id = db.Column(db.Integer, db.ForeignKey('students.student_id'), nullable=True)
     instrument_name = db.Column(db.String(64), db.ForeignKey('instrument-types.name'))
+    teacher_id = db.Column(db.Integer, db.ForeignKey('teachers.teacher_id'))
 
     # Define relationship to students
     student = db.relationship("Student", backref=db.backref("instruments", order_by=serial_number))
 
     # Define relationship to instrumenttype
     name = db.relationship("InstrumentType", backref=db.backref("instruments", order_by=serial_number))
+
+    # Define relationship to teachers
+    teacher = db.relationship("Teacher", backref=db.backref("instruments", order_by=serial_number))
 
     def __repr__(self):
         """Provide helpful representation when printed."""

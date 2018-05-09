@@ -320,9 +320,70 @@ def classroom_profile_page(class_id):
 def instrument_checkin_form():
     """Show form for instrument checkin."""
 
-    #BROKEN
+    instrument_types_object = InstrumentType.query.all()
+    instrument_types = []
+    for instrument_type in instrument_types_object:
+        instrument_types.append(instrument_type.name)
 
-    return render_template("instrument_checkin_form.html")
+    return render_template("instrument_checkin_form.html", instrument_types=instrument_types)
+
+
+@app.route("/instrument-checkin", methods=['POST'])
+def instrument_checkin_process():
+    """Strip student_id from instrument."""
+
+    #get variables from form
+    serial_number = request.form["serial_number"]
+
+    instrument = Instrument.query.get(serial_number)
+
+
+
+    #update instrument.student_id = Null
+
+    instrument.student_id = None
+    db.session.commit()
+    flash("Instrument Successfully checked in.")
+    return redirect("/instrument-checkin")
+
+
+@app.route("/instrument-checkout", methods=['GET'])
+def instrument_checkout_form():
+    """Show form for instrument checkout."""
+
+    instrument_types_object = InstrumentType.query.all()
+    instrument_types = []
+    for instrument_type in instrument_types_object:
+        instrument_types.append(instrument_type.name)
+
+    return render_template("instrument_checkout_form.html", instrument_types=instrument_types)
+
+
+@app.route("/instrument-checkout", methods=['POST'])
+def instrument_checkout_process():
+    """Strip student_id from instrument."""
+
+    #get variables from form
+    serial_number = request.form["serial_number"]
+    fname = request.form["fname"]
+    lname = request.form["lname"]
+
+    #find instrument by serial number
+    instrument = Instrument.query.get(serial_number)
+
+    #find student by name CURRENTLY ASSUMING ALL STUDENTS ARE UNIQUE... FIX IN AJAX?
+    student = Student.query.filter_by(lname=lname).filter_by(fname=fname).one()
+
+    #update instrument student
+    instrument.student = student
+
+    db.session.commit()
+    flash("Instrument Successfully checked out.")
+    return redirect("/instrument-checkout")
+
+@app.route("/instrument-inventory", methods=['GET'])
+def instrument_inventory():
+    
 
 
 

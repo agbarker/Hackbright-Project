@@ -98,12 +98,12 @@ def teacher_register_process():
 
 @app.route('/create-class', methods=['GET'])
 def create_class_form():
-	"""Show form for class creation."""  
+    """Show form for class creation."""  
 
 
 
     #FIX ME
-	return render_template("create_class_form.html")
+    return render_template("create_class_form.html")
 
 
 @app.route('/create-class', methods=['POST'])
@@ -461,7 +461,6 @@ def create_group_form():
     return render_template("create_group_form.html")
 
 
-
 @app.route("/create-group", methods=['POST'])
 def create_group_process():
     """Creates group."""
@@ -543,10 +542,13 @@ if __name__ == "__main__":
 
     # Do not debug for demo
     app.debug = True
+    app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
     connect_to_db(app)
 
     # Use the DebugToolbar
     DebugToolbarExtension(app)
+
+
 
     app.run(host="0.0.0.0")

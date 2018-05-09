@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
+
 db = SQLAlchemy()
 
 
@@ -275,11 +276,20 @@ class StudentSurvey(db.Model):
 #####################################################################
 # Helper functions
 
-def connect_to_db(app):
+def example_data():
+    """Example data for tests."""
+    teacher = Teacher(username="cjack", password="password", fname="Carol", lname="Jack")
+    classroom = Classroom(teacher_id=teacher.teacher_id, registration_code="ABC", name="Orchestra 2nd Period", type_class="String Orchestra")
+    db.session.add(teacher)
+    db.session.add(classroom)
+    db.session.commit()
+
+
+def connect_to_db(app, db_uri="postgresql:///musicClass"):
     """Connect the database to our Flask app."""
 
     # Configure to use our PostgreSQL database
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///musicClass'
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
     db.init_app(app)

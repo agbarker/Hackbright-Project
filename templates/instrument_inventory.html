@@ -3,6 +3,10 @@
 <div class="well spaced" style="width:60%">
   <h2>My Instruments</h2>
 
+  <a href="/instrument-checkin">Check in an Instrument</a><br>
+  <a href="/instrument-checkout">Check out an Instrument</a><br>
+
+
   <ul>
     {% for instrument in my_instruments %}
       <ul>Type: {{ instrument.name.name }}</ul>

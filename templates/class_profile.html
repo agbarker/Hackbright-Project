@@ -6,11 +6,13 @@
 
   <h3>Students</h3>
   {% for student in students %}
-  	<p>{{ student.fname }} {{ student.lname }}</p>
+  	<a href="/students/{{ student.student_id }}">{{ student.fname }} {{ student.lname }}</a>
 
   {% endfor %}
 
   <h3>Instruments</h3>
+
+
     {% for instrument in instruments %}
   	<p>{{ instrument.name }}</p>
 

@@ -95,8 +95,7 @@ def teacher_register_process():
     db.session.commit()
 
     flash("Teacher {} {} added.".format(fname, lname))
-    return redirect("/")
-#    return redirect("/users/{}".format(new_user.user_id))
+    return redirect("/teachers/{}".format(new_teacher.teacher_id))
 
 
 @app.route('/create-class', methods=['GET'])
@@ -157,7 +156,7 @@ def teacher_login_process():
     session["teacher_id"] = teacher.teacher_id
 
     flash("Logged in")
-    return redirect("/create-class")
+    return redirect("/teachers/{}".format(teacher.teacher_id))
 
     # return redirect("/users/{}".format(user.user_id))
 

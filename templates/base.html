@@ -8,9 +8,11 @@
 Music Class<br>
 
 {% if "student_id" in session %}
-  <a href="/logout">Logout</a>
+  <a href="/logout">Logout</a><br>
+  <a href="/students/{{ session['student_id'] }}">My Profile</a>
 {% elif "teacher_id" in session %}
-  <a href="/logout">Logout</a>
+  <a href="/logout">Logout</a><br>
+  <a href="/teachers/{{ session['teacher_id'] }}">My Profile</a>
 {% else %}
   <a href="/teacher-login">Teacher Login</a> <br>
   <a href="/student-login">Student Login</a>

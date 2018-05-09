@@ -249,12 +249,6 @@ def change_password():
         flash("New password does not match confirmation, try again.")
         return redirect("/change-password")
 
-    #querys for building dictionary
-    # teacher_query = Teacher.query.filter_by(teacher_id=session["teacher_id"])
-    # student_query = Student.query.filter_by(student_id=session["student_id"])
-
-    #dictionary with objects and ids
-    # id_check = {"teacher_id": Teacher.query.get(session["teacher_id"]), "student_id": Student.query.get(session["student_id"])}
 
     if "teacher_id" in session:
         user = Teacher.query.get(session["teacher_id"])
@@ -269,28 +263,6 @@ def change_password():
     else:
         flash("Current password incorrect, please try again.")
         return redirect("/change-password")
-
-    #check that old password is correct
-    #reset attribute
-
-    # if "teacher_id" in session:
-    #     teacher = Teacher.query.get(session["teacher_id"])
-    #     if teacher.password == old_password:
-    #         teacher.password = new_password1
-    #         flash("Password successfully changed!")
-    #         return redirect("/")
-    #     else:
-    #         flash("Current password incorrect, please try again.")
-    #         return redirect("/change_password")
-    # else:
-    #     student = Student.query.get(session["student_id"])
-    #     if student.password == old_password:
-    #         student.password = new_password1
-    #         flash("Password successfully changed!")
-    #         return redirect("/")
-    #     else:
-    #         flash("Current password incorrect, please try again.")
-    #         return redirect("/change_password")
 
 
 @app.route("/classes", methods=['GET'])
@@ -381,11 +353,21 @@ def instrument_checkout_process():
     flash("Instrument Successfully checked out.")
     return redirect("/instrument-checkout")
 
-# @app.route("/instrument-inventory", methods=['GET'])
-# def instrument_inventory():
-    
+
+@app.route("/instrument-inventory", methods=['GET'])
+def instrument_inventory():
+    """Displays an inventory of instruments sorted by type."""
+
+    my_instruments = Instrument.query.filter_by(teacher_id=session["teacher_id"]).all()
+
+    sorted(my_instruments, key=lambda instrument:instrument.instrument_name)
+
+    return render_template("instrument_inventory.html", my_instruments=my_instruments)
 
 
+
+#####################################################################
+# Helper functions
 
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the point

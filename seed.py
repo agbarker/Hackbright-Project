@@ -12,7 +12,7 @@ def load_teacher():
 
     print "Teacher"
 
-    teacher = Teacher(username="sbarber", password="password", fname="samuel", lname="barber")
+    teacher = Teacher(username="sbarber", password="password", fname="Samuel", lname="Barber")
     db.session.add(teacher)
     db.session.commit()
 

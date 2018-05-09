@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="well spaced" style="width:60%">
+  <h2>My Instruments</h2>
+
+  <ul>
+    {% for instrument in my_instruments %}
+      <ul>Type: {{ instrument.name.name }}</ul>
+
+      {% if instrument.student_id is none %}
+        <ul>Student: Not checked out</ul>
+      {% else %}
+        <ul>Student: {{ instrument.student.fname }} {{ instrument.student.lname }}</ul>
+
+      {% endif %}
+
+      <ul>Serial Number: {{ instrument.serial_number }}</ul>
+      <ul>Teacher: {{ instrument.teacher.lname }}</ul>
+      <ul>Maker: {{ instrument.maker }}</ul>
+      <ul>Model: {{ instrument.model }}</ul>
+      <ul>Year Manufactured: {{ instrument.year_manufactured }}</ul>
+
+
+    {% endfor %}
+  </ul>
+
+</div>
+{% endblock %}
+
+

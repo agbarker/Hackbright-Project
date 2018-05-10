@@ -498,9 +498,9 @@ def create_group_process():
 def add_student_to_group_form():
     """Displays add student to group form."""
 
-    teacher_id = session["teacher_id"]
-    students = get_students_by_teacher(teacher_id)
-    groups = get_groups_by_teacher(teacher_id)
+    teacher = Teacher.query.get(session["teacher_id"])
+    students = teacher.get_students_by_teacher()
+    groups = teacher.get_groups_by_teacher()
 
     return render_template("add_student_to_group_form.html", students=students, groups=groups)
 
@@ -578,34 +578,8 @@ def add_student_to_group(student_id, group_id):
 
     pass
 
-def get_students_by_teacher(teacher_id):
-    """Creates list of students that belong to specified teacher."""
-
-    # teacher = Teacher.query.get(teacher_id)
-    classroom_list = Classroom.query.filter_by(teacher_id=teacher_id).all()
-
-    students_by_teacher_list = []
-
-    for classroom in classroom_list:
-        class_students = Student.query.filter_by(class_id=classroom.class_id).all()
-        students_by_teacher_list.extend(class_students)
-
-    return students_by_teacher_list
 
 
-def get_groups_by_teacher(teacher_id):
-    """Creates list of students that belong to specified teacher."""
-
-    teacher = Teacher.query.get(teacher_id)
-    classroom_list = Classroom.query.filter_by(teacher_id=teacher_id).all()
-
-    groups_by_teacher_list = []
-
-    for classroom in classroom_list:
-        class_groups = Group.query.filter_by(class_id=classroom.class_id).all()
-        groups_by_teacher_list.extend(class_groups)
-
-    return groups_by_teacher_list
 
 
 def auto_create_groups_by_instrument_family():
@@ -626,17 +600,17 @@ def export_xml_file():
 
     pass
 
-def export_student_list_xls():
+
+def export_student_list_xls(teacher_id):
     """Exports list of students in xls format."""
-
-
 
     # Create a workbook and add a worksheet.
     workbook = xlsxwriter.Workbook('Student_List.xlsx')
     worksheet = workbook.add_worksheet()
 
     # Some data we want to write to the worksheet.
-    students = get_students_by_teacher(1)
+    teacher = Teacher.query.get(teacher_id)
+    students = teacher.get_students_by_teacher()
 
     students_list = []
 
@@ -644,7 +618,7 @@ def export_student_list_xls():
         student_attributes = [student.fname, student.lname]
         students_list.append(student_attributes)
 
-    students_list=tuple(students_list)
+    students_list = tuple(students_list)
     # Start from the first cell. Rows and columns are zero indexed.
     row = 0
     col = 0

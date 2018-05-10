@@ -19,6 +19,33 @@ class Teacher(db.Model):
     fname = db.Column(db.String(64))
     lname = db.Column(db.String(64))
 
+    def get_students_by_teacher(cls):
+        """Creates list of students that belong to specified teacher."""
+
+        # teacher = Teacher.query.get(teacher_id)
+        classroom_list = Classroom.query.filter_by(teacher_id=Teacher.teacher_id).all()
+
+        students_by_teacher_list = []
+
+        for classroom in classroom_list:
+            class_students = Student.query.filter_by(class_id=classroom.class_id).all()
+            students_by_teacher_list.extend(class_students)
+
+        return students_by_teacher_list
+
+    def get_groups_by_teacher(cls):
+        """Creates list of students that belong to specified teacher."""
+
+        classroom_list = Classroom.query.filter_by(teacher_id=Teacher.teacher_id).all()
+
+        groups_by_teacher_list = []
+
+        for classroom in classroom_list:
+            class_groups = Group.query.filter_by(class_id=classroom.class_id).all()
+            groups_by_teacher_list.extend(class_groups)
+
+        return groups_by_teacher_list
+
     def __repr__(self):
         """Provide helpful representation when printed."""
 

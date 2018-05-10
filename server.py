@@ -505,6 +505,11 @@ def add_student_to_group():
     return redirect("/add-student-to-group")
 
 
+@app.route("/resources", methods=['GET'])
+def display_resources():
+
+    return render_template("resources.html")
+
 
 
 #####################################################################

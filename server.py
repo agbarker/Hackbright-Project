@@ -45,6 +45,8 @@ def student_register_form():
 def student_register_process():
     """Process registration."""
 
+    print "it ran the code!"
+
     # Get form variables
     class_code = request.form["class-code"]
 
@@ -55,6 +57,8 @@ def student_register_process():
 
     #Query to get classroom object from registration code
     class_query_object = Classroom.query.filter_by(registration_code=class_code).one()
+
+    print class_query_object
 
     if class_query_object is None:
         #Flash registration denial
@@ -73,7 +77,7 @@ def student_register_process():
         #Flash registration confirmation, log student in, and redirect to student profile
         flash("Student {} {} added.".format(fname, lname))
         session["student_id"] = new_student.student_id
-        return redirect("/students/{{ session['student_id'] }}")
+        return redirect("/students/{}".format(session['student_id']))
 
 
 @app.route('/teacher-register', methods=['GET'])
@@ -229,39 +233,43 @@ def student_detail(student_id):
     """Show info about student, student profile page."""
     student = Student.query.get(student_id)
 
-    # if "teacher_id" in session:
-    #     #create filtering objects and lists
-    #     teacher = Teacher.query.get(session["teacher_id"])
-    #     classroom_list = Classroom.query.filter_by(teacher_id=teacher.teacher_id).all()
-    #     print classroom_list
-    #     students_by_teacher_list = []
 
-    #     for classroom in classroom_list:
-    #         class_students = Student.query.filter_by(class_id=classroom.class_id).all()
-    #         students_by_teacher_list.append(class_students)
+    if "teacher_id" in session:
+        #create filtering objects and lists
+        teacher = Teacher.query.get(session["teacher_id"])
+        classroom_list = Classroom.query.filter_by(teacher_id=teacher.teacher_id).all()
 
-    #     print students_by_teacher_list
+        students_by_teacher_list = []
 
-    #     if student in students_by_teacher_list:
-    #         instruments = Instrument.query.filter_by(student_id=student_id).all()
+        for classroom in classroom_list:
+            class_students = Student.query.filter_by(class_id=classroom.class_id).all()
+            students_by_teacher_list.extend(class_students)
 
-    #         return render_template("student_profile.html", student=student, instruments=instruments)
 
-    # elif "student_id" in session:
 
-    #     #check if student is logged in and is that student.
-    #     if "student_id" in session and student_id == session["student_id"]:
-    #         instruments = Instrument.query.filter_by(student_id=student_id).all()
+        if student in students_by_teacher_list:
+            instruments = Instrument.query.filter_by(student_id=student_id).all()
 
-    #         return render_template("student_profile.html", student=student, instruments=instruments)
+            return render_template("student_profile.html", student=student, instruments=instruments)
+        else:
+            flash("not your student")
+            return redirect("/")
 
-    # else:
-    #     flash("You must be logged in to access")
-    #     return redirect('/')
+    elif "student_id" in session:
 
-    instruments = Instrument.query.filter_by(student_id=student_id).all()
+        #check if student is logged in and is that student.
+        if "student_id" in session and student_id == session["student_id"]:
+            instruments = Instrument.query.filter_by(student_id=student_id).all()
 
-    return render_template("student_profile.html", student=student, instruments=instruments)
+            return render_template("student_profile.html", student=student, instruments=instruments)
+
+    else:
+        flash("You must be logged in to access")
+        return redirect('/')
+
+    # instruments = Instrument.query.filter_by(student_id=student_id).all()
+
+    # return render_template("student_profile.html", student=student, instruments=instruments)
 
 
 @app.route("/teachers/<int:teacher_id>")
@@ -513,7 +521,7 @@ def add_student_to_group():
     return redirect("/add-student-to-group")
 
 
-@app.route("/resources", methods=['GET'])
+@app.route("/resources")
 def display_resources():
 
     return render_template("resources.html")
@@ -549,6 +557,12 @@ def upload_file():
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],
                                filename)
+
+
+@app.route('/survey/<survey_id>', methods=['GET'])
+def display_survey():
+
+    return render_template("survey.html")
 
 
 

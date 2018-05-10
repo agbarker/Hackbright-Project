@@ -3,7 +3,7 @@
 import unittest
 
 from server import app, session
-from model import db, connect_to_db, example_data
+from model import connect_to_db, db, Teacher, Classroom, Student, Group, StudentGroup, Music, ListeningSurvey, GroupSurvey, ClassroomSurvey, StudentSurvey, Instrument, InstrumentType, ClassroomInstrumentType, example_data
 
 
 class ServerTests(unittest.TestCase):
@@ -54,13 +54,17 @@ class MusicClassTestsDatabase(unittest.TestCase):
     def test_student_register(self):
         """Can students register?"""
 
+        # import pdb; pdb.set_trace()
+
         student_info = {'class-code': "ABC", 'username': "bjones", 'password': "password", 'fname': "Brad", 'lname': "Jones"}
 
         result = self.client.post("/student-register", data=student_info, follow_redirects=True)
 
-        test_student = Student.query.get(client.session["student_id"])
+        # test_student = Student.query.filter_by(fname=)
 
-        self.assertIn("Brad Jones", result_url)
+        # result_url = "/students/" + student_id
+
+        self.assertIn("Brad Jones", result.url)
 
 
 

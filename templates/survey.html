@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+
+
+
+    <audio controls>
+	  <source src="/{{ music_src }}" type="audio/mp3">
+	
+	</audio><br>
+
+	<img src="/static/test.jpg" alt="Flower">
+
+
+	<form action="/survey/{{ survey_id }}" method="POST">
+
+	  <div class="form-group">
+	    <label>
+	        Survey thoughts
+	        <input type="text" name="student_comment" class="form-control">
+	    </label>
+	  </div>
+
+	 
+
+	  <div class="form-group">
+	    <input type="submit" value="Submit survey" class="btn btn-danger">
+	  </div>
+
+	</form>
+    
+{% endblock %}

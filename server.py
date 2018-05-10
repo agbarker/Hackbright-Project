@@ -7,6 +7,8 @@ from jinja2 import StrictUndefined
 from flask import Flask, render_template, request, flash, redirect, session
 from flask_debugtoolbar import DebugToolbarExtension
 
+from datetime import datetime
+
 import os
 from flask import request, redirect, url_for, send_from_directory
 from werkzeug.utils import secure_filename
@@ -45,8 +47,6 @@ def student_register_form():
 def student_register_process():
     """Process registration."""
 
-    print "it ran the code!"
-
     # Get form variables
     class_code = request.form["class-code"]
 
@@ -57,8 +57,6 @@ def student_register_process():
 
     #Query to get classroom object from registration code
     class_query_object = Classroom.query.filter_by(registration_code=class_code).one()
-
-    print class_query_object
 
     if class_query_object is None:
         #Flash registration denial
@@ -460,6 +458,8 @@ def add_instrument_to_class_form():
     pass
 
 
+
+
 @app.route("/add-instrument-to-class", methods=['POST'])
 def add_instrument_to_class():
     """Adds instrument type to class."""
@@ -503,7 +503,6 @@ def add_student_to_group_form():
     groups = teacher.get_groups_by_teacher()
 
     return render_template("add_student_to_group_form.html", students=students, groups=groups)
-
 
 
 @app.route("/add-student-to-group", methods=['POST'])
@@ -558,11 +557,36 @@ def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],
                                filename)
 
+# @app.route("/survey", methods=['GET'])
+# def display_survey():
+
+
+
+#     return render_template("survey.html")
+
 
 @app.route('/survey/<survey_id>', methods=['GET'])
-def display_survey():
+def display_survey(survey_id):
 
-    return render_template("survey.html")
+    music_id = ListeningSurvey.query.get(survey_id).music_id
+
+    music_src = Music.query.get(music_id).mp3_src
+
+
+    return render_template("survey.html", music_src=music_src, survey_id=survey_id)
+
+
+@app.route('/survey/<survey_id>', methods=['POST'])
+def complete_survey(survey_id):
+
+    student_comment = request.form['student_comment']
+    student_id = session['student_id']
+
+    create_student_survey(student_id, survey_id, student_comment)
+
+    flash("Assignment completed!")
+    return redirect("/")
+
 
 
 
@@ -579,6 +603,15 @@ def add_student_to_group(student_id, group_id):
     pass
 
 
+def create_student_survey(student_id, survey_id, student_comment):
+    """Creates student-survey relationship.  Helper function."""
+    completed_at = datetime.now()
+
+    new_student_survey = StudentSurvey(survey_id=survey_id, student_id=student_id, completed_at=completed_at, student_comment=student_comment)
+    db.session.add(new_student_survey)
+    db.session.commit()
+
+    pass
 
 
 

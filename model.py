@@ -22,11 +22,13 @@ class Teacher(db.Model):
     def get_students_by_teacher(cls):
         """Creates list of students that belong to specified teacher."""
 
-        # teacher = Teacher.query.get(teacher_id)
+        #get list of classrooms that belong to this teacher
         classroom_list = Classroom.query.filter_by(teacher_id=Teacher.teacher_id).all()
 
+        #create base list of students
         students_by_teacher_list = []
 
+        #add all students in each classroom to the base list
         for classroom in classroom_list:
             class_students = Student.query.filter_by(class_id=classroom.class_id).all()
             students_by_teacher_list.extend(class_students)
@@ -36,10 +38,13 @@ class Teacher(db.Model):
     def get_groups_by_teacher(cls):
         """Creates list of students that belong to specified teacher."""
 
+        #get list of classrooms that belong to this teacher
         classroom_list = Classroom.query.filter_by(teacher_id=Teacher.teacher_id).all()
 
+        #base list of groups
         groups_by_teacher_list = []
 
+        #add all groups in each classroom to the base list
         for classroom in classroom_list:
             class_groups = Group.query.filter_by(class_id=classroom.class_id).all()
             groups_by_teacher_list.extend(class_groups)

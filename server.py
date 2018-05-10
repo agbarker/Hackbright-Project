@@ -7,6 +7,13 @@ from jinja2 import StrictUndefined
 from flask import Flask, render_template, request, flash, redirect, session
 from flask_debugtoolbar import DebugToolbarExtension
 
+import os
+from flask import request, redirect, url_for, send_from_directory
+from werkzeug.utils import secure_filename
+
+UPLOAD_FOLDER = 'user_uploads'
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+
 from model import connect_to_db, db, Teacher, Classroom, Student, Group, StudentGroup, Music, ListeningSurvey, GroupSurvey, ClassroomSurvey, StudentSurvey, Instrument, InstrumentType, ClassroomInstrumentType
 
 
@@ -14,6 +21,7 @@ app = Flask(__name__)
 
 # Required to use Flask sessions and the debug toolbar
 app.secret_key = "ABC"
+
 
 #Raises error if Jinja2 fails
 app.jinja_env.undefined = StrictUndefined
@@ -511,6 +519,38 @@ def display_resources():
     return render_template("resources.html")
 
 
+@app.route('/upload-resource', methods=['GET'])
+def upload_file_form():
+
+    return render_template("upload_resources.html")
+
+
+@app.route('/upload-resource', methods=['GET', 'POST'])
+def upload_file():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        # if user does not select file, browser also
+        # submit a empty part without filename
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            return redirect(url_for('uploaded_file',
+                                    filename=filename))
+
+
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'],
+                               filename)
+
+
 
 #####################################################################
 # Helper functions
@@ -608,6 +648,11 @@ def export_student_list_xls():
     workbook.close()
 
 
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
 
 
 
@@ -628,6 +673,7 @@ if __name__ == "__main__":
     # Do not debug for demo
     app.debug = True
     app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
     connect_to_db(app)
 

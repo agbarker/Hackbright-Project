@@ -3,7 +3,10 @@
 <div class="well spaced" style="width:40%;">
 <h1>Resources</h1>
 
+{% if "teacher_id" in session %}
+	<a href="/upload-resource">Upload New Resource</a>
 
+{% endif %}
 
 <embed src="static/10thRegiment.pdf" type="application/pdf" width="100%" height="100%">
 

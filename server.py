@@ -582,10 +582,20 @@ def complete_survey(survey_id):
     student_comment = request.form['student_comment']
     student_id = session['student_id']
 
-    create_student_survey(student_id, survey_id, student_comment)
+    current_survey = StudentSurvey.query.filter_by(student_id=student_id).filter_by(survey_id=survey_id).one()
 
-    flash("Assignment completed!")
-    return redirect("/")
+    if not current_survey:
+        create_student_survey(student_id, survey_id, student_comment)
+
+        flash("Assignment completed!")
+        return redirect("/")
+
+    else:
+        flash("You've already completed this assignment!")
+        return redirect("/")
+
+
+    
 
 
 

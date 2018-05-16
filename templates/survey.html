@@ -6,7 +6,7 @@
 <div>
 	<audio controls id='music'>
 	  <source src="/{{ music_src }}" type="audio/mp3">
-	
+	  <source src="/{{ music_src }}" type="audio/m4a">
 	</audio><br>
 
 
@@ -33,6 +33,7 @@
     
 	var aud = document.getElementById("music");
 	aud.onended = function music_has_ended() {
+
 	    document.getElementById('submit').style.display = 'block';
 	};
 </script>

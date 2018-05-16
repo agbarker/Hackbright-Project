@@ -204,6 +204,24 @@ class StudentGroup(db.Model):
         return "<Student student_id={} is in Group group_id={}>".format(self.student_id, self.group_id)
 
 
+class Composer(db.Model):
+    """Composer objects"""
+
+    __tablename__ = "composers"
+
+    name = db.Column(db.String(64), primary_key=True)
+    bdate = db.Column(db.Integer)
+    ddate = db.Column(db.Integer)
+    country = db.Column(db.String(64))
+
+    def __repr__(self):
+        """Provide helpful representation when printed."""
+
+        return "<Composer name={} was born {} and died {}".format(self.name, self.bdate, self.ddate)
+
+
+
+
 class Music(db.Model):
     """Music file objects."""
 
@@ -211,16 +229,22 @@ class Music(db.Model):
 
     music_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.String(64))
-    score_src = db.Column(db.String(256))
-    mp3_src = db.Column(db.String(256))
-    composer = db.Column(db.String(64))
-    ensemble = db.Column(db.String(64))
-    midi_src = db.Column(db.String(256))
+    score_src = db.Column(db.String(256), nullable=True)
+    mp3_src = db.Column(db.String(1024), nullable=True)
+    composer_id = db.Column(db.String(64), db.ForeignKey('composers.name'))
+    year = db.Column(db.String(64), nullable=True)
+    ensemble = db.Column(db.String(256), nullable=True)
+    midi_src = db.Column(db.String(256), nullable=True)
+
+    composer = db.relationship("Composer", backref=db.backref("music", order_by=music_id))
 
     def __repr__(self):
         """Provide helpful representation when printed."""
 
-        return "<Piece name={} is composed by composer={}>".format(self.name, self.composer)
+        return "<Piece name={} is composed by composer={}>".format(self.name, self.composer_id)
+
+
+
 
 
 class ListeningSurvey(db.Model):
@@ -302,7 +326,7 @@ class StudentSurvey(db.Model):
     def __repr__(self):
         """Provide helpful representation when printed."""
 
-        return "<Survey survey_id={} is assigned to Student student_id={}>".format(self.survey_id, self.student_id)
+        return "<Survey survey_id={} is completed by Student student_id={}>".format(self.survey_id, self.student_id)
 
 
 #####################################################################

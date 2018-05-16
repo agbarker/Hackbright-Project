@@ -1,0 +1,3 @@
+1 | ABC | 1st Period Beginning Band | Band
+1 | XYZ | 6th Period Advanced Band | Band
+2 | RBG | Beginning Strings | Strings

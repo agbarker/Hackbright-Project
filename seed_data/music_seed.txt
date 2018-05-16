@@ -1,0 +1,210 @@
+name | score_src | mp3_src | composer | year | ensemble | midi_src | 
+Mass In B Minor | | | Johann Sebastian Bach | | |
+Der Ring des Nibelungen | | | Richard Wagner | | |
+Symphony No. 9 in D minor "Choral" | | | Ludwig Van Beethoven | | |
+Symphony No. 5 in C minor | | | Ludwig Van Beethoven | | |
+St Matthew's Passion | | | Johann Sebastian Bach | | |
+Tristan und Isolde | | | Richard Wagner | | |
+Don Giovanni | | | Wolfgang Amadeus Mozart | | |
+String Quartet No. 14 in C sharp minor | | | Ludwig Van Beethoven | | |
+Messiah | | | George Frideric Handel | | |
+Rite of Spring | | | Igor Stravinsky | | |
+Symphony No. 3 in E flat major "Eroica" | | | Ludwig Van Beethoven | | |
+Symphony No. 6 in B minor "Pathetique" | | | Peter Ilitch Tchaikovsky | | |
+Otello | | | Giuseppe Verdi | | |
+Piano Sonata No. 23 in F minor "Appassionata" | | | Ludwig Van Beethoven | | |
+The Marriage of Figaro | | | Wolfgang Amadeus Mozart | | |
+Symphony No. 41 in C major "Jupiter" | | | Wolfgang Amadeus Mozart | | |
+Piano Concerto No. 20 in D minor | | | Wolfgang Amadeus Mozart | | |
+Well-Tempered Clavier | | | Johann Sebastian Bach | | |
+Symphony No. 9 in E minor "From the New World" | | | Antonin Dvorák | | |
+Winterreise | | | Franz Schubert | | |
+Piano Concerto No. 2 in B flat major | | | Johannes Brahms | | |
+Piano Concerto in A minor | | | Robert Schumann | | |
+String Quintet in C major | | | Franz Schubert | | |
+Aida | | | Giuseppe Verdi | | |
+Piano Concerto No. 5 in E flat major "Emperor" | | | Ludwig Van Beethoven | | |
+The Nutcracker | | | Peter Ilitch Tchaikovsky | | |
+Symphony No. 6 in F major "Pastorale" | | | Ludwig Van Beethoven | | |
+Passacaglia and Fugue in C minor | | | Johann Sebastian Bach | | |
+Symphony No. 40 in G minor | | | Wolfgang Amadeus Mozart | | |
+Symphony No. 4 in E minor | | | Johannes Brahms | | |
+The Goldberg Variations | | | Johann Sebastian Bach | | |
+A Midsummer Night's Dream | | | Felix Mendelssohn | | |
+Violin Concerto in E minor | | | Felix Mendelssohn | | |
+Symphony No. 9 in C major "The Great" | | | Franz Schubert | | |
+Pictures at an Exhibition | | | Modest Mussorgsky (orch. by Maurice Ravel) | | |
+Clarinet Quintet in A major "Stadler" | | | Wolfgang Amadeus Mozart | | |
+Prelude A L'apres Midi D'un Faune | | | Claude Debussy | | |
+Symphonie Fantastique | | | Hector Berlioz | | |
+Clarinet Quintet in B minor | | | Johannes Brahms | | |
+Petrouchka | | | Igor Stravinsky | | |
+Violin Concerto in D major | | | Ludwig Van Beethoven | | |
+La Boheme | | | Giacomo Puccini | | |
+Piano Sonata in B minor | | | Franz Liszt | | |
+Cello Concerto in B minor | | | Antonin Dvorák | | |
+The Four Seasons | | | Antonio Vivaldi | | |
+Swan Lake | | | Peter Ilitch Tchaikovsky | | |
+Piano Concerto No. 1 in B flat minor | | | Peter Ilitch Tchaikovsky | | |
+Piano Sonata No. 21 in B flat | | | Franz Schubert | | |
+Till Eulenspiegel | | | Richard Strauss | | |
+Symphony No. 8 in B minor "Unfinished" | | | Franz Schubert | | |
+Missa Solemnis | | | Ludwig Van Beethoven | | |
+Messa Da Requiem | | | Giuseppe Verdi | | |
+Piano Sonata No. 14 in C sharp minor "Moonlight" | | | Ludwig Van Beethoven | | |
+Symphony No. 5 in C sharp minor | | | Gustav Mahler | | |
+Symphony No. 2 in D minor | | | Jean Sibelius | | |
+Requiem | | | Gabriel Fauré | | |
+Madama Butterfly | | | Giacomo Puccini  | | |
+String Quartet No. 14 in D minor "Death & the Maiden" | | | Franz Schubert | | |
+Piano Concerto No. 2 in C minor | | | Sergei Rachmaninoff | | |
+La Mer | | | Claude Debussy | | |
+24 Preludes | | | Frederic Chopin | | |
+22 Etudes Op. 25/10 | | | Frederic Chopin | | |
+Water Music | | | George Frideric Handel | | |
+Violin Concerto in D major | | | Johannes Brahms | | |
+Piano Quintet in A major "The Trout" | | | Franz Schubert | | |
+String Quartet No. 13 in B flat major and Grosse Fugue | | | Ludwig van Beethoven | | |
+Also Sprach Zarathustra | | | Richard Strauss | | |
+Violin Partita No. 2 in D minor | | | Johann Sebastian Bach | | |
+Préludes, Book 1 | | | Claude Debussy | | |
+Piano Concerto in A minor | | | Edvard Grieg | | |
+Symphony No. 7 in A major | | | Ludwig Van Beethoven | | |
+Polonaise No. 6 in A flat major "Heroic" | | | Frederic Chopin | | |
+Symphony No. 2 in C minor "Resurrection" | | | Gustav Mahler | | |
+Piano Concerto No. 4 in G major | | | Ludwig Van Beethoven | | |
+Symphony No. 10 in E minor | | | Dmitri Shostakovich | | |
+String Quartet No. 15 in A minor | | | Ludwig van Beethoven | | |
+String Quartet No. 131 in C sharp minor | | | Ludwig van Beethoven | | |
+Symphony No. 5 in D minor | | | Dmitri Shostakovich | | |
+String Quintet No. 4 in G minor, K516 | | | Wolfgang Amadeus Mozart | | |
+Parsifal | | | Richard Wagner | | |
+Finlandia | | | Jean Sibelius | | |
+Ein Heldenleben | | | Richard Strauss | | |
+Der Rosenkavalier | | | Richard Strauss | | |
+Appalachian Spring | | | Aaron Copland | | |
+Piano Sonata No. 32 in C minor | | | Ludwig Van Beethoven | | |
+Boris Godunov | | | Modest Mussorgsky | | |
+Symphony No. 3 in F major | | | Johannes Brahms | | |
+La Traviata | | | Giuseppe Verdi | | |
+Carmen | | | Georges Bizet | | |
+Scheherazade | | | Nikolai Rimsky-Korsakov | | |
+Die Zauberflote | | | Wolfgang Amadeus Mozart | | |
+Piano Concerto No. 21 in C major | | | Wolfgang Amadeus Mozart | | |
+Piano Concerto No. 24 in C minor | | | Wolfgang Amadeus Mozart | | |
+Requiem | | | Wolfgang Amadeus Mozart | | |
+Missa Papae Marcelli | | | Giovanni Pierluigi da Palestrina | | |
+Die Meistersinger | | | Richard Wagner | | |
+Symphony No. 39 in E flat major | | | Wolfgang Amadeus Mozart | | |
+The Creation | | | Franz Joseph Haydn | | |
+Sleeping Beauty | | | Peter Ilitch Tchaikovsky | | |
+Symphony No. 7 in E major | | | Anton Bruckner | | |
+Romeo and Juliet | | | Peter Ilitch Tchaikovsky  | | |
+Concerto for Orchestra | | | Béla Bartók | | |
+German Requiem | | | Johannes Brahms  | | |
+Symphony No. 4 in F minor | | | Peter Ilitch Tchaikovsky | | |
+Symphony No. 1 in C minor | | | Johannes Brahms | | |
+Piano Quintet in F minor | | | Johannes Brahms | | |
+Serenade No. 13 in G major "Eine Kleine Nachtmusik" | | | Wolfgang Amadeus Mozart | | |
+String Quartet No. 12 in F major "American" | | | Antonin Dvorák | | |
+String Quartet No. 19 in C major "Dissonance" | | | Wolfgang Amadeus Mozart | | |
+Clarinet Concerto in A major | | | Wolfgang Amadeus Mozart | | |
+Violin Concerto in D major | | | Peter Ilitch Tchaikovsky | | |
+Concerto for 2 Violins in D minor | | | Johann Sebastian Bach | | |
+Symphony No. 9 in D minor | | | Gustav Mahler | | |
+Brandenburg Concerto No. 2 in F major | | | Johann Sebastian Bach | | |
+Brandenburg Concerto No. 3 in G major | | | Johann Sebastian Bach | | |
+Brandenburg Concerto No. 5 in D major | | | Johann Sebastian Bach | | |
+Firebird Suite | | | Igor Stravinsky | | |
+Toccata and Fugue in D minor | | | Johann Sebastian Bach | | |
+Symphony No. 4 in E flat major "Romantic" | | | Anton Bruckner | | |
+Piano Concerto No. 23 in A major | | | Wolfgang Amadeus Mozart | | |
+Vespro della Beata Vergine (Vespers of 1610) | | | Claudio Monteverdi | | |
+Symphony No. 4 in A major "Italian" | | | Felix Mendelssohn | | |
+Piano Trio No. 7 in B flat major, Op. 97 "Archduke" | | | Ludwig van Beethoven | | |
+Requiem Grande Messe des Morts | | | Hector Berlioz | | |
+War Requiem | | | Benjamin Britten | | |
+Tosca | | | Giacomo Puccini | | |
+Falstaff | | | Giuseppe Verdi | | |
+Die Schone Mullerin | | | Franz Schubert | | |
+Carmina Burana | | | Carl Orff | | |
+String Quartet No. 2 in D major "Nocturne" | | | Alexander Borodin | | |
+Rigoletto | | | Giuseppe Verdi | | |
+Glagolitic Mass | | | Leos Janácek | | |
+The Barber of Seville | | | Gioacchino Rossini | | |
+Rhapsody in Blue | | | George Gershwin | | |
+Cello Concerto in E minor | | | Edward Elgar | | |
+Sinfonia Concertante in E flat major | | | Wolfgang Amadeus Mozart | | |
+Symphony No. 38 in D major "Prague" | | | Wolfgang Amadeus Mozart | | |
+Cantata No. 140, Wachet Auf | | | Johann Sebastian Bach | | |
+Octet for Strings in E flat major | | | Felix Mendelssohn | | |
+String Quartet in C major, Op. 76 No. 3 "Emperor" | | | Joseph Haydn | | |
+Fantasia on a Theme by Thomas Tallis | | | Ralph Vaughan Williams | | |
+Violin Sonata in A major | | | César Franck | | |
+Symphony No. 3 in C minor "Organ" | | | Camille Saint-Saëns | | |
+Missa Pange Lingua | | | Josquin des Prez | | |
+Dichterliebe | | | Robert Schumann | | |
+Symphony No. 94 in G major "Surprise" | | | Franz Joseph Haydn | | |
+Symphony No. 101 in D major "The Clock" | | | Franz Joseph Haydn | | |
+Les Preludes | | | Franz Liszt | | |
+Symphony No. 5 in B flat major | | | Serge Prokofiev | | |
+Piano Sonata No. 21 in C major "Waldstein" | | | Ludwig Van Beethoven | | |
+Cavalleria Rusticana | | | Pietro Mascagni | | |
+Piano Concerto No. 3 in D minor | | | Sergei Rachmaninoff | | |
+Piano Concerto No. 3 in C major | | | Sergei Prokofiev | | |
+Piano Quintet in E flat major | | | Robert Schumann | | |
+Enigma Variations | | | Edward Elgar | | |
+Das Leid von der Erde | | | Gustav Mahler | | |
+Fantasy in C major "Wanderer" | | | Franz Schubert | | |
+Der Erlkonig | | | Franz Schubert | | |
+Symphony No. 104 in D major "London" | | | Franz Joseph Haydn | | |
+Piano Concerto No. 1 in E flat major | | | Franz Liszt | | |
+Rhapsody on a Theme by Paganini | | | Sergei Rachmaninoff | | |
+The Art of the Fugue | | | Johann Sebastian Bach | | |
+Symphony No. 5 in E minor | | | Peter Ilitch Tchaikovsky | | |
+Daphnis et Chloe | | | Maurice Ravel | | |
+Bolero | | | Maurice Ravel | | |
+Trumpet Concerto in E flat major | | | Franz Joseph Haydn | | |
+Il Trovatore | | | Giuseppe Verdi | | |
+Ballade No. 1 in G minor | | | Frederic Chopin | | |
+Night on Bald Mountain | | | Modest Mussorgsky | | |
+Carnaval | | | Robert Schumann | | |
+Piano Sonata No. 29 in B flat major "Hammerklavier" | | | Ludwig Van Beethoven | | |
+Piano Quartet No. 1 in G minor, Op. 25 | | | Johannes Brahms | | |
+Adagio for Strings | | | Samuel Barber | | |
+Violin Concerto in D minor | | | Jean Sibelius | | |
+Turandot | | | Giacomo Puccini | | |
+Belshazzar's Feast | | | William Walton | | |
+Symphony No. 9 in D minor | | | Anton Bruckner | | |
+Faust | | | Charles Gounod | | |
+Symphony of Psalms | | | Igor Stravinsky | | |
+Lohengrin | | | Richard Wagner | | |
+Symphony No. 5 in E flat major | | | Jean Sibelius | | |
+Mathis der Maler | | | Paul Hindemith | | |
+Piano Sonata No. 2 in B flat minor | | | Frederic Chopin | | |
+Sinfonietta | | | Leos Janácek | | |
+Violin Concerto No. 1 in G minor | | | Max Bruch | | |
+Peer Gynt Suite No. 1 | | | Edvard Grieg | | |
+Symphony No. 1 in D major | | | Serge Prokofiev  | | |
+Symphony No. 8 in C minor | | | Anton Bruckner | | |
+The Royal Fireworks Music | | | George Frideric Handel | | |
+Violin Concerto No. 2 in B minor | | | Béla Bartók | | |
+Rapsodie Espagnole | | | Maurice Ravel | | |
+Piano Trio No. 1 in B flat major | | | Franz Schubert | | |
+The Planets | | | Gustav Holst | | |
+String Quartet No. 4 in C major | | | Béla Bartók | | |
+Romeo and Juliet | | | Serge Prokofiev  | | |
+Canon | | | Johann Pachelbel | | |
+The Blue Danube | | | Johann Strauss II | | |
+Four Coronation Anthems | | | George Frideric Handel | | |
+String Quartet No. 8 in C minor, Op. 110 | | | Dmitri Shostakovitch | | |
+Verklärte Nacht | | | Arnold Schoenberg | | |
+24 Caprices | | | Niccolo Paganini | | |
+Pelléas et Mélisande | | | Claude Debussy | | |
+Trois Gymnopédies | | | Erik Satie | | |
+Symphony No. 2 in G major "London" | | | Ralph Vaughan Williams | | |
+Three Places in New England | | | Charles Ives | | |
+Dido and Aeneas | | | Henry Purcell | | |
+Wozzeck | | | Alban Berg | | |
+Peter Grimes | | | Benjamin Britten | | |
+Symphony No. 3 | | | Witold Lutosławski | | |

@@ -1,0 +1,48 @@
+C major | C | D | E | F | G | A | B | C | major
+F major | F | G | A | Bb | C | D | E | F | major
+Bb major | Bb | C | D | Eb | F | G | A | Bb | major
+Eb major | Eb | F | G | Ab | Bb | C | D | Eb | major
+Ab major | Ab | Bb | C | Db | Eb | F | G | Ab | major
+Db major | Db | Eb | F | Gb | Ab | Bb | C | Db | major
+Gb major | Gb | Ab | Bb | B | Db | Eb | F | Gb | major
+B major | B | Db | Eb | Fb | Gb | Ab | Bb | Cb | major
+E major | E | Gb | Ab | A | B | Db | Eb | E  | major
+A major | A | B | Db | D | E | Gb | Ab | A | major
+D major | D | E | Gb | G | A | B | Db | D | major
+G major | G | A | B | C | D | E | Gb | G | major
+D natural minor | D | E | F | G | A | Bb | C | D | natural minor
+G natural minor | G | A | Bb | C | D | Eb | F | G | natural minor
+C natural minor | C | D | Eb | F | G | Ab | Bb | C | natural minor
+F natural minor | F | G | Ab | Bb | C | Db | Eb | F | natural minor
+Bb natural minor | Bb | C | Db | Eb | F | Gb | Ab | Bb | natural minor
+Eb natural minor | Eb | F | Gb | Ab | Bb | B | Db | Eb | natural minor
+Ab natural minor | Ab | Bb | B | Db | Eb | E | Gb | Ab | natural minor
+A natural minor | A | B | C | D | E | F | G | A | natural minor
+E natural minor | E | Gb | G | A | B | C | D | E | natural minor
+B natural minor | B | Db | D | E | Gb | G | A | B | natural minor
+Gb natural minor | Gb | Ab | A | B | Db | D | E | Gb | natural minor
+Db natural minor | Db | Eb | E | Gb | Ab | A | B | Db | natural minor
+D harmonic minor | D | E | F | G | A | Bb | Db | D | harmonic minor
+G harmonic minor | G | A | Bb | C | D | Eb | Gb | G | harmonic minor
+C harmonic minor | C | D | Eb | F | G | Ab | B | C | harmonic minor
+F harmonic minor | F | G | Ab | Bb | C | Db | E | F | harmonic minor
+Bb harmonic minor | Bb | C | Db | Eb | F | Gb | A | Bb | harmonic minor
+Eb harmonic minor | Eb | F | Gb | Ab | Bb | B | D | Eb | harmonic minor
+Ab harmonic minor | Ab | Bb | B | Db | Eb | E | G | Ab | harmonic minor
+A harmonic minor | A | B | C | D | E | F | Ab | A | harmonic minor
+E harmonic minor | E | Gb | G | A | B | C | Eb | E | harmonic minor
+B harmonic minor | B | Db | D | E | Gb | G | Bb | B | harmonic minor
+Gb harmonic minor | Gb | Ab | A | B | Db | D | F | Gb | harmonic minor
+Db harmonic minor | Db | Eb | E | Gb | Ab | A | C | Db | harmonic minor
+D melodic minor | D | E | F | G | A | B | Db | D | melodic minor
+G melodic minor | G | A | Bb | C | D | E | Gb | G | melodic minor
+C melodic minor | C | D | Eb | F | G | A | B | C | melodic minor
+F melodic minor | F | G | Ab | Bb | C | D | E | F | melodic minor
+Bb melodic minor | Bb | C | Db | Eb | F | G | A | Bb | melodic minor
+Eb melodic minor | Eb | F | Gb | Ab | Bb | C | D | Eb | melodic minor
+Ab melodic minor | Ab | Bb | B | Db | Eb | F | G | Ab | melodic minor
+A melodic minor | A | B | C | D | E | Gb | Ab | A | melodic minor
+E melodic minor | E | Gb | G | A | B | Db | Eb | E | melodic minor
+B melodic minor | B | Db | D | E | Gb | Ab | Bb | B | melodic minor
+Gb melodic minor | Gb | Ab | A | B | Db | Eb | F | Gb | melodic minor
+Db melodic minor | Db | Eb | E | Gb | Ab | Bb | C | Db | melodic minor

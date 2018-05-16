@@ -9,7 +9,12 @@
   <h3>Instruments</h3>
     {% for instrument in instruments %}
   	<p>{{ instrument.instrument_name }} Serial Number: {{ instrument.serial_number }}</p>
-  	<p></p>
+  	{% endfor %}
+
+  <h3>Completed Surveys</h3>
+  <a href="/survey">Survey Index</a>
+  	    {% for survey in surveys %}
+	  	<p>Survey {{ survey.survey.music.name }} is completed by {{ student.fname }} {{ student.lname }} on {{survey.completed_at }}</p>
   	{% endfor %}
 
   <a href="/resources">Resources</a>

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="well spaced" style="width:60%">
+  <h2>Listening Surveys</h2>
+
+  
+
+  <ul>
+    {% for survey in my_surveys %}
+      <ul>
+        <a href="/survey/{{ survey.survey_id }}">
+          {{ survey.music.composer.name }}: {{ survey.music.name }}
+        </a>
+        </ul>
+
+    {% endfor %}
+  </ul>
+
+</div>
+{% endblock %}

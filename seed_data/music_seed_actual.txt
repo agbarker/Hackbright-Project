@@ -1,0 +1,46 @@
+Symphony No. 8 in F - I. Allegro Vivace E Con Brio|static/music_src/Beethoven_8_I.m4a|Ludwig Van Beethoven|Karajan Berlin Philharmonic
+Symphony No. 8 in F - II. Allegretto Scherzando|static/music_src/Beethoven_8_II.m4a|Ludwig Van Beethoven|Karajan Berlin Philharmonic
+Symphony No. 8 in F - III. Tempo Vivace|static/music_src/Beethoven_8_III.m4a|Ludwig Van Beethoven|Karajan Berlin Philharmonic
+Symphony No. 8 in F - IV. Allegro Vivace|static/music_src/Beethoven_8_IV.m4a|Ludwig Van Beethoven|Karajan Berlin Philharmonic
+Coriolan Overture|static/music/src/Beethoven_Coriolan_Overture.m4a|Ludwig Van Beethoven|Karajan Berlin Philharmonic
+Lenore Overture|static/music/src/Beethoven_Lenore_Overture.m4a|Ludwig Van Beethoven|Karajan Berlin Philharmonic
+Lenore Overture #3|static/music/src/Beethoven_Lenore_Overture_3.m4a|Ludwig Van Beethoven|Karajan Berlin Philharmonic
+La Mer - 1. De L'Aube A Midi Sur La Mer|static/music_src/Debussy_La_Mer_1.m4a|Claude Debussy|Karajan Berlin Philharmonic
+La Mer - 2. Jeux De Vauges|static/music_src/Debussy_La_Mer_2.m4a|Claude Debussy|Karjan Berlin Philharmonic
+La Mer - 3. Dialogue De Vent Et De La Mer|static/music_src/Debussy_La_Mer_3.m4a|Claude Debussy|Karajan Berlin Philharmonic
+Prelude A L'Après-Midi D'Un Faune|static/music_src/Debussy_Prelude_Faune.m4a|Claude Debussy|Karajan Berlin Philharmonic
+Pavance Pour Une Infante Defunte|static/music_src/Ravel_Pavane_Infante_Defunte.m4a|Maurice Ravel|Karajan Berlin Philharmonic
+Daphnis Et Chloe - Symphonic Fragments|static/music_src/Ravel_Daphnis_Chloe.m4a|Maurice Ravel|Karajan Berlin Philharmonic
+Scheherazade - 1. The Sea & Sinbad's Ship|static/music_src/Rimsky_Korsakov_Scheherazade_1.m4a|Nikolai Rimsky-Korsakov|Karajan Berlin Philharmonic
+Scheherazade - 2. The Story of the Calendar Prince|static/music_src/Rimsky_Korsakov_Scheherazade_2.m4a|Nikolai Rimsky-Korsakov|Karajan Berlin Philharmonic
+Scheherazade - 3. The Young Prince & the Young Princess|static/music_src/Rimsky_Korsakov_Scheherazade_3.m4a|Nikolai Rimsky-Korsakov|Karajan Berlin Philharmonic
+Scheherazade - 4. Festival in Baghdad, The Sea, Shipwreck|static/music_src/Rimsky_Korsakov_Scheherazade_4.m4a|Nikolai Rimsky-Korsakov|Karajan Berlin Philharmonic
+Capriccio Italien|static/music_src/Tchaikovsky_Capriccio_Italien.m4a|Pyotr Ilyich Tchaikovsky|Karajan Berlin Philharmonic
+1812 Overture|static/music_src/Tchaikovsky_1812_Overture.m4a|Pyotr Ilyich Tchaikovsky|Karajan Berlin Philharmonic
+Mephisto Waltz #1 - Der Tanz In Der Dorfschenke|static/music_src/Liszt_Mephisto_Waltz_1.m4a|Franz Liszt|Karajan Berlin Philharmonic
+Les Preludes|static/music_src/Liszt_Preludes.m4a|Franz Liszt|Karajan Berlin Philharmonic
+Hungarian Fantasy|static/music_src/Liszt_Hungarian_Fantasy.m4a|Franz Liszt|Karajan Berlin Philharmonic
+Hungarian Rhapsody #5 in E Minor - Heroïde Elegiaque|static/music_src/Liszt_Hungarian_Rhapsody_5.m4a|Franz Liszt|Karajan Berlin Philharmonic
+Mazeppa|static/music_src/Liszt_Mazeppa.m4a|Franz Liszt|Karajan Berlin Philharmonic
+Hungarian Rhapsody #2 in C Minor|static/music_src/Liszt_Hungarian_Rhapsody_2.m4a|Franz Liszt|Karajan Berlin Philharmonic
+Tasso, Lamento E Trionfo|static/music_src/Liszt_Tasso.m4a|Franz Liszt|Karajan Berlin Philharmonic
+Hungarian Rhapsody #4 in D Minor|static/music_src/Liszt_Hungarian_Rhapsody_4.m4a|Franz Liszt|Karajan Berlin Philharmonic
+Má Vlast - Vltava|static/music_src/Smetana_Ma_Vlast_Vltava.m4a|Bedrich Smetana|Karajan Berlin Philharmonic
+Finlandia|static/music_src/Sibelius_Finlandia.m4a|Jean Sibelius|Karajan Berlin Philharmonic
+Pelleas Et Melisande - 1. At The Castle Gate|static/music_src/Sibelius_Pelleas_Melisande_1.m4a|Jean Sibelius|Karajan Berlin Philharmonic
+Pelleas Et Melisande - 2. Melisande|static/music_src/Sibelius_Pelleas_Melisande_2.m4a|Jean Sibelius|Karajan Berlin Philharmonic
+Pelleas Et Melisande - 3. By The Sea|static/music_src/Sibelius_Pelleas_Melisande_3.m4a|Jean Sibelius|Karajan Berlin Philharmonic
+Pelleas Et Melisande - 4. By a Spring in the Park|static/music_src/Sibelius_Pelleas_Melisande_4.m4a|Jean Sibelius|Karajan Berlin Philharmonic
+Pelleas Et Melisande - 5. The 3 Blind Sisters|static/music_src/Sibelius_Pelleas_Melisande_5.m4a|Jean Sibelius|Karajan Berlin Philharmonic
+Pelleas Et Melisande - 6. Pastorale|static/music_src/Sibelius_Pelleas_Melisande_6.m4a|Jean Sibelius|Karajan Berlin Philharmonic
+Pelleas Et Melisande - 7. Melisande at the Spinning Wheel|static/music_src/Sibelius_Pelleas_Melisande_7.m4a|Jean Sibelius|Karajan Berlin Philharmonic
+Pelleas Et Melisande - 8. Entracte|static/music_src/Sibelius_Pelleas_Melisande_8.m4a|Jean Sibelius|Karajan Berlin Philharmonic
+Pelleas Et Melisande - 9. Melisande's Death|static/music_src/Sibelius_Pelleas_Melisande_9.m4a|Jean Sibelius|Karajan Berlin Philharmonic
+Radetzky March|static/music_src/Strauss_Sr_J_Radetzky.m4a|Johann Strauss Sr.|Karajan Berlin Philharmonic
+Spharen-Klange|static/music_src/Strauss_J_Spharen_Klange.m4a|Josef Strauss|Karajan Berlin Philharmonic
+Perpetuum Mobile - Musikalischer Scherz|static/music_src/Strauss_Jr_J_Perpetuum_Mobile.m4a|Johann Strauss Jr.|Karajan Berlin Philharmonic
+Delirien|static/music_src/Strauss_J_Delirien.m4a|Josef Strauss|Karajan Berlin Philharmonic
+Geschichten Aus Dem Wienerwald|static/music_src/Strauss_Jr_J_Geschichten.m4a|Johann Strauss Jr.|Karajan Berlin Philharmonic
+Die Fledermaus - Quadrille|static/music_src/Strauss_Jr_J_Fledermaus_Quadrille.m4a|Johann Strauss Jr.|Karajan Berlin Philharmonic
+Wiener Blut Waltz|static/music_src/Strauss_Jr_J_Wiener_Blut_Waltz.m4a|Johann Strauss Jr.|Karajan Berlin Philharmonic
+Napoleon-Marsch|static/music_src/Strauss_Jr_J_Napolean.m4a|Johann Strauss Jr.|Karjan Berlin Philharmonic

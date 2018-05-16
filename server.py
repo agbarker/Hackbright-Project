@@ -4,14 +4,17 @@ import xlsxwriter
 
 from jinja2 import StrictUndefined
 
-from flask import Flask, render_template, request, flash, redirect, session
+from flask import Flask, render_template, request, flash, redirect, session, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
 
 from datetime import datetime
 
 import os
+import requests
 from flask import request, redirect, url_for, send_from_directory
 from werkzeug.utils import secure_filename
+
+import random
 
 UPLOAD_FOLDER = 'user_uploads'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
@@ -29,11 +32,28 @@ app.secret_key = "ABC"
 app.jinja_env.undefined = StrictUndefined
 
 
+
+
+
+
 @app.route('/')
 def index():
     """Homepage."""
 
     return render_template("homepage.html")
+
+
+@app.route('/spotify-test')
+def spotify_test():
+    """Testing spotify web player."""
+
+    return render_template("spotify_test.html")
+
+@app.route('/spotify-test-2')
+def second_spotify_test():
+    """Test spotify web interface."""
+
+    return render_template("spotify_test_2.html")
 
 
 @app.route('/student-register', methods=['GET'])
@@ -247,8 +267,9 @@ def student_detail(student_id):
 
         if student in students_by_teacher_list:
             instruments = Instrument.query.filter_by(student_id=student_id).all()
+            surveys = ListeningSurvey.query.filter_by(student_id=student_id).all()
 
-            return render_template("student_profile.html", student=student, instruments=instruments)
+            return render_template("student_profile.html", student=student, instruments=instruments, surveys=surveys)
         else:
             flash("not your student")
             return redirect("/")
@@ -258,8 +279,9 @@ def student_detail(student_id):
         #check if student is logged in and is that student.
         if "student_id" in session and student_id == session["student_id"]:
             instruments = Instrument.query.filter_by(student_id=student_id).all()
+            surveys = StudentSurvey.query.filter_by(student_id=student_id).all()
 
-            return render_template("student_profile.html", student=student, instruments=instruments)
+            return render_template("student_profile.html", student=student, instruments=instruments, surveys=surveys)
 
     else:
         flash("You must be logged in to access")
@@ -564,6 +586,16 @@ def uploaded_file(filename):
 
 #     return render_template("survey.html")
 
+@app.route('/survey', methods=['GET'])
+def display_all_surveys():
+    """Displays list of all surveys."""
+
+    my_surveys = ListeningSurvey.query.all()
+
+    return render_template("view_surveys.html", my_surveys=my_surveys)
+
+
+
 
 @app.route('/survey/<survey_id>', methods=['GET'])
 def display_survey(survey_id):
@@ -582,7 +614,7 @@ def complete_survey(survey_id):
     student_comment = request.form['student_comment']
     student_id = session['student_id']
 
-    current_survey = StudentSurvey.query.filter_by(student_id=student_id).filter_by(survey_id=survey_id).one()
+    current_survey = StudentSurvey.query.filter_by(student_id=student_id).filter_by(survey_id=survey_id).first()
 
     if not current_survey:
         create_student_survey(student_id, survey_id, student_comment)
@@ -595,7 +627,33 @@ def complete_survey(survey_id):
         return redirect("/")
 
 
-    
+
+@app.route('/test-html')
+def name_test():
+
+    return render_template("test_html.html")
+
+
+
+@app.route('/name.json')
+def name():
+    """Return a name dictionary for this zipcode."""
+
+    print session
+    teacherid = session["teacher_id"]
+
+
+    teacher = Teacher.query.get(teacherid)
+
+    teacher_name = {'fname': teacher.fname, 'lname': teacher.lname}
+
+    print teacher_name
+
+    # zipcode = request.args.get('zipcode')
+    # # weather_info = WEATHER.get(zipcode, DEFAULT_WEATHER)
+    # weather_info = {'forecast': 'blah'}
+    return jsonify(teacher_name)
+
 
 
 

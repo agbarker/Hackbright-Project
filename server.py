@@ -444,24 +444,6 @@ def instrument_inventory():
     return render_template("instrument_inventory.html", my_instruments=my_instruments)
 
 
-@app.route("/instrument-inventory-test")
-def display_instrument_inventory():
-
-    return render_template("instrument_inventory_react.html")
-
-
-@app.route("/instrument-inventory.json")
-def instrument_inventory_test():
-
-    # my_instruments = Instrument.query.filter_by(teacher_id=session["teacher_id"]).all()
-
-    # json_instruments = json.dumps([instrument.__dict__ for instrument in my_instruments])
-    # print json_instruments
-
-    pass
-
-
-
 
 @app.route("/add-instrument-type", methods=['GET'])
 def add_instrument_type_form():
@@ -606,55 +588,14 @@ def display_all_surveys():
 
     my_surveys = ListeningSurvey.query.all()
 
-    return render_template("view_surveys.html", my_surveys=my_surveys)
+    return render_template("view_surveys_table.html", my_surveys=my_surveys)
 
-
-@app.route('/survey-test', methods=['GET'])
-def display_all_surveys_react():
-    """Displays list of all surveys."""
-
-    return render_template("survey_react.html")
-
-
-@app.route('/surveys.json')
-def get_json_survey_data():
-
-    # my_surveys = ListeningSurvey.query.all()
-
-    # # jsonsurvey = json.dumps([survey.__dict__ for survey in my_surveys])
-    # # print jsonsurvey
-    # survey_dict_list = []
-
-    # for survey in my_surveys:
-    #     new_dict = {survey.survey_id: }
-
-
-
-    # return json_string
-
-
-    class User(object):
-        def __init__(self, name, password):
-            self.name = name
-            self.password = password
-
-    alice = User('Alice A. Adams', 'secret')
-
-
-    def jdefault(o):
-        return o.__dict__
-
-
-    result = (json.dumps(alice, default=jdefault))
-    print result
-        # outputs: {"password": "secret", "name": "Alice A. Adams"}
-
-    return result
 
 
 
 @app.route('/survey/<survey_id>', methods=['GET'])
 def display_survey(survey_id):
+    """Displays individual survey."""
 
     music_id = ListeningSurvey.query.get(survey_id).music_id
 
@@ -666,6 +607,7 @@ def display_survey(survey_id):
 
 @app.route('/survey/<survey_id>', methods=['POST'])
 def complete_survey(survey_id):
+    """Changes student id in student surveys to marked completed."""
 
     student_comment = request.form['student_comment']
     student_id = session['student_id']
@@ -684,30 +626,6 @@ def complete_survey(survey_id):
 
 
 
-@app.route('/test-html')
-def name_test():
-
-    return render_template("test_html.html")
-
-
-
-@app.route('/name.json')
-def name():
-    """Return a name dictionary for this teacher."""
-
-    teacherid = session["teacher_id"]
-
-    teacher = Teacher.query.get(teacherid)
-
-    teacher_name = {'fname': teacher.fname, 'lname': teacher.lname}
-
-    return jsonify(teacher_name)
-
-
-@app.route('/table-test')
-def table_test():
-
-    return render_template("table-test.html")
 
 
 

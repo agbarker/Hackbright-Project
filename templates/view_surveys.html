@@ -3,15 +3,17 @@
 <div class="well spaced" style="width:60%">
   <h2>Listening Surveys</h2>
 
+
+
   
 
   <ul>
     {% for survey in my_surveys %}
-      <ul>
+      <li>
         <a href="/survey/{{ survey.survey_id }}">
           {{ survey.music.composer.name }}: {{ survey.music.name }}
         </a>
-        </ul>
+        </li>
 
     {% endfor %}
   </ul>

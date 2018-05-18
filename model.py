@@ -19,11 +19,11 @@ class Teacher(db.Model):
     fname = db.Column(db.String(64))
     lname = db.Column(db.String(64))
 
-    def get_students_by_teacher(cls):
+    def get_students_by_teacher(self):
         """Creates list of students that belong to specified teacher."""
 
         #get list of classrooms that belong to this teacher
-        classroom_list = Classroom.query.filter_by(teacher_id=Teacher.teacher_id).all()
+        classroom_list = Classroom.query.filter_by(teacher_id=self.teacher_id).all()
 
         #create base list of students
         students_by_teacher_list = []
@@ -35,11 +35,11 @@ class Teacher(db.Model):
 
         return students_by_teacher_list
 
-    def get_groups_by_teacher(cls):
+    def get_groups_by_teacher(self):
         """Creates list of students that belong to specified teacher."""
 
         #get list of classrooms that belong to this teacher
-        classroom_list = Classroom.query.filter_by(teacher_id=Teacher.teacher_id).all()
+        classroom_list = Classroom.query.filter_by(teacher_id=self.teacher_id).all()
 
         #base list of groups
         groups_by_teacher_list = []
@@ -50,6 +50,23 @@ class Teacher(db.Model):
             groups_by_teacher_list.extend(class_groups)
 
         return groups_by_teacher_list
+
+    def get_instrument_types_by_teacher(self):
+        """Creates list of instrument types of teacher."""
+
+        instrument_types_by_teacher_list = []
+
+        class_inst_list = ClassroomInstrumentType.query.all()
+
+        for class_inst in class_inst_list:
+            if class_inst.classroom.teacher.teacher_id == self.teacher_id:
+                if class_inst.instrument_id not in instrument_types_by_teacher_list:
+                    instrument_types_by_teacher_list.append(class_inst.instrument_id)
+
+        return instrument_types_by_teacher_list
+
+
+
 
     def __repr__(self):
         """Provide helpful representation when printed."""
@@ -88,9 +105,35 @@ class Student(db.Model):
     fname = db.Column(db.String(64))
     lname = db.Column(db.String(64))
     class_id = db.Column(db.Integer, db.ForeignKey('classrooms.class_id'))
+    avatar = db.Column(db.String(256))
 
     # Define relationship to classroom
     classroom = db.relationship("Classroom", backref=db.backref("students", order_by=student_id))
+
+    def get_number_of_completed_surveys(self):
+        """Gets number of completed surveys for student."""
+
+        #get list of classrooms that belong to this teacher
+        survey_list = StudentSurvey.query.filter_by(student_id=self.student_id).all()
+
+        result = len(survey_list)
+
+        return result
+
+
+    def get_completed_surveys(self):
+        """Creates list of completed surveys for student."""
+
+        #get list of classrooms that belong to this teacher
+        survey_list = StudentSurvey.query.filter_by(student_id=self.student_id).all()
+
+        return survey_list
+
+
+
+
+
+
 
     def __repr__(self):
         """Provide helpful representation when printed."""

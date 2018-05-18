@@ -44,18 +44,6 @@ def index():
     return render_template("homepage.html")
 
 
-@app.route('/spotify-test')
-def spotify_test():
-    """Testing spotify web player."""
-
-    return render_template("spotify_test.html")
-
-@app.route('/spotify-test-2')
-def second_spotify_test():
-    """Test spotify web interface."""
-
-    return render_template("spotify_test_2.html")
-
 
 @app.route('/student-register', methods=['GET'])
 def student_register_form():
@@ -268,7 +256,7 @@ def student_detail(student_id):
 
         if student in students_by_teacher_list:
             instruments = Instrument.query.filter_by(student_id=student_id).all()
-            surveys = ListeningSurvey.query.filter_by(student_id=student_id).all()
+            surveys = StudentSurvey.query.filter_by(student_id=student_id).all()
 
             return render_template("student_profile.html", student=student, instruments=instruments, surveys=surveys)
         else:
@@ -374,9 +362,12 @@ def instrument_checkin_form():
     """Show form for instrument checkin."""
 
     instrument_types_object = InstrumentType.query.all()
+    # serial_numbers_object = Instrument.
     instrument_types = []
+    serial_numbers = []
     for instrument_type in instrument_types_object:
         instrument_types.append(instrument_type.name)
+
 
     return render_template("instrument_checkin_form.html", instrument_types=instrument_types)
 
@@ -402,10 +393,27 @@ def instrument_checkin_process():
 def instrument_checkout_form():
     """Show form for instrument checkout."""
 
-    instrument_types_object = InstrumentType.query.all()
-    instrument_types = []
-    for instrument_type in instrument_types_object:
-        instrument_types.append(instrument_type.name)
+    teacher=Teacher.query.get(session['teacher_id'])
+
+    #get instrument types belonging to teacher, put in list
+    instrument_types = teacher.get_instrument_types_by_teacher()
+
+    instruments_by_number = {}
+    for instrument_type in instrument_types:
+        inst_st = str(instrument_type)
+        all_of_type = Instrument.query.filter_by(teacher_id=teacher.teacher_id).filter_by(instrument_name=instrument_type).all()
+        instruments_by_number[inst_st] = all_of_type
+
+    #get students belonging to teacher, fname and lname
+    students = teacher.get_students_by_teacher()
+    students_fname = []
+    students_lname = []
+
+    for student in students:
+        students_fname.append(student.fname)
+        students_lname.append(student.lname)
+
+
 
     return render_template("instrument_checkout_form.html", instrument_types=instrument_types)
 
@@ -439,7 +447,7 @@ def instrument_inventory():
 
     my_instruments = Instrument.query.filter_by(teacher_id=session["teacher_id"]).all()
 
-    sorted(my_instruments, key=lambda instrument:instrument.instrument_name)
+    my_instruments = sorted(my_instruments, key=lambda instrument:instrument.instrument_name)
 
     return render_template("instrument_inventory.html", my_instruments=my_instruments)
 
@@ -478,9 +486,7 @@ def add_instrument_to_class_form():
 #     if instrument_name in InstrumentType.query.:
 #         if classroom in 
 
-    pass
-    pass
-
+    return render_template('/')
 
 
 
@@ -618,12 +624,47 @@ def complete_survey(survey_id):
         create_student_survey(student_id, survey_id, student_comment)
 
         flash("Assignment completed!")
-        return redirect("/")
+        return redirect("/survey")
 
     else:
         flash("You've already completed this assignment!")
-        return redirect("/")
+        return redirect("/survey")
 
+@app.route('/my-classmates')
+def show_classmates():
+    """Shows student's friends and peers completions."""
+
+    #get students in class
+    my_class = Student.query.get(session["student_id"]).class_id
+    my_classmates = Student.query.filter_by(class_id=my_class).all()
+
+    names_list = []
+    survey_numbers = []
+    for classmate in my_classmates:
+        full_name = str(classmate.fname) + " " + str(classmate.lname)
+        names_list.append(full_name)
+        survey_numbers.append(str(classmate.get_number_of_completed_surveys()))
+
+    print names_list
+
+    surveys = []
+    for student in my_classmates:
+
+        their_surveys = student.get_completed_surveys()
+        
+
+        surveys.extend(their_surveys)
+
+
+    #display classmates
+    return render_template("my_classmates.html", my_classmates=my_classmates, surveys=surveys, names_list=names_list, survey_numbers=survey_numbers)
+
+
+
+@app.route('/composer-test')
+def composer_life():
+
+    return render_template('composer_life.html')
 
 
 
@@ -657,6 +698,18 @@ def create_student_survey(student_id, survey_id, student_comment):
 
 def auto_create_groups_by_instrument_family():
     """Create groups by instrument family."""
+
+    # to make group: class_id and name
+
+    #for newClassroomInstrumentType
+
+    #get class_id
+    #get instrument type name
+
+    #turn 
+
+
+
     pass
 
 

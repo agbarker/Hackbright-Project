@@ -4,18 +4,30 @@
 <div class="well spaced" style="width:97%">
   <h2>{{ student.fname }} {{ student.lname }}</h2>
 
+  <img src="{{ student.avatar }}">
+
   <b><p>Username: {{ student.username }}</p>
   <p>Classroom: {{ student.classroom.name }}</p></b>
+  <a href="/change-password">Change Password</a>
   <h3>Instruments</h3>
     {% for instrument in instruments %}
   	<p>{{ instrument.instrument_name }} Serial Number: {{ instrument.serial_number }}</p>
   	{% endfor %}
 
   <h3>Completed Surveys</h3>
-  <a href="/survey">Survey Index</a>
-  	    {% for survey in surveys %}
-	  	<p>Survey {{ survey.survey.music.name }} is completed by {{ student.fname }} {{ student.lname }} on {{survey.completed_at }}</p>
-  	{% endfor %}
+  <a href="/survey">Survey Index</a><br>
+  <a href="/my-classmates">My Classmates</a>
+
+    {% if surveys != [] %}
+      {% for survey in surveys %}
+        <p>Survey {{ survey.survey.music.name }} is completed by {{ student.fname }} {{ student.lname }} on {{survey.completed_at }}</p>
+      {% endfor %}
+    {% else %}
+      <p>Student has completed no surveys.</p>
+    {% endif %}
+
+
+  	    
 
   <a href="/resources">Resources</a>
 

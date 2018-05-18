@@ -53,9 +53,9 @@ def load_students(students_filename):
     for i, row in enumerate(open(students_filename)):
         row = row.rstrip()
 
-        username, password, fname, lname, class_id = row.split("|")
+        username, password, fname, lname, class_id, avatar = row.split("|")
 
-        student = Student(username=username, password=password, fname=fname, lname=lname, class_id=class_id)
+        student = Student(username=username, password=password, fname=fname, lname=lname, class_id=class_id, avatar=avatar)
 
         db.session.add(student)
 

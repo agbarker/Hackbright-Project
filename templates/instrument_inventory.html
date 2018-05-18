@@ -7,28 +7,155 @@
   <a href="/instrument-checkout">Check out an Instrument</a><br>
 
 
-  <ul>
-    {% for instrument in my_instruments %}
-      <ul>Type: {{ instrument.name.name }}</ul>
+<h3>Search</h3>
+<select id="searchType">
+  <option value="Type" selected>Type</option>
+  <option value="Student">Student</option>
+  <option value="SerialNumber">Serial Number</option>
+  <option value="Maker">Maker</option>
+  <option value="Model">Model</option>
+  <option value="Year">Year</option>
+</select>
 
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for instruments...">
+
+
+<table id="myTable">
+  <tr class="header">
+    <th onclick="sortTable(0)" style="width:20%;">Type</th>
+    <th onclick="sortTable(1)" style="width:20%;">Student</th>
+    <th onclick="sortTable(2)" style="width:20%;">Serial Number</th>
+    <th onclick="sortTable(3)" style="width:20%;">Maker</th>
+    <th onclick="sortTable(4)" style="width:20%;">Model</th>
+    <th onclick="sortTable(5)" style="width:20%;">Year Manufactured</th>
+  </tr>
+
+
+
+
+
+    {% for instrument in my_instruments %}
+  <tr>
+      <td>{{ instrument.name.name }}</td>
       {% if instrument.student_id is none %}
-        <ul>Student: Not checked out</ul>
+        <td>Not checked out</td>
       {% else %}
-        <ul>Student: {{ instrument.student.fname }} {{ instrument.student.lname }}</ul>
+        <td>{{ instrument.student.fname }} {{ instrument.student.lname }}</td>
 
       {% endif %}
-
-      <ul>Serial Number: {{ instrument.serial_number }}</ul>
-      <ul>Teacher: {{ instrument.teacher.lname }}</ul>
-      <ul>Maker: {{ instrument.maker }}</ul>
-      <ul>Model: {{ instrument.model }}</ul>
-      <ul>Year Manufactured: {{ instrument.year_manufactured }}</ul>
-
-      <br>
+      <td>{{ instrument.serial_number }}</td>
+      <td>{{ instrument.maker }}</td>
+      <td>{{ instrument.model }}</td>
+      <td>{{ instrument.year_manufactured }}</td>
+    </tr>
 
 
     {% endfor %}
-  </ul>
+  </table>
+
+<script>
+function myFunction() {
+  // Declare variables 
+  var input, filter, table, tr, td, i, select, j, options;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  select = document.getElementById("searchType").value;
+  options = {"Type": 0, "Student": 1, "SerialNumber": 2, "Maker": 3, "Model": 4, "Year": 5}
+  j = options[select]
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[j];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    } 
+  }
+}
+
+function sortTable(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("myTable");
+  switching = true;
+  // Set the sorting direction to ascending:
+  dir = "asc"; 
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+    switching = false;
+    rows = table.getElementsByTagName("TR");
+    /* Loop through all table rows (except the
+    first, which contains table headers): */
+    for (i = 1; i < (rows.length - 1); i++) {
+      // Start by saying there should be no switching:
+      shouldSwitch = false;
+      /* Get the two elements you want to compare,
+      one from current row and one from the next: */
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /* Check if the two rows should switch place,
+      based on the direction, asc or desc: */
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          // If so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          // If so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /* If a switch has been marked, make the switch
+      and mark that a switch has been done: */
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      // Each time a switch is done, increase this count by 1:
+      switchcount ++; 
+    } else {
+      /* If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again. */
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+</script>
+
+ <script type="text/javascript">
+
+    function loadCSS(filename){ 
+
+       var file = document.createElement("link");
+       file.setAttribute("rel", "stylesheet");
+       file.setAttribute("type", "text/css");
+       file.setAttribute("href", filename);
+       document.head.appendChild(file);
+
+    }
+
+
+   //just call a function to load your CSS
+   //this path should be relative your HTML location
+   loadCSS("../static/css/survey_table.css");
+
+</script>
+
+
+
+
 
 </div>
 {% endblock %}

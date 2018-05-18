@@ -6,7 +6,7 @@
 <a href="/instrument-inventory">Return to Instrument Inventory</a><br>
 
 
-<form action="/instrument-checkout" method="POST">
+<form autocomplete="off" action="/instrument-checkout" method="POST">
 
 
 
@@ -30,12 +30,14 @@
     </label>
   </div>
 
-  <div class="form-group">
+  <div class="autocomplete">
     <label>
         Student First Name
-        <input type="string" name="fname" class="form-control">
+        <input id="firstName" type="text" name="fname" placeholder="First Name">
     </label>
   </div>
+
+
 
   <div class="form-group">
     <label>

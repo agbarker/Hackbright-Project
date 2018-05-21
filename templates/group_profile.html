@@ -2,25 +2,18 @@
 {% block content %}
 <br>
 <div class="well spaced" style="width:97%">
-  <h2>{{ classroom.name }} ({{ classroom.teacher.lname }})</h2>
+  <h2>{{ group.name }} ({{ group.classroom.name }})</h2>
 
   <h3>Students</h3>
 
-  <b><a href="/teacher-add-student/{{ classroom.class_id }}">Add a student</a></b><br>
+  <b><a href="/add-student-to-group/">Add a student</a></b><br>
+  
   {% for student in students %}
   	<a href="/students/{{ student.student_id }}">{{ student.fname }} {{ student.lname }}</a><br>
 
   {% endfor %}
 
-  <h3>Instruments</h3>
-
-
-    {% for instrument in instruments %}
-  	{{ instrument.name }}<br>
-
-  {% endfor %}
-
-
+  
   
 </div>
 {% endblock %}

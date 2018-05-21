@@ -59,10 +59,11 @@ def student_register_process():
     # Get form variables
     class_code = request.form["class-code"]
 
-    username = request.form["username"]
     password = request.form["password"]
     fname = request.form["fname"]
     lname = request.form["lname"]
+
+    username = fname[0].lower() + lname.lower()
 
     #Query to get classroom object from registration code
     class_query_object = Classroom.query.filter_by(registration_code=class_code).one()
@@ -214,7 +215,9 @@ def student_login_process():
     session["student_id"] = student.student_id
 
     #flash confirmation, redirect to profile
-    flash("Logged in")
+    flash("Logged in.")
+    if student.password == "password":
+        flash("Your password is still the automatic password.  Please change as soon as possible.")
     return redirect("/students/{}".format(student.student_id))
 
 
@@ -357,6 +360,41 @@ def classroom_profile_page(class_id):
     return render_template("class_profile.html", classroom=classroom, students=students, instruments=instruments)
 
 
+@app.route("/teacher-add-student/<int:class_id>", methods=['GET'])
+def display_teacher_add_student_form(class_id):
+    """Allows teacher to add a student."""
+
+    return render_template("teacher_add_student_form.html", class_id=class_id)
+
+
+
+@app.route("/teacher-add-student/<int:class_id>", methods=['POST'])
+def teacher_add_student(class_id):
+    """Teacher adds student."""
+
+
+    fname = request.form["fname"]
+    lname = request.form["lname"]
+
+    username = fname[0].lower() + lname.lower()
+    password = 'password'
+
+    #Create new student object
+    new_student = Student(username=username, password=password, fname=fname, lname=lname, class_id=class_id)
+
+    #Add to database and commit
+    db.session.add(new_student)
+    db.session.commit()
+
+    #Flash registration confirmation, log student in, and redirect to student profile
+    flash("Student {} {} added.".format(fname, lname))
+    flash("Student username = {}, password = password".format(username))
+    flash("Please tell student to change their password the first time they log in.")
+    return redirect("/classes")
+
+
+
+
 @app.route("/instrument-checkin", methods=['GET'])
 def instrument_checkin_form():
     """Show form for instrument checkin."""
@@ -393,7 +431,7 @@ def instrument_checkin_process():
 def instrument_checkout_form():
     """Show form for instrument checkout."""
 
-    teacher=Teacher.query.get(session['teacher_id'])
+    teacher = Teacher.query.get(session['teacher_id'])
 
     #get instrument types belonging to teacher, put in list
     instrument_types = teacher.get_instrument_types_by_teacher()
@@ -402,7 +440,15 @@ def instrument_checkout_form():
     for instrument_type in instrument_types:
         inst_st = str(instrument_type)
         all_of_type = Instrument.query.filter_by(teacher_id=teacher.teacher_id).filter_by(instrument_name=instrument_type).all()
-        instruments_by_number[inst_st] = all_of_type
+
+        all_insts_list = []
+        for instrument in all_of_type:
+            if instrument.student_id is None:
+                all_insts_list.append(instrument.serial_number)
+
+        instruments_by_number[inst_st] = all_insts_list
+
+    instruments_by_number_json = json.dumps(instruments_by_number)
 
     #get students belonging to teacher, fname and lname
     students = teacher.get_students_by_teacher()
@@ -414,8 +460,11 @@ def instrument_checkout_form():
         students_lname.append(student.lname)
 
 
+    # students_fname_json = json.dumps(students_fname)
+    # students_lname_json = jsonify(students_lname)
 
-    return render_template("instrument_checkout_form.html", instrument_types=instrument_types)
+
+    return render_template("instrument_checkout_form.html", instrument_types=instrument_types, serial_number_dict=instruments_by_number_json, students_fname=students_fname, students_lname=students_lname)
 
 
 @app.route("/instrument-checkout", methods=['POST'])
@@ -435,6 +484,11 @@ def instrument_checkout_process():
 
     #update instrument student
     instrument.student = student
+
+
+
+
+
 
     db.session.commit()
     flash("Instrument Successfully checked out.")
@@ -531,13 +585,16 @@ def add_student_to_group_form():
     teacher = Teacher.query.get(session["teacher_id"])
     students = teacher.get_students_by_teacher()
     groups = teacher.get_groups_by_teacher()
+    classrooms = Classroom.query.filter_by(teacher_id=teacher.teacher_id).all()
 
-    return render_template("add_student_to_group_form.html", students=students, groups=groups)
+    return render_template("add_student_to_group_form.html", students=students, groups=groups, classrooms=classrooms)
 
 
 @app.route("/add-student-to-group", methods=['POST'])
 def add_student_to_group():
     """Adds student to group."""
+
+
 
 
     #get form variables
@@ -667,8 +724,34 @@ def composer_life():
     return render_template('composer_life.html')
 
 
+@app.route('/groups')
+def display_groups():
 
 
+    teacher = Teacher.query.get(session["teacher_id"])
+    my_groups = teacher.get_groups_by_teacher()
+
+    return render_template('view_groups.html', my_groups=my_groups)
+
+
+
+@app.route("/groups/<group_id>")
+def group_profile(group_id):
+
+    group = Group.query.get(group_id)
+
+    studentgroups = StudentGroup.query.filter_by(group_id=group_id).all()
+
+    students = []
+
+    for studentgroup in studentgroups:
+        student = studentgroup.student
+        students.append(student)
+
+    return render_template("group_profile.html", group=group, students=students)
+
+
+  
 
 
 #####################################################################
@@ -696,18 +779,29 @@ def create_student_survey(student_id, survey_id, student_comment):
 
 
 
-def auto_create_groups_by_instrument_family():
-    """Create groups by instrument family."""
+def auto_create_by_instrument_family(class_id, family):
+    """Create band instrument groups."""
 
-    # to make group: class_id and name
+    # new_group = Group.query.filter_by(class_id=class_id).filter_by(name=family).one()
 
-    #for newClassroomInstrumentType
+    # if new_group is []:
+    #     new_group = Group(class_id=class_id, name=family)
+    #     db.session.add(new_group)
 
-    #get class_id
-    #get instrument type name
+    new_group = Group(class_id=class_id, name=family)
 
-    #turn 
+    #find students with woodwind instruments
+    all_students = Student.query.filter_by(class_id=class_id).all()
+    
+    for student in all_students:
+        all_instruments = Instrument.query.filter_by(student_id=student.student_id).all()
+        for instrument in all_instruments:
+            if instrument.name.family == family:
+                if StudentGroup.query.filter_by(student_id=student.student_id, group_id=new_group.group_id).all() is not []:
+                    this_student = StudentGroup(student_id=student.student_id, group_id=new_group.group_id)
+                    db.session.add(this_student)
 
+    db.session.commit()
 
 
     pass

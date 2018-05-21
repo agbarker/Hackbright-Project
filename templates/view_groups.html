@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="well spaced" style="width:60%">
+  <h2>My Groups</h2>
+
+  <a href="/create-group">Create a Group</a>
+
+  <ul>
+    {% for group in my_groups %}
+        <a href="/groups/{{ group.group_id }}">
+          {{ group.name }} {{ group.classroom.name }}
+        </a><br>
+    {% endfor %}
+  </ul>
+
+</div>
+{% endblock %}

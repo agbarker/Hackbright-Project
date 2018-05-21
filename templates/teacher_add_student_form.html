@@ -3,15 +3,7 @@
 <div class="well spaced" style="width:40%;">
 <h1>Register</h1>
 
-<form action="/student-register" method="POST">
-
-    <div class="form-group">
-    <label>
-        Enter Class Registration Code
-        <input type="code" name="class-code" class="form-control">
-    </label>
-  </div>
-
+<form action="/teacher-add-student/{{ class_id }}" method="POST">
 
   <div class="form-group">
     <label>
@@ -28,14 +20,7 @@
   </div>
 
   <div class="form-group">
-    <label>
-      Password
-      <input type="password" name="password" class="form-control">
-    </label>
-  </div>
-
-  <div class="form-group">
-    <input type="submit" value="Register, Mortal" class="btn btn-danger">
+    <input type="submit" value="Register this Student" class="btn btn-danger">
   </div>
 
 </form>

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<div class="well spaced" style="width:97%">
+
+
+<script src="opensheetmusicdisplay.min.js"></script>
+<script>
+  var openSheetMusicDisplay = new opensheetmusicdisplay.OpenSheetMusicDisplay("container-id");
+  openSheetMusicDisplay
+    .load("/static/Test_score.musicxml")
+    .then(
+      function() {
+        openSheetMusicDisplay.render();
+      }
+    );
+</script>
+
+  
+</div>
+{% endblock %}

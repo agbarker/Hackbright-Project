@@ -540,7 +540,7 @@ def add_instrument_to_class_form():
 #     if instrument_name in InstrumentType.query.:
 #         if classroom in 
 
-    return render_template('/')
+    return redirect('/')
 
 
 
@@ -549,6 +549,38 @@ def add_instrument_to_class():
     """Adds instrument type to class."""
 
     pass
+
+
+
+@app.route("/add-instrument-to-inventory", methods=['GET'])
+def display_add_instrument_to_inventory():
+    """Displays instrument to inventory form."""
+
+    teacher = Teacher.query.get(session['teacher_id'])
+
+    instruments = teacher.get_instrument_types_by_teacher()
+
+    return render_template('add_instrument.html', instruments=instruments)
+
+
+@app.route("/add-instrument-to-inventory", methods=['POST'])
+def add_instrument_to_inventory():
+
+    serial_number = request.form["serial_number"]
+    instrument_name = request.form["instrument_type"]
+    teacher_id = session["teacher_id"]
+    maker = request.form["maker"]
+    model = request.form["model"]
+    year_manufactured = request.form["year"]
+
+    new_instrument = Instrument(serial_number=serial_number, instrument_name=instrument_name, teacher_id=teacher_id, maker=maker, model=model, year_manufactured=year_manufactured)
+
+    db.session.add(new_instrument)
+    db.session.commit()
+
+    flash('Instrument added.')
+    return redirect('/instrument-inventory')
+
 
 
 @app.route("/create-group", methods=['GET'])
@@ -718,7 +750,7 @@ def show_classmates():
 
 
 
-@app.route('/composer-test')
+@app.route('/composer-timeline')
 def composer_life():
 
     return render_template('composer_life.html')
@@ -751,7 +783,23 @@ def group_profile(group_id):
     return render_template("group_profile.html", group=group, students=students)
 
 
-  
+@app.route("/test-score")
+def test_score():
+
+    return render_template("test_render_xml_page.html")
+
+
+
+@app.route("/tuner")
+def tuner():
+
+    return render_template("tuner.html")
+
+
+@app.route("/learn-about")
+def learn_about():
+
+    return render_template("learn_about.html")
 
 
 #####################################################################

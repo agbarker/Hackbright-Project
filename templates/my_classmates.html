@@ -13,9 +13,9 @@
   </div>
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script>
-    var categories= {{ names_list | tojson | safe }};
+    var names= {{ names_list | tojson | safe }};
 
-    var dollars = {{ survey_numbers | tojson | safe }};
+    var surveys = {{ survey_numbers | tojson | safe }};
 
     var colors = ['#0000b4','#0082ca','#0094ff','#0d4bcf','#0066AE','#074285','#00187B','#285964','#405F83','#416545','#4D7069','#6E9985','#7EBC89','#0283AF','#79BCBF','#99C19E'];
 
@@ -33,11 +33,11 @@
             .range([0,722]);
 
     var yscale = d3.scale.linear()
-            .domain([0,categories.length])
+            .domain([0,names.length])
             .range([0,480]);
 
     var colorScale = d3.scale.quantize()
-            .domain([0,categories.length])
+            .domain([0,names.length])
             .range(colors);
 
     var canvas = d3.select('#wrapper')
@@ -69,7 +69,7 @@
         .orient('left')
         .scale(yscale)
         .tickSize(2)
-        .tickFormat(function(d,i){ return categories[i]; })
+        .tickFormat(function(d,i){ return names[i]; })
         .tickValues(d3.range(17));
 
     var y_xis = canvas.append('g')
@@ -86,7 +86,7 @@
               .attr("transform", "translate(150,0)")
               .attr('id','bars')
               .selectAll('rect')
-              .data(dollars)
+              .data(surveys)
               .enter()
               .append('rect')
               .attr('height',19)
@@ -96,14 +96,14 @@
 
 
     var transit = d3.select("svg").selectAll("rect")
-                .data(dollars)
+                .data(surveys)
                 .transition()
                 .duration(1000) 
                 .attr("width", function(d) {return xscale(d); });
 
     var transitext = d3.select('#bars')
               .selectAll('text')
-              .data(dollars)
+              .data(surveys)
               .enter()
               .append('text')
               .attr({'x':function(d) {return xscale(d)-200; },'y':function(d,i){ return yscale(i)+35; }})

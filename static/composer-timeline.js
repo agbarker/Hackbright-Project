@@ -216,15 +216,25 @@ function timeline(domElement) {
             .attr("height", band.itemHeight)
             .attr("class", function (d) { return d.instant ? "part instant" : "interval";});
 
+        types = ["Germany", "Austria", "Russia", "Poland", "France", "Hungary", "Czech", "Italy", "Finland", "England", "Norwary", "United States", "Netherlands", "Denmark", "Spain", "Venezuela", "Scotland"];
+
+        colorScale = d3.scale.ordinal()
+            .domain(types)
+            .range(["#9dc6d8", "#00b3ca", "#7dd0b6", "#1d4e89", "#d2b292", "#e38690", "#f69256", "#ead98b", "#965251", "#c6cccc", "#ffffd1", "#c5a3ff", "#85e3ff", "#f6a6ff", "#dcd3ff", "#ff9cee", "#aff8db"]);
+
+
         var intervals = d3.select("#band" + bandNum).selectAll(".interval");
         intervals.append("rect")
             .attr("width", "100%")
-            .attr("height", "100%");
+            .attr("height", "100%")
+            .attr("country_id", function (d) {return d.country})
+            .style("fill", function (d) {return colorScale(d.country)});
         intervals.append("text")
             .attr("class", "intervalLabel")
             .attr("x", 1)
             .attr("y", 10)
-            .text(function (d) { return d.label; });
+            .text(function (d) { return d.label; })
+            ;
 
         var instants = d3.select("#band" + bandNum).selectAll(".instant");
         instants.append("circle")

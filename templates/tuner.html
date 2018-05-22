@@ -3,76 +3,141 @@
 
 <script type="text/javascript">
 
-var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+var Tuner = function () {
+  window.AudioContext = window.AudioContext || window.webkitAudioContext
+  if (!window.AudioContext) {
+    return alert('AudioContext not supported')
+  }
 
-var oscillator = audioCtx.createOscillator();
-var gainNode = audioCtx.createGain();
-
-oscillator.connect(gainNode);
-gainNode.connect(audioCtx.destination);
-
-var WIDTH = window.innerWidth;
-var HEIGHT = window.innerHeight;
-
-var maxFreq = 6000;
-var maxVol = 1;
-
-var initialFreq = 3000;
-var initialVol = 0.5;
-
-// set options for the oscillator
-
-oscillator.type = 'sine'; // sine wave — other values are 'square', 'sawtooth', 'triangle' and 'custom'
-oscillator.frequency.value = initialFreq; // value in hertz
-oscillator.start();
-
-gainNode.gain.value = initialVol;
-
-// Mouse pointer coordinates
-
-var CurX;
-var CurY;
-
-// Get new mouse pointer coordinates when mouse is moved
-// then set new gain and pitch values
-
-document.onmousemove = updatePage;
-
-function updatePage(e) {   
-    CurX = (window.Event) ? e.pageX : event.clientX + (document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft);
-    CurY = (window.Event) ? e.pageY : event.clientY + (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);
-    
-    oscillator.frequency.value = (CurX/WIDTH) * maxFreq;
-    gainNode.gain.value = (CurY/HEIGHT) * maxVol;
-
-    canvasDraw();
+  this.middleA = 440
+  this.semitone = 69
+  this.bufferSize = 4096
+  this.noteStrings = ['C', 'C♯', 'D', 'D♯', 'E', 'F', 'F♯', 'G', 'G♯', 'A', 'A♯', 'B']
+  this.audioContext = new window.AudioContext()
+  this.analyser = this.audioContext.createAnalyser()
+  this.scriptProcessor = this.audioContext.createScriptProcessor(this.bufferSize, 1, 1)
+  this.pitchDetector = new (Module().AubioPitch)(
+    'default', this.bufferSize, 1, this.audioContext.sampleRate)
 }
 
-function random(number1,number2) {
-  var randomNo = number1 + (Math.floor(Math.random() * (number2 - number1)) + 1);
-  return randomNo;
+Tuner.prototype.start = function () {
+  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia
+  if (!navigator.getUserMedia) {
+    return alert('getUserMedia not supported')
+  }
+
+  var self = this
+  navigator.getUserMedia({
+    audio: {
+      mandatory: {
+        googEchoCancellation: false,
+        googAutoGainControl: false,
+        googNoiseSuppression: false,
+        googHighpassFilter: false,
+      },
+    },
+  }, function (stream) {
+    self.audioContext.createMediaStreamSource(stream).connect(self.analyser)
+    self.analyser.connect(self.scriptProcessor)
+    self.scriptProcessor.connect(self.audioContext.destination)
+    self.scriptProcessor.addEventListener('audioprocess', function (event) {
+      var frequency = self.pitchDetector.do(event.inputBuffer.getChannelData(0))
+      if (frequency && self.onNoteDetected) {
+        var note = self.getNote(frequency)
+        self.onNoteDetected({
+          name: self.noteStrings[note % 12],
+          value: note,
+          cents: self.getCents(frequency, note),
+          numbered: parseInt(note / 12) - 1,
+          frequency: frequency,
+        })
+      }
+    })
+  }, function (error) {
+    alert(error.name + ': ' + error.message)
+  })
 }
 
-var canvas = document.querySelector('.canvas');
-canvas.width = WIDTH;
-canvas.height = HEIGHT;
+/**
+ * get musical note from frequency
+ *
+ * @param {float} frequency
+ * @returns {int}
+ */
+Tuner.prototype.getNote = function (frequency) {
+  var note = 12 * (Math.log(frequency / this.middleA) / Math.log(2))
+  return Math.round(note) + this.semitone
+}
 
-var canvasCtx = canvas.getContext('2d');
+/**
+ * get the musical note's standard frequency
+ *
+ * @param note
+ * @returns {number}
+ */
+Tuner.prototype.getStandardFrequency = function (note) {
+  return this.middleA * Math.pow(2, (note - this.semitone) / 12)
+}
 
-function canvasDraw() {
-  rX = CurX;
-  rY = CurY;
-  rC = Math.floor((gainNode.gain.value/maxVol)*30);
- 
-  canvasCtx.globalAlpha = 0.2;
- 
-  for(i=1;i<=15;i=i+2) {
-    canvasCtx.beginPath();
-    canvasCtx.fillStyle = 'rgb(' + 100+(i*10) + ',' + Math.floor((gainNode.gain.value/maxVol)*255) + ',' + Math.floor((oscillator.frequency.value/maxFreq)*255) + ')';
-    canvasCtx.arc(rX+random(0,50),rY+random(0,50),rC/2+i,(Math.PI/180)*0,(Math.PI/180)*360,false);
-    canvasCtx.fill();
-    canvasCtx.closePath();     
-  }    
+/**
+ * get cents difference between given frequency and musical note's standard frequency
+ *
+ * @param {float} frequency
+ * @param {int} note
+ * @returns {int}
+ */
+Tuner.prototype.getCents = function (frequency, note) {
+  return Math.floor(1200 * Math.log(frequency / this.getStandardFrequency(note)) / Math.log(2))
+}
+
+/**
+ * play the musical note
+ *
+ * @param {float} frequency
+ */
+Tuner.prototype.play = function (frequency) {
+  if (!this.oscillator) {
+    this.oscillator = this.audioContext.createOscillator()
+    this.oscillator.connect(this.audioContext.destination)
+    this.oscillator.start()
+  }
+  this.oscillator.frequency.value = frequency
+}
+
+Tuner.prototype.stop = function () {
+  this.oscillator.stop()
+  this.oscillator = null
+}
+
+
+
+/**
+ * @param {string} selector
+ * @constructor
+ */
+var Meter = function (selector) {
+  this.$root = document.querySelector(selector)
+  this.$pointer = this.$root.querySelector('.meter-pointer')
+  this.init()
+}
+
+Meter.prototype.init = function () {
+  for (var i = 0; i <= 10; i += 1) {
+    var $scale = document.createElement('div')
+    $scale.className = 'meter-scale'
+    $scale.style.transform = 'rotate(' + (i * 9 - 45) + 'deg)'
+    if (i % 5 == 0) {
+      $scale.classList.add('meter-scale-strong')
+    }
+    this.$root.appendChild($scale)
+  }
+}
+
+/**
+ * @param {int} deg
+ */
+Meter.prototype.update = function (deg) {
+  this.$pointer.style.transform = 'rotate(' + deg + 'deg)'
 }
 
 

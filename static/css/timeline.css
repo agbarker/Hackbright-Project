@@ -18,18 +18,11 @@
     shape-rendering: crispEdges;
 }
 
-.style("fill", function (d) {return colorScale(d.country)})
-
-types = ["Germany", "Austria", "Russia", "Poland", "France", "Hungary", "Czech", "Italy", "Finland", "England", "Norwary", "United States", "Netherlands", "Denmark", "Spain", "Venezuela", "Scotland"];
-
-  colorScale = d3.scale.ordinal()
-    .domain(types)
-    .range(["#96abb1", "#313746", "#b0909d", "#687a97", "#292014", "#462255", "#313B72", "#62A87C", "#7EE081", "#C3F3C0", "#D1BCE3", "#C49BBB", "#A1867F", "#585481", "#19297C", "#FFDF64", "#877B66"]);
 
 /* timeline band */
 
 .band { /* band background */
-    fill: #FAFAFA;
+    fill: #FFFFFF;
 }
 
 /* labels */
@@ -41,13 +34,13 @@ types = ["Germany", "Austria", "Russia", "Poland", "France", "Hungary", "Czech",
 }
 
 .bandMinMaxLabel {
-    fill: blue;
+    fill: red;
     font: 10px sans-serif;
     font-weight: bold;
 }
 
 .bandMidLabel {
-    fill: red;
+    fill: blue;
     font: 10px sans-serif;
     font-style: italic;
     font-weight: bold;
@@ -64,6 +57,9 @@ types = ["Germany", "Austria", "Russia", "Poland", "France", "Hungary", "Czech",
 .chart {
     fill: #EEEEEE;
 }
+
+
+
 
 .interval {
     fill: #AAFFFF;

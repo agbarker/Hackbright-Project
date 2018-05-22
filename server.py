@@ -459,11 +459,6 @@ def instrument_checkout_form():
         students_fname.append(student.fname)
         students_lname.append(student.lname)
 
-
-    # students_fname_json = json.dumps(students_fname)
-    # students_lname_json = jsonify(students_lname)
-
-
     return render_template("instrument_checkout_form.html", instrument_types=instrument_types, serial_number_dict=instruments_by_number_json, students_fname=students_fname, students_lname=students_lname)
 
 
@@ -484,11 +479,6 @@ def instrument_checkout_process():
 
     #update instrument student
     instrument.student = student
-
-
-
-
-
 
     db.session.commit()
     flash("Instrument Successfully checked out.")
@@ -530,8 +520,12 @@ def add_instrument_type():
 
 
 @app.route("/add-instrument-to-class", methods=['GET'])
-def add_instrument_to_class_form():
+def add_instrument_to_class_form(class_id):
     """Displays add instrument type to class form."""
+
+
+
+
 
 #     instrument_name = request.form["name"]
 
@@ -547,6 +541,14 @@ def add_instrument_to_class_form():
 @app.route("/add-instrument-to-class", methods=['POST'])
 def add_instrument_to_class():
     """Adds instrument type to class."""
+
+    classroom = Classroom.query.get(class_id)
+
+    instrument_name = request.form["name"]
+
+    family = request.form["family"]
+
+
 
     pass
 
@@ -734,14 +736,10 @@ def show_classmates():
         names_list.append(full_name)
         survey_numbers.append(str(classmate.get_number_of_completed_surveys()))
 
-    print names_list
-
     surveys = []
     for student in my_classmates:
 
         their_surveys = student.get_completed_surveys()
-        
-
         surveys.extend(their_surveys)
 
 
@@ -801,9 +799,16 @@ def learn_about():
 
     return render_template("learn_about.html")
 
+@app.route("/chord-test")
+def chord_test():
+
+    return render_template("chord_radar.html")
+
 
 #####################################################################
 # Helper functions
+
+
 
 def add_student_to_group(student_id, group_id):
     """Adds student to group.  Helper function."""

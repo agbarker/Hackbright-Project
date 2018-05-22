@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<meta charset="utf-8">
+<style>
+svg {
+  display: block;
+  margin: 10px auto 0;
+}
+circle.main-circle {
+  stroke: #DDD;
+  stroke-width: 6px;
+  fill: none;
+}
+circle.node {
+  fill: red;
+}
+text.node {
+  font-size: 10px;
+}
+path.edge {
+  stroke-width: 1px;
+  stroke: #CCC;
+  fill: none;
+}
+</style>
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="static/chord_radar.js"></script>
+<script>
+var radius = 250;
+var margin = 50;
+var outerRadius = radius + margin;
+  
+var nodes = [
+  { name: 'C' },
+  { name: 'G' },
+  { name: 'D' },
+  { name: 'A' },
+  { name: 'E' },
+  { name: 'B' },
+  { name: 'Gb/F#' },
+  { name: 'Db' },
+  { name: 'Ab' },
+  { name: 'Eb' },
+  { name: 'Bb' },
+  { name: 'F' }
+];
+var edges = [
+  { source: 'C', target: 'D' },
+  { source: 'D', target: 'E' },
+  { source: 'E', target: 'F' },
+  { source: 'F', target: 'G' },
+  { source: 'G', target: 'A' }, 
+  { source: 'A', target: 'B' }, 
+  { source: 'B', target: 'C' }
+];
+// Create the layout
+var circleGraph = d3.layout.circleGraph()
+  .tension(0.2)
+  .radius(radius)
+  .range(Math.PI * 2)
+  .nodes(nodes)
+  .edges(edges);
+  
+var svg = d3.select('body')
+  .append('svg')
+  .attr('width', outerRadius * 2)
+  .attr('height', outerRadius * 2)
+  .append('g')
+  .attr('transform', 'translate(' + outerRadius + ', ' + outerRadius + ')');
+// draw main circle
+svg.append('circle')
+  .classed('main-circle', true)
+  .attr('r', radius);
+// draw edges
+svg.selectAll('path.edge')
+  .data(edges)
+  .enter()
+    .append('path')
+    .classed('edge', true)
+    .attr('d', circleGraph.line);
+// draw circles
+svg.selectAll('circle.node')
+  .data(nodes)
+  .enter()
+    .append('circle')
+    .classed('node', true)
+    .attr('r', 5)
+    .attr('cx', function (d) { return d.x; })
+    .attr('cy', function (d) { return d.y; });
+// draw labels
+svg.selectAll('text.node')
+  .data(nodes)
+  .enter()
+    .append('text')
+    .classed('node', true)
+    .attr({
+      'text-anchor': function (d) {
+        return (Math.sin(d.radians) < 0) ? 'end' : 'begin';
+      },
+      dy: '0.3em',
+      dx: function(d) {
+        return (Math.sin(d.radians) < 0) ? '-1em' : '1em';
+      },
+      transform: function (d) {
+        var degrees = d.degrees - 90;
+        var xTranslate = radius;
+        if (Math.sin(d.radians) < 0) {
+          degrees -= 180;
+          xTranslate *= -1;
+        }
+        return 'rotate(' + degrees + ') translate(' + xTranslate + ', 0)';
+      }
+    })
+    .text(function(d) {
+      return d.name;
+    });
+</script>
+
+  {% endblock %}

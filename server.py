@@ -805,9 +805,40 @@ def chord_test():
     return render_template("chord_radar.html")
 
 
+@app.route("/vexflow-test")
+def test_vex():
+
+    return render_template("vexflow_test.html")
+
+@app.route("/major-scales")
+def major_scales():
+
+    return render_template("major_scales.html")
+
+
+@app.route("/color-test")
+def color_scale():
+
+    return render_template("color_test.html")
+
+
 #####################################################################
 # Helper functions
 
+def random_note_generator():
+    """Generates random note from list, formatted for Vexflow."""
+
+    notes = ["a", "b", "c", "d", "e", "f", "g"]
+    accidentals = ["#", "b", ""]
+    length = [""] #fix this
+
+    random_name = random.choice(notes)
+    random_acc = random.choice(accidentals)
+    random_leng = random.choice(length)
+
+    random_note = [random_name, random_acc, random_leng]
+
+    return random_note
 
 
 def add_student_to_group(student_id, group_id):

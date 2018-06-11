@@ -1,122 +1,121 @@
-start,end,label,country
-1770,1827,Ludwig Van Beethoven,Germany
-1756,1791,Wolfgang Amadeus Mozart,Austria
-1685,1750,Johann Sebastian Bach,Germany
-1813,1883,Richard Wagner,Germany
-1732,1809,Joseph Haydn,Austria
-1833,1897,Johannes Brahms,Germany
-1797,1828,Franz Schubert,Austria
-1840,1893,Pyotr Ilyich Tchaikovsky,Russia
-1685,1759,George Frideric Handel,Germany
-1882,1971,Igor Stravinsky,Russia
-1810,1849,Frederic Chopin,Poland
-1819,1896,Clara Schumann,Germany
-1810,1856,Robert Schumann,Germany
-1805,1847,Fanny Mendelssohn,Germany
-1809,1847,Felix Mendelssohn,Germany
-1862,1918,Claude Debussy,France
-1811,1886,Franz Liszt,Hungary
-1841,1904,Antonin Dvorak,Czech
-1813,1901,Giuseppe Verdi,Italy
-1860,1911,Gustav Mahler,Austria
-1678,1741,Antonio Vivaldi,Italy
-1864,1949,Richard Strauss,Germany
-1891,1953,Serge Prokofiev,Russia
-1906,1975,Dmitri Shostakovich,Russia
-1881,1945,Béla Bartók,Hungary
-1803,1869,Hector Berlioz,France
-1824,1896,Anton Bruckner,Austrai
-1525,1594,Giovanni Pierluigi da Palestrina,Italy
-1567,1643,Claudio Monteverdi,Italy
-1865,1957,Jean Sibelius,Finland
-1875,1937,Maurice Ravel,France
-1872,1958,Ralph Vaughan Williams,England
-1839,1881,Modest Mussorgsky,Russia
-1858,1924,Giacomo Puccini,Italy
-1659,1695,Henry Purcell,England
-1792,1868,Gioacchino Rossini,Italy
-1857,1934,Edward Elgar,England
-1873,1943,Sergei Rachmaninoff,France
-1835,1921,Camille Saint-Saëns,France
-1440,1521,Josquin Des Prez,France
-1844,1908,Nikolai Rimsky-Korsakov,Russia
-1786,1826,Carl Maria von Weber,Germany
-1683,1764,Jean-Philippe Rameau,France
-1632,1687,Jean-Baptiste Lully,France
-1845,1924,Gabriel Fauré,France
-1843,1907,Edvard Grieg,Norway
-1714,1787,Christoph Willibald Gluck,Germany
-1874,1951,Arnold Schoenberg,Austria
-1874,1954,Charles Ives,United States
-1895,1963,Paul Hindemith,Germany
-1908,1992,Olivier Messiaen,France
-1900,1990,Aaron Copland,United States
-1668,1733,Francois Couperin,France
-1539,1623,William Byrd,England
-1866,1925,Erik Satie,France
-1913,1976,Benjamin Britten,England
-1822,1890,César Franck,France
-1872,1915,Alexander Nikolayevich Scriabin,Russia
-1838,1875,Georges Bizet,France
-1660,1725,Alessandro Scarlatti,Italy
-1685,1757,Domenico Scarlatti,Italy
-1681,1767,Georg Philipp Telemann,Germany
-1883,1945,Anton Webern,Austria
-1532,1594,Roland de Lassus,Netherlands
-1898,1937,George Gershwin,United States
-1797,1848,Carl Philipp Emanuel Bach,Germany
-1653,1713,Archangelo Corelli,Italy
-1505,1585,Thomas Tallis,England
-1825,1899,Johann Strauss Jr.,Austria
-1804,1849,Johann Strauss Sr.,Austria
-1854,1928,Leos Janácek,Czech
-1300,1377,Guillaume de Machaut,France
-1885,1935,Alban Berg,Austria
-1833,1887,Alexander Borodin,Russia
-1801,1835,Vincenzo Bellini,Italy
-1818,1893,Charles Gounod,France
-1842,1912,Jules Massenet,France
-1899,1963,Francis Poulenc,France
-1554,1612,Giovanni Gabrieli,Italy
-1160,1225,Pérotin,France
-1585,1672,Heinrich Schütz,Germany
-1912,1992,John Cage,United States
-1710,1736,Giovanni Battista Pergolesi,Italy
-1563,1626,John Dowland,England
-1874,1934,Gustav Holst,England
-1637,1707,Dietrich Buxtehude,Denmark
-1879,1936,Ottorino Respighi,Italy
-1400,1474,Guillaume Dufay,Netherlands
-1860,1903,Hugo Wolf,Austria
-1865,1931,Carl Nielsen,Denmark
-1902,1983,William Walton,England
-1892,1974,Darius Milhaud,France
-1583,1625,Orlando Gibbons,England
-1791,1864,Giacomo Meyerbeer,Germany
-1910,1981,Samuel Barber,United States
-1549,1611,Tomás Luis de Victoria,Spain
-1135,1201,Léonin,France
-1876,1946,Manuel de Falla,Spain
-1098,1179,Hildegard von Bingen,Germany
-1804,1857,Mikhail Glinka,Russia
-1865,1936,Alexander Glazunov,Russia
-1566,1613,Don Carlo Gesualdo,Italy
-1390,1454,John Dunstaple,England
-1425,1497,Johannes Ockeghem,Netherlands
-1460,1512,Antoine Brumel,France
-1743,1805,Luigi Boccherini,Italy
-1778,1837,Johann Nepomuk Hummel,Austria
-1932,2021,John Williams,United States
-1858,1944,Ethel Smyth,England
-1867,1944,Amy Beach,United States
-1892,1983,Germaine Tailleferre,France
-1893,1918,Lili Boulanger,France
-1887,1979,Nadia Boulanger,France
-1931,2020,Sofia Gubaidulina,Russia
-1886,1979,Rebecca Clarke,England
-1620,1704,Isabella Leonarda,Italy
-1853,1917,Teresa Carreño,Venezuela
-1954,2020,Judith Weir,Scotland
-1913,1994,Witold Lutosławski,Poland
-1824,1884,Bedrich Smetana,Czech
-1827,1870,Josef Strauss,Austria
+start,end,label,country,local_link
+1770,1827,Ludwig Van Beethoven,Germany,Ludwig%20Van%20Beethoven
+1756,1791,Wolfgang Amadeus Mozart,Austria,Wolfgang%20Amadeus%20Mozart
+1685,1750,Johann Sebastian Bach,Germany,Johann%20Sebastian%20Bach
+1813,1883,Richard Wagner,Germany,Richard%20Wagner
+1732,1809,Joseph Haydn,Austria,Joseph%20Haydn
+1833,1897,Johannes Brahms,Germany,Johannes%20Brahms
+1797,1828,Franz Schubert,Austria,Franz%20Schubert
+1840,1893,Pyotr Ilyich Tchaikovsky,Russia,Pyotr%20Ilyich%20Tchaikovsky
+1685,1759,George Frideric Handel,Germany,George%20Frideric%20Handel
+1882,1971,Igor Stravinsky,Russia,Igor%20Stravinsky
+1810,1849,Frederic Chopin,Poland,Frederic%20Chopin
+1819,1896,Clara Schumann,Germany,Clara%20Schumann
+1810,1856,Robert Schumann,Germany,Robert%20Schumann
+1805,1847,Fanny Mendelssohn,Germany,Fanny%20Mendelssohn
+1809,1847,Felix Mendelssohn,Germany,Felix%20Mendelssohn
+1862,1918,Claude Debussy,France,Claude%20Debussy
+1811,1886,Franz Liszt,Hungary,Franz%20Liszt
+1841,1904,Antonin Dvorak,Czech,Antonin%20Dvorak
+1813,1901,Giuseppe Verdi,Italy,Giuseppe%20Verdi
+1860,1911,Gustav Mahler,Austria,Gustav%20Mahler
+1678,1741,Antonio Vivaldi,Italy,Antonio%20Vivaldi
+1864,1949,Richard Strauss,Germany,Richard%20Strauss
+1891,1953,Serge Prokofiev,Russia,Serge%20Prokofiev
+1906,1975,Dmitri Shostakovich,Russia,Dmitri%20Shostakovich
+1881,1945,Béla Bartók,Hungary,Béla%20Bartók
+1803,1869,Hector Berlioz,France,Hector%20Berlioz
+1824,1896,Anton Bruckner,Austria,Anton%20Bruckner
+1525,1594,Giovanni Pierluigi da Palestrina,Italy,Giovanni%20Pierluigi%20da%20Palestrina
+1567,1643,Claudio Monteverdi,Italy,Claudio%20Monteverdi
+1865,1957,Jean Sibelius,Finland,Jean%20Sibelius
+1875,1937,Maurice Ravel,France,Maurice%20Ravel
+1872,1958,Ralph Vaughan Williams,England,Ralph%20Vaughan%20Williams
+1839,1881,Modest Mussorgsky,Russia,Modest%20Mussorgsky
+1858,1924,Giacomo Puccini,Italy,Giacomo%20Puccini
+1659,1695,Henry Purcell,England,Henry%20Purcell
+1792,1868,Gioacchino Rossini,Italy,Gioacchino%20Rossini
+1857,1934,Edward Elgar,England,Edward%20Elgar
+1873,1943,Sergei Rachmaninoff,France,Sergei%20Rachmaninoff
+1835,1921,Camille Saint-Saëns,France,Camille%20Saint-Saëns
+1440,1521,Josquin Des Prez,France,Josquin%20Des%20Prez
+1844,1908,Nikolai Rimsky-Korsakov,Russia,Nikolai%20Rimsky-Korsakov
+1786,1826,Carl Maria von Weber,Germany,Carl%20Maria%20von%20Weber
+1683,1764,Jean-Philippe Rameau,France,Jean-Philippe%20Rameau
+1632,1687,Jean-Baptiste Lully,France,Jean-Baptiste%20Lully
+1845,1924,Gabriel Fauré,France,Gabriel%20Fauré
+1843,1907,Edvard Grieg,Norway,Edvard%20Grieg
+1714,1787,Christoph Willibald Gluck,Germany,Christoph%20Willibald%20Gluck
+1874,1951,Arnold Schoenberg,Austria,Arnold%20Schoenberg
+1874,1954,Charles Ives,United States,Charles%20Ives
+1895,1963,Paul Hindemith,Germany,Paul%20Hindemith
+1908,1992,Olivier Messiaen,France,Olivier%20Messiaen
+1900,1990,Aaron Copland,United States,Aaron%20Copland
+1668,1733,Francois Couperin,France,Francois%20Couperin
+1539,1623,William Byrd,England,William%20Byrd
+1866,1925,Erik Satie,France,Erik%20Satie
+1913,1976,Benjamin Britten,England,Benjamin%20Britten
+1822,1890,César Franck,France,César%20Franck
+1872,1915,Alexander Nikolayevich Scriabin,Russia,Alexander%20Nikolayevich%20Scriabin
+1838,1875,Georges Bizet,France,Georges%20Bizet
+1660,1725,Alessandro Scarlatti,Italy,Alessandro%20Scarlatti
+1685,1757,Domenico Scarlatti,Italy,Domenico%20Scarlatti
+1681,1767,Georg Philipp Telemann,Germany,Georg%20Philipp%20Telemann
+1883,1945,Anton Webern,Austria,Anton%20Webern
+1532,1594,Orlando de Lassus,Netherlands,Orlando%20de%20Lassus
+1898,1937,George Gershwin,United States,George%20Gershwin
+1797,1848,Carl Philipp Emanuel Bach,Germany,Carl%20Philipp%20Emanuel%20Bach
+1653,1713,Archangelo Corelli,Italy,Archangelo%20Corelli
+1505,1585,Thomas Tallis,England,Thomas%20Tallis
+1825,1899,Johann Strauss Jr.,Austria,Johann%20Strauss%20Jr.
+1804,1849,Johann Strauss Sr.,Austria,Johann%20Strauss%20Sr.
+1854,1928,Leos Janácek,Czech,Leos%20Janácek
+1300,1377,Guillaume de Machaut,France,Guillaume%20de%20Machaut
+1885,1935,Alban Berg,Austria,Alban%20Berg
+1833,1887,Alexander Borodin,Russia,Alexander%20Borodin
+1801,1835,Vincenzo Bellini,Italy,Vincenzo%20Bellini
+1818,1893,Charles Gounod,France,Charles%20Gounod
+1842,1912,Jules Massenet,France,Jules%20Massenet
+1899,1963,Francis Poulenc,France,Francis%20Poulenc
+1554,1612,Giovanni Gabrieli,Italy,Giovanni%20Gabrieli
+1160,1225,Pérotin,France,Pérotin
+1585,1672,Heinrich Schütz,Germany,Heinrich%20Schütz
+1912,1992,John Cage,United States,John%20Cage
+1710,1736,Giovanni Battista Pergolesi,Italy,Giovanni%20Battista%20Pergolesi
+1563,1626,John Dowland,England,John%20Dowland
+1874,1934,Gustav Holst,England,Gustav%20Holst
+1637,1707,Dietrich Buxtehude,Denmark,Dietrich%20Buxtehude
+1879,1936,Ottorino Respighi,Italy,Ottorino%20Respighi
+1400,1474,Guillaume Dufay,Netherlands,Guillaume%20Dufay
+1860,1903,Hugo Wolf,Austria,Hugo%20Wolf
+1865,1931,Carl Nielsen,Denmark,Carl%20Nielsen
+1902,1983,William Walton,England,William%20Walton
+1892,1974,Darius Milhaud,France,Darius%20Milhaud
+1583,1625,Orlando Gibbons,England,
+1791,1864,Giacomo Meyerbeer,Germany,Giacomo%20Meyerbeer
+1910,1981,Samuel Barber,United States,Samuel%20Barber
+1549,1611,Tomás Luis de Victoria,Spain,Tomás%20Luis%20de%20Victoria
+1135,1201,Léonin,France,Léonin
+1876,1946,Manuel de Falla,Spain,Manuel%20de%20Falla
+1098,1179,Hildegard von Bingen,Germany,Hildegard%20von%20Bingen
+1804,1857,Mikhail Glinka,Russia,Mikhail%20Glinka
+1865,1936,Alexander Glazunov,Russia,Alexander%20Glazunov
+1566,1613,Don Carlo Gesualdo,Italy,Don%20Carlo%20Gesualdo
+1390,1454,John Dunstaple,England,John%20Dunstaple
+1425,1497,Johannes Ockeghem,Netherlands,Johannes%20Ockeghem
+1460,1512,Antoine Brumel,France,Antoine%20Brumel
+1743,1805,Luigi Boccherini,Italy,Luigi%20Boccherini
+1778,1837,Johann Nepomuk Hummel,Austria,Johann%20Nepomuk%20Hummel
+1932,2021,John Williams,United States,John%20Williams
+1858,1944,Ethel Smyth,England,Ethel%20Smyth
+1867,1944,Amy Beach,United States,Amy%20Beach
+1892,1983,Germaine Tailleferre,France,Germaine%20Tailleferre
+1893,1918,Lili Boulanger,France,Lili%20Boulanger
+1887,1979,Nadia Boulanger,France,Nadia%20Boulanger
+1931,2020,Sofia Gubaidulina,Russia,Sofia%20Gubaidulina
+1886,1979,Rebecca Clarke,England,Rebecca%20Clarke
+1620,1704,Isabella Leonarda,Italy,Isabella%20Leonarda
+1853,1917,Teresa Carreño,Venezuela,Teresa%20Carreño
+1954,2020,Judith Weir,Scotland,Judith%20Weir
+1913,1994,Witold Lutosławski,Poland,Witold%20Lutosławski
+1824,1884,Bedrich Smetana,Czech,Bedrich%20Smetana

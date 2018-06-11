@@ -3,7 +3,7 @@
 import datetime
 from sqlalchemy import func
 
-from model import connect_to_db, db, Teacher, Classroom, Student, Group, StudentGroup, Music, ListeningSurvey, GroupSurvey, ClassroomSurvey, StudentSurvey, Instrument, InstrumentType, ClassroomInstrumentType, Composer
+from model import connect_to_db, db, Teacher, Classroom, Student, Group, StudentGroup, Music, ListeningSurvey, GroupSurvey, ClassroomSurvey, StudentSurvey, Instrument, InstrumentType, ClassroomInstrumentType, Composer, Period, ComposerPeriod, Avatar
 from server import app
 
 
@@ -19,7 +19,7 @@ def load_teachers(teachers_filename):
 
         db.session.add(teacher)
 
-        if i % 100 == 0:
+        if i % 10 == 0:
             print i
 
     db.session.commit()
@@ -33,13 +33,32 @@ def load_classrooms(classrooms_filename):
     for i, row in enumerate(open(classrooms_filename)):
         row = row.rstrip()
 
-        teacher_id, registration_code, name, type_class = row.split(" | ")
+        teacher_id, registration_code, name, type_class, survey_goal = row.split("|")
 
-        classroom = Classroom(teacher_id=teacher_id, registration_code=registration_code, name=name, type_class=type_class)
+        classroom = Classroom(teacher_id=teacher_id, registration_code=registration_code, name=name, type_class=type_class, survey_goal=survey_goal)
 
         db.session.add(classroom)
 
-        if i % 100 == 0:
+        if i % 10 == 0:
+            print i
+
+    db.session.commit()
+
+def load_avatars(avatars_filename):
+    """Load avatars."""
+
+    print "Avatar"
+
+    for i, row in enumerate(open(avatars_filename)):
+        row = row.rstrip()
+
+        avatar_src = row
+
+        avatar = Avatar(avatar_src=avatar_src)
+
+        db.session.add(avatar)
+
+        if i % 10 == 0:
             print i
 
     db.session.commit()
@@ -53,13 +72,13 @@ def load_students(students_filename):
     for i, row in enumerate(open(students_filename)):
         row = row.rstrip()
 
-        username, password, fname, lname, class_id, avatar = row.split("|")
+        username, password, fname, lname, class_id = row.split("|")
 
-        student = Student(username=username, password=password, fname=fname, lname=lname, class_id=class_id, avatar=avatar)
+        student = Student(username=username, password=password, fname=fname, lname=lname, class_id=class_id, avatar_id=i+1)
 
         db.session.add(student)
 
-        if i % 100 == 0:
+        if i % 10 == 0:
             print i
 
     db.session.commit()
@@ -73,13 +92,13 @@ def load_instrument_types(instrument_types_filename):
     for i, row in enumerate(open(instrument_types_filename)):
         row = row.rstrip()
 
-        name, family = row.split(" | ")
+        name, family, key = row.split("|")
 
-        instrument_type = InstrumentType(name=name, family=family)
+        instrument_type = InstrumentType(name=name, family=family, key=key)
 
         db.session.add(instrument_type)
 
-        if i % 100 == 0:
+        if i % 10 == 0:
             print i
 
     
@@ -101,7 +120,7 @@ def load_classroom_instrument_types(classroom_instrument_types_filename):
 
         db.session.add(classroom_instrument_type)
 
-        if i % 100 == 0:
+        if i % 10 == 0:
             print i
 
     db.session.commit()
@@ -115,13 +134,13 @@ def load_instruments(instruments_filename):
     for i, row in enumerate(open(instruments_filename)):
         row = row.rstrip()
 
-        serial_number, student_id, instrument_name, teacher_id, maker, model, year_manufactured = row.split("|")
+        serial_number, student_id, instrument_name, teacher_id, maker, model, year_manufactured, repair, repair_note = row.split("|")
 
-        instrument = Instrument(serial_number=serial_number, student_id=student_id, instrument_name=instrument_name, teacher_id=teacher_id, maker=maker, model=model, year_manufactured=year_manufactured)
+        instrument = Instrument(serial_number=serial_number, student_id=student_id, instrument_name=instrument_name, teacher_id=teacher_id, maker=maker, model=model, year_manufactured=year_manufactured, repair=repair, repair_note=repair_note)
 
         db.session.add(instrument)
 
-        if i % 100 == 0:
+        if i % 10 == 0:
             print i
 
     db.session.commit()
@@ -135,15 +154,33 @@ def load_composers(composers_filename):
     for i, row in enumerate(open(composers_filename)):
         row = row.rstrip()
 
-        name, bdate, ddate, country = row.split(" | ")
+        name, bdate, ddate, country, period = row.split("|")
         bdate = int(bdate)
         ddate = int(ddate)
 
-        composer = Composer(name=name, bdate=bdate, country=country)
+        composer = Composer(name=name, bdate=bdate, ddate=ddate, country=country)
 
         db.session.add(composer)
 
-        if i % 100 == 0:
+        period_tokens = period.split("/")
+
+        for item in period_tokens:
+
+            all_periods = Period.query.all()
+            periods=[]
+            for period in all_periods:
+                periods.append(period.name)
+
+
+            if item not in periods:
+                new_period = Period(name=item)
+                db.session.add(new_period)
+
+            new_composer_period = ComposerPeriod(period_id=item, composer_id=composer.name)
+            db.session.add(new_composer_period)
+
+
+        if i % 10 == 0:
             print i
 
     db.session.commit()
@@ -159,15 +196,15 @@ def load_music(music_filename):
 
         # print row
 
-        name, mp3_src, composer, ensemble = row.split("|")
+        name, youtube_id, composer, ensemble = row.split("|")
 
-        music = Music(name=name, mp3_src=mp3_src, composer_id=composer, ensemble=ensemble)
+        music = Music(name=name, youtube_id=youtube_id, composer_id=composer, ensemble=ensemble)
 
 
         db.session.add(music)
 
 
-        if i % 100 == 0:
+        if i % 10 == 0:
             print i
 
     db.session.commit()
@@ -183,6 +220,11 @@ def create_surveys():
         db.session.add(new_survey)
 
     db.session.commit()
+
+
+
+
+
 
 
 def set_val_student_id():
@@ -261,6 +303,7 @@ if __name__ == "__main__":
 
     load_teachers("seed_data/teacher_seed.txt")
     load_classrooms("seed_data/classroom_seed.txt")
+    load_avatars("seed_data/avatar_seed.txt")
     load_students("seed_data/student_seed.txt")
     load_instrument_types("seed_data/instrument_types_seed.txt")
     load_classroom_instrument_types("seed_data/classroom_instrument_type_seed.txt")

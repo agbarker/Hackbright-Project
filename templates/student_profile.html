@@ -1,33 +1,107 @@
 {% extends 'base.html' %}
 {% block content %}
-<br>
-<div class="well spaced" style="width:97%">
-  <h2>{{ student.fname }} {{ student.lname }}</h2>
 
-  <img src="{{ student.avatar }}">
+<div class="well spaced container">
+  <div class="row" style="height: 300px">
+      
+    <img src="/static/pit-header.jpg" class="img-fluid" style="opacity: 0.75">    
 
-  <b><p>Username: {{ student.username }}</p>
-  <p>Classroom: {{ student.classroom.name }}</p></b>
-  <a href="/change-password">Change Password</a>
-  <h3>Instruments</h3>
+  </div>
+
+  <div class="row">
+    <h1>User Profile</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <h3>{{ student.fname }} {{ student.lname }}</h3>
+      Username: {{ student.username }}<br>
+      <a href="/change-password">Change Password</a>
+    </div>
+    <div class="col-1">
+      <img src="{{ student.avatar.avatar_src }}" alt="{{ student.avatar.avatar_id }}" style="width: 50px" style="height: 50px">
+    </div>
+     <div class="col-3">
+      <h3>Classroom</h3>
+          
+          <a href="/classes/{{ student.classroom.class_id }}">{{ student.classroom.name }}</a>
+          
+          
+
+    </div>
+    <div class="col-3">
+      <h3>Instruments</h3>
     {% for instrument in instruments %}
-  	<p>{{ instrument.instrument_name }} Serial Number: {{ instrument.serial_number }}</p>
-  	{% endfor %}
+    <p>{{ instrument.instrument_name }} Serial Number: {{ instrument.serial_number }}</p>
+    {% endfor %}
+    </div>
+    <div class="col-3">
+      <h3>Groups</h3>
+          {% for group in groups %}
+          <a href="/groups/{{ group.group_id }}">{{ group.name }}</a>
+          
+          {% endfor %}
 
-  <h3>Completed Surveys</h3>
+    </div>
+
+  <div class="row">
+    <h1>Listening Surveys<h1>
+
+
+  </div>
+
+
+
+
+  </div>
+
+  
+
+  
+  <h3>Listening Surveys</h3>
   <a href="/survey">Survey Index</a><br>
   <a href="/my-classmates">My Classmates</a>
 
+  
+  <h4>Completed Surveys</h4>
+  <div class="progress">
+    <div class="progress-bar" id="progress-bar" role="progressbar" aria-valuenow="{{ student.get_number_of_completed_surveys() }}" aria-valuemin="0" aria-valuemax="{{ student.classroom.survey_goal }}">{{ percent }}</div>
+    <script> $("#progress-bar").css("width","{{ percent }}%"); </script>
+  </div>
+
+
+
     {% if surveys != [] %}
       {% for survey in surveys %}
-        <p>Survey {{ survey.survey.music.name }} is completed by {{ student.fname }} {{ student.lname }} on {{survey.completed_at }}</p>
+        <p>Survey {{ survey.survey.music.name }} is completed by {{ student.fname }} {{ student.lname }} on {{ survey.completed_at.strftime('%d, %b %Y') }}</p>
       {% endfor %}
     {% else %}
       <p>Student has completed no surveys.</p>
     {% endif %}
 
+  <h4>Classroom Survey Assignments</h4>
 
-  	    
+  {% if classsurveys != [] %}
+    
+    {% for classsurvey in classsurveys %}
+      <a href="/survey/{{ classsurvey.survey.survey_id }}">{{ classsurvey.classroomm.name }}: {{ classsurvey.survey.music.name }}</a><br>
+    {% endfor %}
+  {% else %}
+    <p>All Classroom Assignments Completed!</p>
+  {% endif %}
+
+
+
+  <h4>Group Survey Assignments</h4>
+
+  {% if groupsurveys != [] %}
+    
+    {% for groupsurvey in groupsurveys %}
+      <a href="/survey/{{ groupsurvey.survey.survey_id }}">{{ groupsurvey.group.name }}: {{ groupsurvey.survey.music.name }}</a><br>
+    {% endfor %}
+  {% else %}
+    <p>All Group Assignments Completed!</p>
+  {% endif %}
 
   <a href="/resources">Resources</a>
 

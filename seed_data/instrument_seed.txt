@@ -1,36 +1,36 @@
-240|1|Flute|1|Yamaha|YFL-222P|2018
-572|2|Oboe|1|Fox Renard|335 Artist|2017
-918|3|Clarinet|1|Buffet|E12 France|2016
-519|4|Alto Saxophone|1|Yamaha|YAS-62III|2015
-432|5|Trumpet|1|Bach|180S37 Stradivarius|2014
-439|6|Trombone|1|Yamaha|YSL-354|2013
-540|7|Tuba|1|Yamaha|TBB-105WC|2012
-108|8|Percussion|1|||
-266|9|French Horn|1|Giardinelli|GFH-300|2006
-803|10|Baritone|1|Yamaha|YEP-321|1999
-393|11|Bassoon|1|Fox Renard|240 Bassoon|1989
-218|12|Tenor Saxophone|1|Yamaha|YTS_62III|2003
-894|13|Flute|1|Azumi|AZ1 RBO|1994
-752|14|Oboe|1|Yamaha|YOB-241|2012
-606|15|Clarinet|1|Yamaha|YCL-255 Standard|2008
-904|16|Alto Saxophone|1|Yamaha|YAS-26|2010
-139|17|Trumpet|1|Bundy|BTR-300 Student|2011
-143|18|Trombone|1|Allora|AATB-102|2012
-400|19|Tuba|1|Miraphone|186-4U|2013
-144|20|Percussion|1|||
-347|21|French Horn|1|Holton|H379|2014
-805|22|Baritone|1|Allora|AAEU-204|2015
-332|23|Bassoon|1|Allora|AABN-141|2016
-441|24|Tenor Saxophone|1|Allora|Paris Series|2017
-193|25|Violin|2|Knilling|Perfection|2018
-533|26|Violin|2|Bellafina|Educator|2000
-843|27|Violin|2|Etude|Student|2001
-151|28|Viola|2|Bellafina|Educator|2004
-962|29|Viola|2|Bellafina|Educator|2005
-268|30|Viola|2|Bellafina|Educator|2010
-908|31|Cello|2|Knilling|154S Solid|2003
-376|32|Cello|2|Stentor|Student II|2013
-610|33|Cello|2|Stentor|Student II|2014
-24|34|Bass|2|Cremona|SB-2|2016
-427|35|Bass|2|Etude|BASS-ICS|2007
-109|36|Bass|2|Bellafina|Musicale|1999
+240|1|Flute|1|Yamaha|YFL-222P|2018|False|
+572|2|Oboe|1|Fox Renard|335 Artist|2017|False|
+918|3|Clarinet|1|Buffet|E12 France|2016|False|
+519|4|Alto Saxophone|1|Yamaha|YAS-62III|2015|False|
+432|5|Trumpet|1|Bach|180S37 Stradivarius|2014|False|
+439|6|Trombone|1|Yamaha|YSL-354|2013|False|
+540|7|Tuba|1|Yamaha|TBB-105WC|2012|False|
+108|8|Percussion|1||||False|
+266|9|French Horn|1|Giardinelli|GFH-300|2006|False|
+803|10|Baritone|1|Yamaha|YEP-321|1999|False|
+393|11|Bassoon|1|Fox Renard|240 Bassoon|1989|False|
+218|12|Tenor Saxophone|1|Yamaha|YTS_62III|2003|False|
+894|13|Flute|1|Azumi|AZ1 RBO|1994|False|
+752|14|Oboe|1|Yamaha|YOB-241|2012|True|Bent Key
+606|15|Clarinet|1|Yamaha|YCL-255 Standard|2008|False|
+904|16|Alto Saxophone|1|Yamaha|YAS-26|2010|False|
+139|17|Trumpet|1|Bundy|BTR-300 Student|2011|False|
+143|18|Trombone|1|Allora|AATB-102|2012|False|
+400|19|Tuba|1|Miraphone|186-4U|2013|False|
+144|20|Percussion|1||||False|
+347|21|French Horn|1|Holton|H379|2014|False|
+805|22|Baritone|1|Allora|AAEU-204|2015|False|
+332|23|Bassoon|1|Allora|AABN-141|2016|False|
+441|24|Tenor Saxophone|1|Allora|Paris Series|2017|False|
+193|25|Violin|2|Knilling|Perfection|2018|False|
+533|26|Violin|2|Bellafina|Educator|2000|False|
+843|27|Violin|2|Etude|Student|2001|False|
+151|28|Viola|2|Bellafina|Educator|2004|False|
+962|29|Viola|2|Bellafina|Educator|2005|True|No G String
+268|30|Viola|2|Bellafina|Educator|2010|False|
+908|31|Cello|2|Knilling|154S Solid|2003|False|
+376|32|Cello|2|Stentor|Student II|2013|False|
+610|33|Cello|2|Stentor|Student II|2014|False|
+24|34|Bass|2|Cremona|SB-2|2016|False|
+427|35|Bass|2|Etude|BASS-ICS|2007|False|
+109|36|Bass|2|Bellafina|Musicale|1999|False|

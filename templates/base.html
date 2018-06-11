@@ -5,12 +5,15 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="/static/css/base.css">
+
   <script src="https://unpkg.com/vexflow/releases/vexflow-min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #A43C4C;">
   <a class="navbar-brand" href="#">Music Class</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -20,10 +23,76 @@
       <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
       {% if "student_id" in session %}
       	<a class="nav-item nav-link active" href="/students/{{ session['student_id'] }}">My Profile </a>
-      	<a class="nav-item nav-link active" href="/logout">Logout</a>
+
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Listening Surveys
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/survey">Survey Index</a>
+          <a class="dropdown-item" href="/composer-timeline">Composer Timeline</a>
+          <a class="dropdown-item" href="/composer">Composer Index</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Practice
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/pitch-detector">Tuner</a>
+          <a class="dropdown-item" href="/sight-reading">Sight Reading</a>
+          <a class="dropdown-item" href="/major-scales">Scale Reference</a>
+        </div>
+      </li>
+
+
+      <a class="nav-item nav-link active" href="/resources">Class Resources<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="/learn-about">Learn About...<span class="sr-only">(current)</span></a>
+
+      	
       {% elif "teacher_id" in session %}
-  		<a class="nav-item nav-link active" href="/teachers/{{ session['teacher_id'] }}">My Profile</a>
-  		<a class="nav-item nav-link active"href="/logout">Logout</a>
+  		        
+
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Teacher Links
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/classes">My Classes</a>
+          <a class="dropdown-item" href="/instrument-inventory">My Instruments</a>
+          <a class="dropdown-item" href="/groups">My Groups</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Listening Surveys
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/survey">Survey Index</a>
+          <a class="dropdown-item" href="/composer-timeline">Composer Timeline</a>
+          <a class="dropdown-item" href="/composer">Composer Index</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Practice
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/pitch-detector">Tuner</a>
+          <a class="dropdown-item" href="/sight-reading">Sight Reading</a>
+          <a class="dropdown-item" href="/major-scales">Scale Reference</a>
+        </div>
+      </li>
+
+
+      <a class="nav-item nav-link active" href="/resources">Class Resources<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="/learn-about">Learn About...<span class="sr-only">(current)</span></a>
+
+      
+  		
   	  {% else %}
   	  	<li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -34,39 +103,47 @@
           <a class="dropdown-item" href="/student-login">Student Login</a>
         </div>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Register
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="/teacher-register">Teacher Register</a>
-          <a class="dropdown-item" href="/student-register">Student Student</a>
-        </div>
-      </li>
+      
 
 
- 		<!-- <a class="nav-item nav-link active" href="/teacher-login">Teacher Login</a>
-  		<a class="nav-item nav-link active" href="/student-login">Student Login</a>
-  		<a class="nav-item nav-link active" href="/student-register">Student Register Here</a>
-  		<a class="nav-item nav-link active" href="/teacher-register">TeacherRegister Here</a> -->
+
+
       {% endif %}
-      <a class="nav-item nav-link active" href="/learn-about">Learn About...<span class="sr-only">(current)</span></a>
+
 
     </div>
   </div>
+
+        
+
+      <div class="nav navbar-nav navbar-right">
+
+        {% if "student_id" in session or "teacher_id" in session %}
+
+        <a class="nav-item nav-link active" href="/logout">Logout</a>
+
+        {% endif %}
+
+    </div>
+      
+
 </nav>
 
 
 
 
 {% for flash in get_flashed_messages() %}
+<div class="alert alert-primary" role="alert">
   {{ flash }}
+</div>
 {% endfor %}
+
+
 
 {% block content %}
   Put your body here.
 {% endblock %}
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 

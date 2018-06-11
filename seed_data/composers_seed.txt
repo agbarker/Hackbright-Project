@@ -1,123 +1,121 @@
-Ludwig Van Beethoven | 1770 | 1827 | Germany
-Wolfgang Amadeus Mozart | 1756 | 1791 | Austria
-Johann Sebastian Bach | 1685 | 1750 | Germany
-Richard Wagner | 1813 | 1883 | Germany
-Joseph Haydn | 1732 | 1809 | Austria
-Johannes Brahms | 1833 | 1897 | Germany
-Franz Schubert | 1797 | 1828 | Austria
-Pyotr Ilyich Tchaikovsky | 1840 | 1893 | Russia
-George Frideric Handel | 1685 | 1759 | Germany
-Igor Stravinsky | 1882 | 1971 | Russia
-Robert Schumann | 1810 | 1856 | Germany
-Clara Schumann | 1819 | 1896 | Germany
-Frederic Chopin | 1810 | 1849 | Poland
-Felix Mendelssohn | 1809 | 1847 | Germany
-Fanny Mendelssohn | 1805 | 1847 | Germany
-Claude Debussy | 1862 | 1918 | France
-Franz Liszt | 1811 | 1886 | Hungary
-Antonin Dvorak | 1841 | 1904 | Czechia
-Giuseppe Verdi | 1813 | 1901 | Italy
-Gustav Mahler | 1860 | 1911 | Austria
-Antonio Vivaldi | 1678 | 1741 | Italy
-Richard Strauss | 1864 | 1949 | German
-Serge Prokofiev | 1891 | 1953 | Russia
-Dmitri Shostakovich | 1906 | 1975 | Russia
-Béla Bartók | 1881 | 1945 | Hungary
-Hector Berlioz | 1803 | 1869 | France
-Anton Bruckner | 1824 | 1896 | Austria
-Giovanni Pierluigi da Palestrina | 1525 | 1594 | Italy
-Claudio Monteverdi | 1567 | 1643 | Italy
-Jean Sibelius | 1865 | 1957 | Finland
-Maurice Ravel | 1875 | 1937 | France
-Ralph Vaughan Williams | 1872 | 1958 | England
-Modest Mussorgsky | 1839 | 1881 | Russia
-Giacomo Puccini | 1858 | 1924 | Italy
-Henry Purcell | 1659 | 1695 | England
-Gioacchino Rossini | 1792 | 1868 | Italy
-Edward Elgar | 1857 | 1934 | England
-Sergei Rachmaninoff | 1873 | 1943 | France
-Camille Saint-Saëns | 1835 | 1921 | France
-Josquin Des Prez | 1440 | 1521 | France
-Nikolai Rimsky-Korsakov | 1844 | 1908 | Russia
-Carl Maria von Weber | 1786 | 1826 | Germany
-Jean-Philippe Rameau | 1683 | 1764 | France
-Jean-Baptiste Lully | 1632 | 1687 | France
-Gabriel Fauré | 1845 | 1924 | France
-Edvard Grieg | 1843 | 1907 | Norway
-Christoph Willibald Gluck | 1714 | 1787 | Germany
-Arnold Schoenberg | 1874 | 1951 | Austria
-Charles Ives | 1874 | 1954 | United States
-Paul Hindemith | 1895 | 1963 | Germany
-Olivier Messiaen | 1908 | 1992 | France
-Aaron Copland | 1900 | 1990 | United States
-Francois Couperin | 1668 | 1733 | France
-William Byrd | 1539 | 1623 | England
-Erik Satie | 1866 | 1925 | France
-Benjamin Britten | 1913 | 1976 | England
-Bedrick Smetana | 1824 | 1884 | Czechia
-César Franck | 1822 | 1890 | France
-Alexander Nikolayevich Scriabin | 1872 | 1915 | Russia
-Georges Bizet | 1838 | 1875 | France
-Alessandro Scarlatti | 1660 | 1725 | Italy
-Domenico Scarlatti | 1685 | 1757 | Italy
-Georg Philipp Telemann | 1681 | 1767 | Germany
-Anton Webern | 1883 | 1945 | Austria
-Roland de Lassus | 1532 | 1594 | Netherland
-George Gershwin | 1898 | 1937 | United States
-Gaetano Donizetti | 1797 | 1848 | Italy
-Carl Philipp Emanuel Bach | 1714 | 1788 | Germany
-Archangelo Corelli | 1653 | 1713 | Italy
-Thomas Tallis | 1505 | 1585 | England
-Johann Strauss Jr. | 1825 | 1899 | Austria
-Johann Strauss Sr. | 1804 | 1849 | Austria
-Leos Janácek | 1854 | 1928 | Czech 
-Guillaume de Machaut | 1300 | 1377 | France 
-Alban Berg | 1885 | 1935 | Austria
-Alexander Borodin | 1833 | 1887 | Russia
-Vincenzo Bellini | 1801 | 1835 | Italy
-Charles Gounod | 1818 | 1893 | France
-Jules Massenet | 1842 | 1912 | France
-Francis Poulenc | 1899 | 1963 | France
-Giovanni Gabrieli | 1554 | 1612 | Italy
-Pérotin | 1160 | 1225 | France
-Heinrich Schütz | 1585 | 1672 | Germany
-John Cage | 1912 | 1992 | United States
-Giovanni Battista Pergolesi | 1710 | 1736 | Italy
-John Dowland | 1563 | 1626 | England
-Gustav Holst | 1874 | 1934 | England
-Dietrich Buxtehude | 1637 | 1707 | Denmark
-Ottorino Respighi | 1879 | 1936 | Italy
-Guillaume Dufay | 1400 | 1474 | Netherland
-Hugo Wolf | 1860 | 1903 | Austria
-Carl Nielsen | 1865 | 1931 | Denmark
-William Walton | 1902 | 1983 | England
-Darius Milhaud | 1892 | 1974 | France
-Orlando Gibbons | 1583 | 1625 | England
-Giacomo Meyerbeer | 1791 | 1864 | Germany
-Samuel Barber | 1910 | 1981 | United States
-Tomás Luis de Victoria | 1549 | 1611 | Spain 
-Léonin | 1135 | 1201 | France
-Manuel de Falla | 1876 | 1946 | Spain
-Hildegard von Bingen | 1098 | 1179 | Germany
-Mikhail Glinka | 1804 | 1857 | Russia
-Alexander Glazunov | 1865 | 1936 | Russia
-Don Carlo Gesualdo | 1566 | 1613 | Italy
-John Dunstaple | 1390 | 1454 | England
-Johannes Ockeghem | 1425 | 1497 | Netherland
-Antoine Brumel | 1460 | 1512 | France
-Luigi Boccherini | 1743 | 1805 | Italy
-Johann Nepomuk Hummel | 1778 | 1837 | Austria
-John Williams | 1932 | 2018 | United States
-Ethel Smyth | 1858 | 1944 | England
-Amy Beach | 1867 | 1944 | United States
-Germaine Tailleferre | 1892 | 1983 | France
-Lili Boulanger | 1893 | 1918 | France
-Nadia Boulanger | 1887 | 1979 | France
-Sofia Gubaidulina | 1931 | 2018 | Russia
-Rebecca Clarke | 1886 | 1979 | England
-Isabella Leonarda | 1620 | 1704 | Italy
-Teresa Carreño | 1853 | 1917 | Venezuela
-Judith Weir | 1954 | 2018 | Scotland
-Witold Lutosławski | 1913 | 1994 | Poland
-Bedrich Smetana | 1824 | 1884 | Czechia
-Josef Strauss | 1827 | 1870 | Austria
+Ludwig Van Beethoven|1770|1827|Germany|Early Romantic
+Wolfgang Amadeus Mozart|1756|1791|Austria|Classical
+Johann Sebastian Bach|1685|1750|Germany|Late Baroque
+Richard Wagner|1813|1883|Germany|High Romantic
+Joseph Haydn|1732|1809|Austria|Classical
+Johannes Brahms|1833|1897|Germany|Late Romantic
+Franz Schubert|1797|1828|Austria|Early Romantic
+Pyotr Ilyich Tchaikovsky|1840|1893|Russia|Late Romantic
+George Frideric Handel|1685|1759|Germany|Late Baroque
+Igor Stravinsky|1882|1971|Russia|Late Romantic/NeoClassical/Atonal
+Robert Schumann|1810|1856|Germany|High Romantic
+Clara Schumann|1819|1896|Germany|High Romantic
+Frederic Chopin|1810|1849|Poland|High Romantic
+Felix Mendelssohn|1809|1847|Germany|High Romantic
+Fanny Mendelssohn|1805|1847|Germany|High Romantic
+Claude Debussy|1862|1918|France|Late Romantic/Impressionist
+Franz Liszt|1811|1886|Hungary|High Romantic
+Antonin Dvorak|1841|1904|Czechia|Late Romantic
+Giuseppe Verdi|1813|1901|Italy|High Romantic/Late Romantic
+Gustav Mahler|1860|1911|Austria|Late Romantic
+Antonio Vivaldi|1678|1741|Italy|High Baroque
+Richard Strauss|1864|1949|Germany|Late Romantic
+Serge Prokofiev|1891|1953|Russia|Late Romantic/NeoClassical
+Dmitri Shostakovich|1906|1975|Russia|Late Romantic
+Béla Bartók|1881|1945|Hungary|Late Romantic/NeoClassical
+Hector Berlioz|1803|1869|France|Early Romantic
+Anton Bruckner|1824|1896|Austria|Late Romantic
+Giovanni Pierluigi da Palestrina|1525|1594|Italy|Late Renaissance
+Claudio Monteverdi|1567|1643|Italy|Early Baroque
+Jean Sibelius|1865|1957|Finland|Late Romantic
+Maurice Ravel|1875|1937|France|Late Romantic/Impressionist
+Ralph Vaughan Williams|1872|1958|England|Late Romantic
+Modest Mussorgsky|1839|1881|Russia|Late Romantic
+Giacomo Puccini|1858|1924|Italy|Late Romantic
+Henry Purcell|1659|1695|England|High Baroque
+Gioacchino Rossini|1792|1868|Italy|Early Romantic
+Edward Elgar|1857|1934|England|High Romantic
+Sergei Rachmaninoff|1873|1943|France|Late Romantic
+Camille Saint-Saëns|1835|1921|France|Late Romantic
+Josquin Des Prez|1440|1521|France|High Renaissance
+Nikolai Rimsky-Korsakov|1844|1908|Russia|High Romantic
+Carl Maria von Weber|1786|1826|Germany|Early Romantic
+Jean-Philippe Rameau|1683|1764|France|Late Baroque
+Jean-Baptiste Lully|1632|1687|France|High Baroque
+Gabriel Fauré|1845|1924|France|Late Romantic/Impressionist
+Edvard Grieg|1843|1907|Norway|High Romantic
+Christoph Willibald Gluck|1714|1787|Germany|Roccoco
+Arnold Schoenberg|1874|1951|Austria|Late Romantic/Atonal/Post Tonal
+Charles Ives|1874|1954|United States|Atonal/Post Tonal
+Paul Hindemith|1895|1963|Germany|Late Romantic/NeoClassical/Atonal
+Olivier Messiaen|1908|1992|France|Atonal/Post Tonal/Minimalist
+Aaron Copland|1900|1990|United States|Late Romantic/NeoClassical
+Francois Couperin|1668|1733|France|High Baroque
+William Byrd|1539|1623|England|Late Renaissance
+Erik Satie|1866|1925|France|Minimalist/Late Romantic
+Benjamin Britten|1913|1976|England|Late Romantic/Post Tonal/Minimalist
+Bedrich Smetana|1824|1884|Czechia|Late Romantic
+César Franck|1822|1890|France|High Romantic
+Alexander Nikolayevich Scriabin|1872|1915|Russia|Late Romantic
+Georges Bizet|1838|1875|France|High Romantic
+Alessandro Scarlatti|1660|1725|Italy|High Baroque
+Domenico Scarlatti|1685|1757|Italy|Roccoco
+Georg Philipp Telemann|1681|1767|Germany|Late Baroque
+Anton Webern|1883|1945|Austria|Late Romantic/Atonal/Post Tonal
+Orlando de Lassus|1532|1594|Netherlands|Late Renainssance
+George Gershwin|1898|1937|United States|Fuck it
+Gaetano Donizetti|1797|1848|Italy|High Romantic
+Carl Philipp Emanuel Bach|1714|1788|Germany|Classical
+Archangelo Corelli|1653|1713|Italy|High Baroque
+Thomas Tallis|1505|1585|England|Late Renaissance
+Johann Strauss Jr.|1825|1899|Austria|High Romantic
+Johann Strauss Sr.|1804|1849|Austria|High Romantic
+Leos Janácek|1854|1928|Czech|Late Romantic
+Guillaume de Machaut|1300|1377|France|High Medeival
+Alban Berg|1885|1935|Austria|Atonal
+Alexander Borodin|1833|1887|Russia|High Romantic
+Vincenzo Bellini|1801|1835|Italy|Early Romantic
+Charles Gounod|1818|1893|France|High Romantic
+Jules Massenet|1842|1912|France|Late Romantic
+Francis Poulenc|1899|1963|France|Late Romantic/NeoClassical/Post Tonal
+Giovanni Gabrieli|1554|1612|Italy|Early Baroque
+Pérotin|1160|1225|France|Early Medeival
+Heinrich Schütz|1585|1672|Germany|Early Baroque
+John Cage|1912|1992|United States|Post Tonal/Aleatoric
+Giovanni Battista Pergolesi|1710|1736|Italy|Roccoco
+John Dowland|1563|1626|England|Late Renaissance
+Gustav Holst|1874|1934|England|Late Romantic
+Dietrich Buxtehude|1637|1707|Denmark|High Baroque
+Ottorino Respighi|1879|1936|Italy|Late Romantic
+Guillaume Dufay|1400|1474|Netherlands|Early Renaissance
+Hugo Wolf|1860|1903|Austria|Late Romantic
+Carl Nielsen|1865|1931|Denmark|Late Romantic/NeoClassical
+William Walton|1902|1983|England|Late Romantic
+Darius Milhaud|1892|1974|France|Late Romantic/Impressionist/Post Tonal
+Orlando Gibbons|1583|1625|England|Late Renaissance
+Giacomo Meyerbeer|1791|1864|Germany|High Romantic
+Samuel Barber|1910|1981|United States|Late Romantic/Post Tonal
+Tomás Luis de Victoria|1549|1611|Spain|Late Renaissance
+Léonin|1135|1201|France|Early Medeival
+Manuel de Falla|1876|1946|Spain|Late Romantic
+Hildegard von Bingen|1098|1179|Germany|Early Medeival
+Mikhail Glinka|1804|1857|Russia|High Romantic
+Alexander Glazunov|1865|1936|Russia|Late Romantic
+Don Carlo Gesualdo|1566|1613|Italy|Late Renaissance
+John Dunstaple|1390|1454|England|Late Medeival
+Johannes Ockeghem|1425|1497|Netherlands|Early Renaissance
+Antoine Brumel|1460|1512|France|Early Renaissance
+Luigi Boccherini|1743|1805|Italy|Classical
+Johann Nepomuk Hummel|1778|1837|Austria|Classical
+John Williams|1932|2018|United States|Is the Man
+Ethel Smyth|1858|1944|England|Late Romantic
+Amy Beach|1867|1944|United States|Post Tonal
+Germaine Tailleferre|1892|1983|France|No Effing Idea
+Lili Boulanger|1893|1918|France|Late Romantic
+Nadia Boulanger|1887|1979|France|Late Romantic/Post Tonal
+Sofia Gubaidulina|1931|2018|Russia|Soviet Scum
+Rebecca Clarke|1886|1979|England|Post Tonal
+Isabella Leonarda|1620|1704|Italy|High Baroque
+Teresa Carreño|1853|1917|Venezuela|Late Romantic
+Judith Weir|1954|2018|Scotland|Post Tonal
+Witold Lutosławski|1913|1994|Poland|Late Romantic/Post Tonal

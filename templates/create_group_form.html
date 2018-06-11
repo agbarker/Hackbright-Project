@@ -15,8 +15,12 @@
 
   <div class="form-group">
     <label>
-        Enter Class_id
-        <input type="text" name="class_id" class="form-control">
+        Select Class
+        <select name="class_id">
+          {% for classroom in classrooms %}
+          <option value="{{ classroom.class_id }}">{{ classroom.name }}</option>
+          {% endfor %}
+        </select>
     </label>
   </div>
 

@@ -1,16 +1,35 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="well spaced" style="width:40%;">
-<h1>Music Class App</h1>
+<head>
+    <link href="../static/css/homepage.css" rel="stylesheet" type="text/css" />
+</head>
 
-Students register here:
+<div class="bg">
+<div class="row" style="height: 100px">
+</div>
+<div class="row">
+	<div class="col-2 offset-9 register-box rounded">
+		<div class="row justify-content-center">
+			<h2>Register</h2>
+		</div>
 
-<a href="/student-register">Register here</a><br>
+	
 
-Teachers register here:
+		<div class="row justify-content-center">
 
-<a href="/teacher-register">Register here</a>
+		<a class="btn btn-primary" href="/student-register"><img class="icon" src="../static/music.svg"> Student</a>
+	</div>
+		<div class="row justify-content-center offset p-2">
 
+		<a class="btn btn-primary" href="/teacher-register"><img class="icon" src="../static/orchestra.svg"> Teacher</a>
+
+	</div>
+
+	</div>
+</div>
 
 </div>
+
+
+
 {% endblock %}

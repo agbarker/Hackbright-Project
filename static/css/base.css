@@ -1,0 +1,23 @@
+.alert	{
+	margin-bottom: 0rem;
+}
+
+.alert-primary {
+    color: #6d4831;
+    background-color: #BA957E;
+    border-color: #6d4831;
+}
+
+.class-info	{
+	background-color: #BE916B;
+	color: #1F120C;
+	padding: 20px;
+	border: white;
+	border-width: medium;
+}
+
+body {
+	background-color: #4A301F;
+	background-image: url("/static/symphony.png");
+
+}

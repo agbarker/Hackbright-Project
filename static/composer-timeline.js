@@ -224,16 +224,21 @@ function timeline(domElement) {
 
 
         var intervals = d3.select("#band" + bandNum).selectAll(".interval");
-        intervals.append("rect")
+        intervals.append("a")
+        .attr("xlink:href", function (d) {return "/composer/" + d.local_link})
+            .append("rect")
             .attr("width", "100%")
             .attr("height", "100%")
             .attr("country_id", function (d) {return d.country})
             .style("fill", function (d) {return colorScale(d.country)});
-        intervals.append("text")
+        intervals.append("a")
+        .attr("xlink:href", function (d) {return "/composer/" + d.local_link})
+            .append("text")
             .attr("class", "intervalLabel")
             .attr("x", 1)
             .attr("y", 10)
             .text(function (d) { return d.label; })
+            .style("fontcolor", "black")
             ;
 
         var instants = d3.select("#band" + bandNum).selectAll(".instant");

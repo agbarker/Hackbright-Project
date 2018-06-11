@@ -4,7 +4,8 @@
   <h2>My Instruments</h2>
 
   <a href="/instrument-checkin">Check in an Instrument</a><br>
-  <a href="/instrument-checkout">Check out an Instrument</a><br>
+  <a href="/instrument-checkout">Check out an Instrument</a><br><br>
+  <a href="/add-instrument-to-inventory">Add Instrument to Inventory</a><br>
 
 
 <h3>Search</h3>
@@ -15,6 +16,8 @@
   <option value="Maker">Maker</option>
   <option value="Model">Model</option>
   <option value="Year">Year</option>
+  <option value="Repair">Repair</option>
+  <option value="RepairNote">Repair Note</option>
 </select>
 
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for instruments...">
@@ -22,12 +25,14 @@
 
 <table id="myTable">
   <tr class="header">
-    <th onclick="sortTable(0)" style="width:20%;">Type</th>
-    <th onclick="sortTable(1)" style="width:20%;">Student</th>
-    <th onclick="sortTable(2)" style="width:20%;">Serial Number</th>
-    <th onclick="sortTable(3)" style="width:20%;">Maker</th>
-    <th onclick="sortTable(4)" style="width:20%;">Model</th>
-    <th onclick="sortTable(5)" style="width:20%;">Year Manufactured</th>
+    <th onclick="sortTable(0)" style="width:12.5%;">Type</th>
+    <th onclick="sortTable(1)" style="width:12.5%;">Student</th>
+    <th onclick="sortTable(2)" style="width:12.5%;">Serial Number</th>
+    <th onclick="sortTable(3)" style="width:12.5%;">Maker</th>
+    <th onclick="sortTable(4)" style="width:12.5%;">Model</th>
+    <th onclick="sortTable(5)" style="width:12.5%;">Year Manufactured</th>
+    <th onclick="sortTable(6)" style="width:12.5%;">Repair</th>
+    <th onclick="sortTable(7)" style="width:12.5%;">Repair Note</th>
   </tr>
 
 
@@ -47,6 +52,8 @@
       <td>{{ instrument.maker }}</td>
       <td>{{ instrument.model }}</td>
       <td>{{ instrument.year_manufactured }}</td>
+      <td>{{ instrument.repair }}</td>
+      <td>{{ instrument.repair_note }}</td>
     </tr>
 
 
@@ -62,7 +69,7 @@ function myFunction() {
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
   select = document.getElementById("searchType").value;
-  options = {"Type": 0, "Student": 1, "SerialNumber": 2, "Maker": 3, "Model": 4, "Year": 5}
+  options = {"Type": 0, "Student": 1, "SerialNumber": 2, "Maker": 3, "Model": 4, "Year": 5, "Repair": 6, "RepairNote": 7}
   j = options[select]
 
   // Loop through all table rows, and hide those who don't match the search query

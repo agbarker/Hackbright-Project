@@ -1,16 +1,16 @@
-Flute | Woodwinds
-Oboe | Woodwinds
-Clarinet | Woodwinds
-Alto Saxophone | Woodwinds
-Tenor Saxophone | Woodwinds
-Bassoon | Woodwinds
-Trumpet | Brass
-French Horn | Brass
-Trombone | Brass
-Baritone | Brass
-Tuba | Brass
-Percussion | Percussion
-Violin | Strings
-Viola | Strings
-Cello | Strings
-Bass | Strings
+Flute|Woodwinds|C
+Oboe|Woodwinds|C
+Clarinet|Woodwinds|Bb
+Alto Saxophone|Woodwinds|Eb
+Tenor Saxophone|Woodwinds|Bb
+Bassoon|Woodwinds|C
+Trumpet|Brass|Bb
+French Horn|Brass|F
+Trombone|Brass|C
+Baritone|Brass|C
+Tuba|Brass|C
+Percussion|Percussion|NA
+Violin|Strings|C
+Viola|Strings|C
+Cello|Strings|C
+Bass|Strings|C

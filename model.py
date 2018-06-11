@@ -84,6 +84,7 @@ class Classroom(db.Model):
     registration_code = db.Column(db.String(64))
     name = db.Column(db.String(64))
     type_class = db.Column(db.String(64))
+    survey_goal = db.Column(db.Integer)
 
     # Define relationship to teacher
     teacher = db.relationship("Teacher", backref=db.backref("classrooms", order_by=class_id))
@@ -92,6 +93,18 @@ class Classroom(db.Model):
         """Provide helpful representation when printed."""
 
         return "<Class name={} belongs to Teacher teacher_id={}>".format(self.name, self.teacher_id)
+
+class Avatar(db.Model):
+    """Avatars."""
+
+    __tablename__ = "avatars"
+
+    avatar_id = db.Column(db.Integer, primary_key=True)
+    avatar_src = db.Column(db.String(256))
+
+    def __repr__(self):
+
+        return "<Avatar id={}".format(self.avatar_id)
 
 
 class Student(db.Model):
@@ -105,10 +118,12 @@ class Student(db.Model):
     fname = db.Column(db.String(64))
     lname = db.Column(db.String(64))
     class_id = db.Column(db.Integer, db.ForeignKey('classrooms.class_id'))
-    avatar = db.Column(db.String(256))
+    avatar_id = db.Column(db.Integer, db.ForeignKey('avatars.avatar_id'))
 
     # Define relationship to classroom
     classroom = db.relationship("Classroom", backref=db.backref("students", order_by=student_id))
+
+    avatar = db.relationship("Avatar", backref=db.backref("students"), order_by=student_id)
 
     def get_number_of_completed_surveys(self):
         """Gets number of completed surveys for student."""
@@ -141,6 +156,10 @@ class Student(db.Model):
         return "<Student fname={} lname={} in Classroom class_id={}>".format(self.fname, self.lname, self.class_id)
 
 
+
+
+
+
 class Instrument(db.Model):
     """Individual instruments."""
 
@@ -153,6 +172,8 @@ class Instrument(db.Model):
     maker = db.Column(db.String(64), nullable=True)
     model = db.Column(db.String(64), nullable=True)
     year_manufactured = db.Column(db.String(64), nullable=True)
+    repair = db.Column(db.String(64), nullable=True)
+    repair_note = db.Column(db.String(256), nullable=True)
 
     # Define relationship to students
     student = db.relationship("Student", backref=db.backref("instruments", order_by=serial_number))
@@ -177,6 +198,7 @@ class InstrumentType(db.Model):
 
     name = db.Column(db.String(64), primary_key=True)
     family = db.Column(db.String(64))
+    key = db.Column(db.String(64))
 
     def __repr__(self):
             """Provide helpful representation when printed."""
@@ -216,6 +238,7 @@ class Group(db.Model):
     group_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     class_id = db.Column(db.Integer, db.ForeignKey('classrooms.class_id'))
     name = db.Column(db.String(64))
+    teacher_message = db.Column(db.String(1024), nullable=True)
 
     # Define relationship to classroom
     classroom = db.relationship("Classroom", backref=db.backref("groups", order_by=group_id))
@@ -263,6 +286,38 @@ class Composer(db.Model):
         return "<Composer name={} was born {} and died {}".format(self.name, self.bdate, self.ddate)
 
 
+class Period(db.Model):
+    """Period objects."""
+
+    __tablename__ = "periods"
+
+    name = db.Column(db.String(64), primary_key=True)
+
+    def __repr__(self):
+        """Provide helpful representation when printed."""
+
+        return "<Period name={}".format(self.name)
+
+
+class ComposerPeriod(db.Model):
+    """Relational table between composers and periods."""
+
+    __tablename__ = "composer-period"
+
+    composer_period_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    period_id = db.Column(db.String(64), db.ForeignKey('periods.name'))
+    composer_id = db.Column(db.String(64), db.ForeignKey('composers.name'))
+
+    #Define relationship to composer
+    composer = db.relationship("Composer", backref=db.backref("composer-period", order_by=composer_period_id))
+
+    #Define relationship to period
+    period = db.relationship("Period", backref=db.backref("composer-period", order_by=composer_period_id))
+
+    def __repr__(self):
+        """Provide helpful representation when printed."""
+
+        return "<Period name={} for composer {}".format(self.period_id, self.composer_id)
 
 
 class Music(db.Model):
@@ -271,9 +326,9 @@ class Music(db.Model):
     __tablename__ = "music"
 
     music_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    name = db.Column(db.String(64))
+    name = db.Column(db.String(256))
     score_src = db.Column(db.String(256), nullable=True)
-    mp3_src = db.Column(db.String(1024), nullable=True)
+    youtube_id = db.Column(db.String(1024), nullable=True)
     composer_id = db.Column(db.String(64), db.ForeignKey('composers.name'))
     year = db.Column(db.String(64), nullable=True)
     ensemble = db.Column(db.String(256), nullable=True)
@@ -370,6 +425,65 @@ class StudentSurvey(db.Model):
         """Provide helpful representation when printed."""
 
         return "<Survey survey_id={} is completed by Student student_id={}>".format(self.survey_id, self.student_id)
+
+
+class Achievement(db.Model):
+    """Acheivements to be earned by the students."""
+
+    __tablename__ = "achievements"
+
+    achievement_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    name = db.Column(db.String(64))
+    badge_src = db.Column(db.String(256), nullable=True)
+
+    def __repr__(self):
+        """Provide helpful representation when printed."""
+
+        return "<Achievement achievement_id={} is named {}".format(self.achievement_id, self.name)
+
+
+class Requirements(db.Model):
+    """Requirements to earn achievements; relational table between achievements and surveys."""
+
+    __tablename__ = "requirements"
+
+    requirement_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    achievement_id = db.Column(db.Integer, db.ForeignKey('achievements.achievement_id'))
+    survey_id = db.Column(db.Integer, db.ForeignKey('surveys.survey_id'))
+
+    # Define relationship to achievements
+    achievement = db.relationship("Achievement", backref=db.backref("requirements", order_by=requirement_id))
+
+    #Define relationship to surveys
+    survey = db.relationship("ListeningSurvey", backref=db.backref("requirements", order_by=requirement_id))
+
+    def __repr__(self):
+        """Provide helpful representation when printed."""
+
+        return "<Requirement requirement_id={} is linked to achievement_id={} and survey_id={}".format(self.requirement_id, self.achievement_id, self.survey_id)
+
+
+class StudentAchievement(db.Model):
+    """Relational table between students and achievements."""
+
+    __tablename__ = "student-achievement"
+
+    student_achievement_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    student_id = db.Column(db.Integer, db.ForeignKey('students.student_id'))
+    achievement_id = db.Column(db.Integer, db.ForeignKey('achievements.achievement_id'))
+    completed_at = db.Column(db.DateTime, nullable=True, default=datetime.utcnow)
+
+    #Define relationship to students
+    student = db.relationship("Student", backref=db.backref("student-achievement", order_by=student_achievement_id))
+
+    #Define relationship to achievements
+    achievement = db.relationship("Achievement", backref=db.backref("student-achievement", order_by=student_achievement_id))
+
+    def __repr__(self):
+        """Provide helpful representation when printed."""
+
+        return "<StudentAchievement id={}, student={}, achivement={}".format(self.student_achievement_id, self.student_id, self.achievement_id)
+
 
 
 #####################################################################

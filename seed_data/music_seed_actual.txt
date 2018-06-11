@@ -1,46 +1,160 @@
-Symphony No. 8 in F - I. Allegro Vivace E Con Brio|static/music_src/Beethoven_8_I.m4a|Ludwig Van Beethoven|Karajan Berlin Philharmonic
-Symphony No. 8 in F - II. Allegretto Scherzando|static/music_src/Beethoven_8_II.m4a|Ludwig Van Beethoven|Karajan Berlin Philharmonic
-Symphony No. 8 in F - III. Tempo Vivace|static/music_src/Beethoven_8_III.m4a|Ludwig Van Beethoven|Karajan Berlin Philharmonic
-Symphony No. 8 in F - IV. Allegro Vivace|static/music_src/Beethoven_8_IV.m4a|Ludwig Van Beethoven|Karajan Berlin Philharmonic
-Coriolan Overture|static/music/src/Beethoven_Coriolan_Overture.m4a|Ludwig Van Beethoven|Karajan Berlin Philharmonic
-Lenore Overture|static/music/src/Beethoven_Lenore_Overture.m4a|Ludwig Van Beethoven|Karajan Berlin Philharmonic
-Lenore Overture #3|static/music/src/Beethoven_Lenore_Overture_3.m4a|Ludwig Van Beethoven|Karajan Berlin Philharmonic
-La Mer - 1. De L'Aube A Midi Sur La Mer|static/music_src/Debussy_La_Mer_1.m4a|Claude Debussy|Karajan Berlin Philharmonic
-La Mer - 2. Jeux De Vauges|static/music_src/Debussy_La_Mer_2.m4a|Claude Debussy|Karjan Berlin Philharmonic
-La Mer - 3. Dialogue De Vent Et De La Mer|static/music_src/Debussy_La_Mer_3.m4a|Claude Debussy|Karajan Berlin Philharmonic
-Prelude A L'Après-Midi D'Un Faune|static/music_src/Debussy_Prelude_Faune.m4a|Claude Debussy|Karajan Berlin Philharmonic
-Pavance Pour Une Infante Defunte|static/music_src/Ravel_Pavane_Infante_Defunte.m4a|Maurice Ravel|Karajan Berlin Philharmonic
-Daphnis Et Chloe - Symphonic Fragments|static/music_src/Ravel_Daphnis_Chloe.m4a|Maurice Ravel|Karajan Berlin Philharmonic
-Scheherazade - 1. The Sea & Sinbad's Ship|static/music_src/Rimsky_Korsakov_Scheherazade_1.m4a|Nikolai Rimsky-Korsakov|Karajan Berlin Philharmonic
-Scheherazade - 2. The Story of the Calendar Prince|static/music_src/Rimsky_Korsakov_Scheherazade_2.m4a|Nikolai Rimsky-Korsakov|Karajan Berlin Philharmonic
-Scheherazade - 3. The Young Prince & the Young Princess|static/music_src/Rimsky_Korsakov_Scheherazade_3.m4a|Nikolai Rimsky-Korsakov|Karajan Berlin Philharmonic
-Scheherazade - 4. Festival in Baghdad, The Sea, Shipwreck|static/music_src/Rimsky_Korsakov_Scheherazade_4.m4a|Nikolai Rimsky-Korsakov|Karajan Berlin Philharmonic
-Capriccio Italien|static/music_src/Tchaikovsky_Capriccio_Italien.m4a|Pyotr Ilyich Tchaikovsky|Karajan Berlin Philharmonic
-1812 Overture|static/music_src/Tchaikovsky_1812_Overture.m4a|Pyotr Ilyich Tchaikovsky|Karajan Berlin Philharmonic
-Mephisto Waltz #1 - Der Tanz In Der Dorfschenke|static/music_src/Liszt_Mephisto_Waltz_1.m4a|Franz Liszt|Karajan Berlin Philharmonic
-Les Preludes|static/music_src/Liszt_Preludes.m4a|Franz Liszt|Karajan Berlin Philharmonic
-Hungarian Fantasy|static/music_src/Liszt_Hungarian_Fantasy.m4a|Franz Liszt|Karajan Berlin Philharmonic
-Hungarian Rhapsody #5 in E Minor - Heroïde Elegiaque|static/music_src/Liszt_Hungarian_Rhapsody_5.m4a|Franz Liszt|Karajan Berlin Philharmonic
-Mazeppa|static/music_src/Liszt_Mazeppa.m4a|Franz Liszt|Karajan Berlin Philharmonic
-Hungarian Rhapsody #2 in C Minor|static/music_src/Liszt_Hungarian_Rhapsody_2.m4a|Franz Liszt|Karajan Berlin Philharmonic
-Tasso, Lamento E Trionfo|static/music_src/Liszt_Tasso.m4a|Franz Liszt|Karajan Berlin Philharmonic
-Hungarian Rhapsody #4 in D Minor|static/music_src/Liszt_Hungarian_Rhapsody_4.m4a|Franz Liszt|Karajan Berlin Philharmonic
-Má Vlast - Vltava|static/music_src/Smetana_Ma_Vlast_Vltava.m4a|Bedrich Smetana|Karajan Berlin Philharmonic
-Finlandia|static/music_src/Sibelius_Finlandia.m4a|Jean Sibelius|Karajan Berlin Philharmonic
-Pelleas Et Melisande - 1. At The Castle Gate|static/music_src/Sibelius_Pelleas_Melisande_1.m4a|Jean Sibelius|Karajan Berlin Philharmonic
-Pelleas Et Melisande - 2. Melisande|static/music_src/Sibelius_Pelleas_Melisande_2.m4a|Jean Sibelius|Karajan Berlin Philharmonic
-Pelleas Et Melisande - 3. By The Sea|static/music_src/Sibelius_Pelleas_Melisande_3.m4a|Jean Sibelius|Karajan Berlin Philharmonic
-Pelleas Et Melisande - 4. By a Spring in the Park|static/music_src/Sibelius_Pelleas_Melisande_4.m4a|Jean Sibelius|Karajan Berlin Philharmonic
-Pelleas Et Melisande - 5. The 3 Blind Sisters|static/music_src/Sibelius_Pelleas_Melisande_5.m4a|Jean Sibelius|Karajan Berlin Philharmonic
-Pelleas Et Melisande - 6. Pastorale|static/music_src/Sibelius_Pelleas_Melisande_6.m4a|Jean Sibelius|Karajan Berlin Philharmonic
-Pelleas Et Melisande - 7. Melisande at the Spinning Wheel|static/music_src/Sibelius_Pelleas_Melisande_7.m4a|Jean Sibelius|Karajan Berlin Philharmonic
-Pelleas Et Melisande - 8. Entracte|static/music_src/Sibelius_Pelleas_Melisande_8.m4a|Jean Sibelius|Karajan Berlin Philharmonic
-Pelleas Et Melisande - 9. Melisande's Death|static/music_src/Sibelius_Pelleas_Melisande_9.m4a|Jean Sibelius|Karajan Berlin Philharmonic
-Radetzky March|static/music_src/Strauss_Sr_J_Radetzky.m4a|Johann Strauss Sr.|Karajan Berlin Philharmonic
-Spharen-Klange|static/music_src/Strauss_J_Spharen_Klange.m4a|Josef Strauss|Karajan Berlin Philharmonic
-Perpetuum Mobile - Musikalischer Scherz|static/music_src/Strauss_Jr_J_Perpetuum_Mobile.m4a|Johann Strauss Jr.|Karajan Berlin Philharmonic
-Delirien|static/music_src/Strauss_J_Delirien.m4a|Josef Strauss|Karajan Berlin Philharmonic
-Geschichten Aus Dem Wienerwald|static/music_src/Strauss_Jr_J_Geschichten.m4a|Johann Strauss Jr.|Karajan Berlin Philharmonic
-Die Fledermaus - Quadrille|static/music_src/Strauss_Jr_J_Fledermaus_Quadrille.m4a|Johann Strauss Jr.|Karajan Berlin Philharmonic
-Wiener Blut Waltz|static/music_src/Strauss_Jr_J_Wiener_Blut_Waltz.m4a|Johann Strauss Jr.|Karajan Berlin Philharmonic
-Napoleon-Marsch|static/music_src/Strauss_Jr_J_Napolean.m4a|Johann Strauss Jr.|Karjan Berlin Philharmonic
+Symphony No. 8 in F - I. Allegro Vivace E Con Brio|uMMhqQMTubo|Ludwig Van Beethoven|Karajan Berlin Philharmonic
+Orchestral Suite No. 1 in C major, BWV 1066 - 1. Overture|BPr9zAv8-Ew|Johann Sebastian Bach|Richter - Munchener Bach Orchester
+Orchestral Suite No. 1 in C major, BWV 1066 - 2. Courante|XPi12YGPzLQ|Johann Sebastian Bach|Richter - Munchener Bach Orchester
+Orchestral Suite No. 1 in C major, BWV 1066 - 3. Gavotte I/II|SMkHtxmPe9A|Johann Sebastian Bach|Richter - Munchener Bach Orchester
+Orchestral Suite No. 1 in C major, BWV 1066 - 4. Forlane|0GXXMCryzHo|Johann Sebastian Bach|Richter - Munchener Bach Orchester
+Orchestral Suite No. 1 in C major, BWV 1066 - 5. Menuet I/II|ZfmWhCsktKU|Johann Sebastian Bach|Richter - Munchener Bach Orchester
+Orchestral Suite No. 1 in C major, BWV 1066 - 6. Bourrée I/II|cSNAP4mvpc4|Johann Sebastian Bach|Richter - Munchener Bach Orchester
+Orchestral Suite No. 1 in C major, BWV 1066 - 7. Passepied I/II|QZzb38jpy0w|Johann Sebastian Bach|Richter - Munchener Bach Orchester
+Keyboard Concerto in G minor, BWV 1058 - 1. Allegro|3qFDQOdnfOc|Johann Sebastian Bach|Jean Louis Steuerman, piano
+Keyboard Concerto in G minor, BWV 1058 - 2. Andante|vq2WPIypg2E|Johann Sebastian Bach|Jean Louis Steuerman, piano
+Keyboard Concerto in G minor, BWV 1058 - 3. Allegro Assai|EcOgRpQCuvY|Johann Sebastian Bach|Jean Louis Steuerman, piano
+Sinfonia from Cantata BWV 146, Wir müssen durch viel Trübsal|TpHEhPsGckw|Johann Sebastian Bach|Accademia Bizantina, Ottavio Dantone
+Cantata BWV 182 - 8. So lasset uns gehen in Salem der Freuden|BuRdYJK9Nok|Johann Sebastian Bach|Georg Christoph Biller - Gewandhausorchester
+Mass in B minor, BWV 232  -  21. Et expecto (chorus)|VDEYs7zSq9I|Johann Sebastian Bach|The English Concert, Harry Bicket
+Magnificat in E flat major, BWV 243a - 2b. Vom Himmel hoch|Jb9Dm6YfiQU|Johann Sebastian Bach|Amsterdam Baroque Orchestra under Ton Koopmann
+Magnificat in E flat major, BWV 243a - 2. Et exsultavit|khGTt8hIjJs|Johann Sebastian Bach|Amsterdam Baroque Orchestra under Ton Koopmann
+Magnificat in E flat major, BWV 243a - 1. Magnificat|M9Cc1phDI80|Johann Sebastian Bach|Amsterdam Baroque Orchestra under Ton Koopmann
+Concerto for 3 Keyboards, BWV 1064  -  3. Allegro assai|CvxwvbYGn5I|Johann Sebastian Bach|Davitt Moroney, Christophe Rousset, Christopher Hogwood - harpsichords
+Concerto for 3 Keyboards, BWV 1064  -  2. Adagio|Ojweq2njAIA|Johann Sebastian Bach|Davitt Moroney, Christophe Rousset, Christopher Hogwood - harpsichords
+Concerto for 3 Keyboards, BWV 1064  -  1. Allegro|SXZUkwfz1RA|Johann Sebastian Bach|Davitt Moroney, Christophe Rousset, Christopher Hogwood - harpsichords
+Mass in B minor, BWV 232  -  20. Confiteor (chorus)|LI57h6N_qhc|Johann Sebastian Bach|The English Concert, Harry Bicket conductor
+Mass in B minor, BWV 232  -  19. Et in Spiritum Sanctum (aria - bass)|2SucqvWYHZU|Johann Sebastian Bach|The English Concert, Harry Bicket conductor
+Mass in B minor, BWV 232  -  18. Et resurrexit (chorus)|h8BCArASBkI|Johann Sebastian Bach|The English Concert, Harry Bicket conductor
+Mass in B minor, BWV 232  -  17. Crucifixus (chorus)|wOo0vLuEraI|Johann Sebastian Bach|The English Concert, Harry Bicket conductor
+Concerto for Violin and Oboe in C minor, BWV 1060 - 3. Allegro|K5q6Ut15niA|Johann Sebastian Bach|Pauline Malbaux, oboe; Marc Benzekri, violin; French Chamber Orchestra - Horst Sohm
+Concerto for Violin and Oboe in C minor, BWV 1060 - 2. Adagio|1ZzJ18p4fzM|Johann Sebastian Bach|Pauline Malbaux, oboe; Marc Benzekri, violin; French Chamber Orchestra - Horst Sohm
+Concerto for Violin and Oboe in C minor, BWV 1060 - 1. Allegro|luXSPSSsvo0|Johann Sebastian Bach|Pauline Malbaux, oboe; Marc Benzekri, violin; French Chamber Orchestra - Horst Sohm
+Mass in B minor, BWV 232  -  16. Et incarnatus est (chorus)|QNGzJnqdCnY|Johann Sebastian Bach|The English Concert, Harry Bicket conductor
+Mass in B minor, BWV 232  -  15. Et in unum Dominum (duet)|gORY5f7MXpo|Johann Sebastian Bach|The English Concert, Harry Bicket conductor
+Mass in B minor, BWV 232  -  14. Patrem omnipotentem (chorus)|nGDjF6IPyXA|Johann Sebastian Bach|The English Concert, Harry Bicket conductor
+Mass in B minor, BWV 232  -  13. Credo in unum Deum (chorus)|bUkTi9K4RVs|Johann Sebastian Bach|The English Concert, Harry Bicket conductor
+Mass in B minor, BWV 232  -  12. Cum Sancto Spiritu (chorus)|mBlYpx7tM0c|Johann Sebastian Bach|The English Concert, Harry Bicket conductor
+Mass in B minor, BWV 232  -  11. Quoniam tu solus sanctus (aria)|vVWJB7ls_hg|Johann Sebastian Bach|The English Concert, Harry Bicket conductor
+Keyboard Concerto in E major, BWV 1053 - 3. Allegro|GIxN9_Z1zZA|Johann Sebastian Bach|Anastasia Injushina, piano; Hamburger Camerata conducted by Ralf Gothóni
+Keyboard Concerto in E major, BWV 1053 - 2. Siciliano|Iw4ywyRA2DE|Johann Sebastian Bach|Anastasia Injushina, piano; Hamburger Camerata conducted by Ralf Gothóni
+Keyboard Concerto in E major, BWV 1053 - 1. (no tempo marking)|BKdNbhyHgu0|Johann Sebastian Bach|Anastasia Injushina, piano; Hamburger Camerata conducted by Ralf Gothóni
+Cello Sonata No. 2 in G minor, Op. 5 No. 2|2NK3LygVYgM|Ludwig Van Beethoven|Pierre Fournier, cello; Friedrich Gulda, piano
+Cello Sonata No. 1 in F Major, Op. 5 No. 1|DIqYUCzVW0k|Ludwig Van Beethoven|Pierre Fournier, cello; Friedrich Gulda, piano
+French Suite No.6 in E major, BWV 817 - 3. Sarabande|fZiMFu1V2ZM|Johann Sebastian Bach|András Schiff, piano
+French Suite No.6 in E major, BWV 817 - 2. Courante|IYRC5v7D2wU|Johann Sebastian Bach|András Schiff, piano
+French Suite No.6 in E major, BWV 817 - 1. Allemande|5q38yWADuC4|Johann Sebastian Bach|András Schiff, piano
+Mass in B minor, BWV 232  -  10. Qui sedes ad dexteram Patris (aria)|Zq0WKqnMNco|Johann Sebastian Bach|The English Concert, Harry Bicket conductor
+Mass in B minor, BWV 232  -  9. Qui tollis peccata mundi (chorus)|jv7h4dTiIbc|Johann Sebastian Bach|The English Concert, Harry Bicket conductor
+Mass in B minor, BWV 232  -  8. Domine Deus (duet)|RVhcYcl3Mgw|Johann Sebastian Bach|The English Concert, Harry Bicket conductor
+Mass in B minor, BWV 232  -  7. Gratias agimus tibi (chorus)|--1g2ufDYjA|Johann Sebastian Bach|The English Concert, Harry Bicket conductor
+Mass in B minor, BWV 232  -  6. Laudamus te (aria)|crsdCuFM_yE|Johann Sebastian Bach|The English Concert, Harry Bicket conductor
+French Suite No.5 in G major, BWV 816 - 7. Gigue|2Ku0hE0Bloc|Johann Sebastian Bach|András Schiff, piano
+French Suite No.5 in G major, BWV 816 - 6. Loure|hyoe4lUgtpg|Johann Sebastian Bach|András Schiff, piano
+French Suite No.5 in G major, BWV 816 - 5. Bourree|Trlw-uXBB1o|Johann Sebastian Bach|András Schiff, piano
+French Suite No.5 in G major, BWV 816 - 4. Gavotte|VqmCRe-oB-w|Johann Sebastian Bach|András Schiff, piano
+French Suite No.5 in G major, BWV 816 - 3. Sarabande|NmaQKMjDdEk|Johann Sebastian Bach|András Schiff, piano
+Mass in B minor, BWV 232  -  5. Et in terra pax (chorus)|-rMJdCI_iPw|Johann Sebastian Bach|John Eliot Gardiner conducts English Baroque Soloists & Monteverdi Choir
+Mass in B minor, BWV 232  -  4. Gloria in excelsis (chorus)|cqxC8NvlVdY|Johann Sebastian Bach|John Eliot Gardiner conducts English Baroque Soloists & Monteverdi Choir
+French Suite No.5 in G major, BWV 816 - 2. Courante|ChAVDGG1DKU|Johann Sebastian Bach|András Schiff, piano
+French Suite No.5 in G major, BWV 816 - 1. Allemande|sWhGXtU-3Wo|Johann Sebastian Bach|András Schiff, piano
+Mass in B minor, BWV 232  -  3. Kyrie eleison (chorus)|oqe1_anuKHU|Johann Sebastian Bach|John Eliot Gardiner conducts English Baroque Soloists & Monteverdi Choir
+Mass in B minor, BWV 232  -  2. Christe eleison (aria)|5tEswu0c3ps|Johann Sebastian Bach|John Eliot Gardiner conducts English Baroque Soloists & Monteverdi Choir
+Mass in B minor, BWV 232  -  1. Kyrie eleison (chorus)|O158gelF3hY|Johann Sebastian Bach|John Eliot Gardiner conducts English Baroque Soloists & Monteverdi Choir
+Violin Partita No. 3 in E major, BWV 1006  -  6. Gigue|S_Fub2lejE4|Johann Sebastian Bach|Itzhak Perlman, violin
+Violin Partita No. 3 in E major, BWV 1006  -  5. Bourrée|sPEzqmrhrd0|Johann Sebastian Bach|Itzhak Perlman, violin
+Violin Partita No. 3 in E major, BWV 1006  -  4. Menuets (I and II)|t1kvaMBnCcI|Johann Sebastian Bach|Itzhak Perlman, violin
+Violin Partita No. 3 in E major, BWV 1006  -  3. Gavotte en Rondeau|8FaeJJGGuWc|Johann Sebastian Bach|Itzhak Perlman, violin
+Violin Partita No. 3 in E major, BWV 1006  -  2. Loure|rgd8hs9sAtI|Johann Sebastian Bach|Itzhak Perlman, violin
+Violin Partita No. 3 in E major, BWV 1006  -  1. Preludio|sw9yjonhXik|Johann Sebastian Bach|Itzhak Perlman, violin
+French Suite No.4 in E-flat major, BWV 815 - 7. Gigue|27E3xXpYyG4|Johann Sebastian Bach|András Schiff, piano
+Brandenburg Concerto No. 6,  BWV 1051  -  3. Allegro|UtNJXYijsQI|Johann Sebastian Bach|Münchener Bach-Orchester; Karl Richter, director & harpsichord
+Brandenburg Concerto No. 6,  BWV 1051  -  2. Adagio ma non tanto|n10RRvSC-Y0|Johann Sebastian Bach|Münchener Bach-Orchester; Karl Richter, director & harpsichord
+Brandenburg Concerto No. 6,  BWV 1051  -  1. Moderato|3BFvKUCVkqs|Johann Sebastian Bach|Münchener Bach-Orchester; Karl Richter, director & harpsichord
+French Suite No.4 in E-flat major, BWV 815 - 6. Menuet|oDd1KQCxHW8|Johann Sebastian Bach|András Schiff, piano
+French Suite No.4 in E-flat major, BWV 815 - 5. Air|4oHiPsnFL3g|Johann Sebastian Bach|András Schiff, piano
+French Suite No.4 in E-flat major, BWV 815 - 4. Gavotte|zxRkUgR6_wo|Johann Sebastian Bach|András Schiff, piano
+Motet: Komm, Jesu, komm, BWV 229  -  2. Aria|Y14W-a0Yke8|Johann Sebastian Bach|Vocalconsort Berlin, Daniel Reuss
+French Suite No.4 in E-flat major, BWV 815 - 3. Sarabande|dpI4U_Esukc|Johann Sebastian Bach|András Schiff, piano
+French Suite No.4 in E-flat major, BWV 815 - 2. Courante|r8B2u9gaLAA|Johann Sebastian Bach|András Schiff, piano
+Motet: Komm, Jesu, komm, BWV 229  -  1. Chorus|IAyQT9rOla8|Johann Sebastian Bach|Vocalconsort Berlin, Daniel Reuss
+French Suite No.4 in E-flat major, BWV 815 - 1. Allemande|exwLtWgjFUo|Johann Sebastian Bach|András Schiff, piano
+Brandenburg Concerto No. 5,  BWV 1050  -  3. Allegro|NO1YZTXqjZY|Johann Sebastian Bach|Münchener Bach-Orchester; Karl Richter, director & harpsichord
+Brandenburg Concerto No. 5,  BWV 1050  -  2. Affettuoso|6Rz0ajnjXMo|Johann Sebastian Bach|Münchener Bach-Orchester; Karl Richter, director & harpsichord
+Brandenburg Concerto No. 5,  BWV 1050  -  1. Allegro|JFNhpom6flw|Johann Sebastian Bach|Münchener Bach-Orchester; Karl Richter, director & harpsichord
+Sonata for violin and keyboard in E major, BWV 1016 - 4. Allegro|9pYsu6kjPHc|Johann Sebastian Bach|Frank Peter Zimmermann, violin; Enrico Pace, piano
+Motet: Jesu, meine Freude, BWV 227  -  10. Chorus, 11. Chorale (finale)|zPR3F2iTVBE|Johann Sebastian Bach|Vocalconsort Berlin, directed by Daniel Reuss
+Sonata for violin and keyboard in E major, BWV 1016 - 3. Adagio ma non tanto|GNuzx7aIUuo|Johann Sebastian Bach|Frank Peter Zimmermann, violin; Enrico Pace, piano
+Sonata for violin and keyboard in E major, BWV 1016 - 2. Allegro|PPahgs-soF8|Johann Sebastian Bach|Frank Peter Zimmermann, violin; Enrico Pace, piano
+Sonata for violin and keyboard in E major, BWV 1016 - 1. Adagio|VjP6GR6gbJo|Johann Sebastian Bach|Frank Peter Zimmermann, violin; Enrico Pace, piano
+Divertimento in D Major|1tpIFYWz9jI|Joseph Haydn|Mark Kosower, cello; Jee-Won Oh, piano
+Aspice Domine|MuykRiPPAdQ|William Byrd|Deller Consort, Mark Deller
+Symphony No. 2 in D minor  -  I. Allegretto|_BLL92WJrAs|Jean Sibelius|Georges Enescu Philharmonic, Bucharest; Mark Laycock, conductor
+Symphony No. 2 in D minor  -  II. Tempo andante, ma rubato|aQjw9KpjjHg|Jean Sibelius|Georges Enescu Philharmonic, Bucharest; Mark Laycock, conductor
+Symphony No. 2 in D minor  -  III. Vivacissimo and IV. Finale: Allegro moderato|UA_zdchmLFA|Jean Sibelius|Georges Enescu Philharmonic, Bucharest; Mark Laycock, conductor
+Symphonic Dances, Op.45  -  III. Lento assai—Allegro vivace (D major)|E_uGi4FSn6U|Sergei Rachmaninoff|Georges Enescu Philharmonic, Bucharest; Mark Laycock, conductor
+Symphonic Dances, Op.45  -  II. Andante con moto. Tempo di Valse (G minor)|Jz75Q18f8Gs|Sergei Rachmaninoff|Georges Enescu Philharmonic, Bucharest; Mark Laycock, conductor
+Die Zauberflöte (The Magic Flute), K.620  -  Overture|RIRDAfN7EOg|Wolfgang Amadeus Mozart|Georges Enescu Philharmonic, Bucharest; Mark Laycock, conductor
+Leonora Overture No.3, Op.72b|9NRj5x3tnTU|Ludwig Van Beethoven|Studio Orchester, Universität der Künste Berlin
+Der Rosenkavalier Suite|AahVLa0o4n0|Richard Strauss|Georges Enescu Philharmonic, Mark Laycock conductor
+Symphony No.9 "The Great", D.944  -  Ia. Andante – Allegro, ma non troppo|xMCELRY9asw|Franz Schubert|Wiener KammerOrchester, Mark Laycock
+Symphony No. 9 "The Great", D.944  -  Ib. Più moto|mJ2UdiSo_XU|Franz Schubert|Wiener KammerOrchester, Mark Laycock
+Symphony No. 9 "The Great", D.944  -  IIa. Andante con moto|nrj5CZspXl4|Franz Schubert|Wiener KammerOrchester, Mark Laycock
+Symphony No. 9 "The Great", D.944  -  IIb. Andante con moto|6llbBiOVgpU|Franz Schubert|Wiener KammerOrchester, Mark Laycock
+Symphony No. 9 "The Great", D.944  -  III. Scherzo. Allegro vivace – Trio|U63k-_awnNM|Franz Schubert|Wiener KammerOrchester, Mark Laycock
+Symphony No. 9 "The Great", D.944  -  IVa. Allegro vivace – Trio|VIu1Vr9fMPU|Franz Schubert|Wiener KammerOrchester, Mark Laycock
+Symphony No. 9 "The Great", D.944  -  IVb. Allegro vivace – Trio|-1JQ0SJeqEY|Franz Schubert|Wiener KammerOrchester, Mark Laycock
+Symphony No. 3 "Eroica", Op.55  -  1a. Allegro con brio (E♭ major)|-L6E7b7-zrQg|Ludwig Van Beethoven|Wiener KammerOrchester, Mark Laycock
+Symphony No. 3 "Eroica", Op.55  -  1b. Allegro con brio (E♭ major)|oELDJpMtlaI|Ludwig Van Beethoven|Wiener KammerOrchester, Mark Laycock
+Symphony No. 3 "Eroica", Op.55  -  2a. Marcia funebre. Adagio assai (C minor)|6c1yrimTsnA|Ludwig Van Beethoven|Wiener KammerOrchester, Mark Laycock
+Symphony No. 3 "Eroica", Op.55  -  2b. Marcia funebre. Adagio assai (C minor)|kfSrzGcCbGk|Ludwig Van Beethoven|Wiener KammerOrchester, Mark Laycock
+Symphony No. 3 "Eroica", Op.55  -  3. Scherzo. Allegro vivace - Trio (E♭ major)|VCNrTsFM9ts|Ludwig Van Beethoven|Wiener KammerOrchester, Mark Laycock
+Symphony No. 3 "Eroica", Op.55  -  4a. Finale. Allegro molto (E♭ major)|CPdREfatz9c|Ludwig Van Beethoven|Wiener KammerOrchester, Mark Laycock
+Symphony No. 3 "Eroica", Op.55  -  4b. Finale. Allegro molto (E♭ major)|iOqrRyr-TgU|Ludwig Van Beethoven|Wiener KammerOrchester, Mark Laycock
+Blue Danube Waltz|Cz5X3X4oc6A|Johann Strauss Jr.|Wiener KammerOrchester, Mark Laycock
+Overture in B flat for orchestra, D.470|Q3daQ_k_R7Q|Franz Schubert|Bayerische Kammerphilharmonie; Mark Laycock, Conducting
+Symphony No. 41 "Jupiter"  -  IV. Molto Allegro|ZqoTtxxIJEI|Wolfgang Amadeus Mozart|Bayerische Kammerphilharmonie; Mark Laycock, Conducting
+Manon Lescaut, SC 64  -  Intermezzo from Act III|ug5hMXF3ESY|Giacomo Puccini|Princeton Symphony Orchestra; Mark Laycock
+Turandot, SC 91  -  Perche tarda la luna? "Gira la cote! Gira!"|ADcnwYxbf6Y|Giacomo Puccini|Princeton Symphony Orchestra; Mark Laycock
+Clarinet Concerto in A major, K.622  -  III. Rondo. Allegro|0XS8Kd92dOQ|Wolfgang Amadeus Mozart|The Amsterdam Sinfonietta, Martin Frost, clarinet
+Clarinet Concerto in A major, K.622  -  I. Allegro|4Al3AuLzDCk|Wolfgang Amadeus Mozart|The Amsterdam Sinfonietta, Martin Frost, clarinet
+Piano Concerto No.9 in E-flat major, K.271  -  II. Andantino|8GETdQW-HlE|Wolfgang Amadeus Mozart|Scottish Chamber Orchestra, Sir Charles Mackerras; Piano, Alfred Brendel
+Piano Concerto No.9 in E-flat major, K.271  -  III. Rondeau. Presto|7YbeDxEHsbE|Wolfgang Amadeus Mozart|Scottish Chamber Orchestra, Sir Charles Mackerras; Piano, Alfred Brendel
+Piano Concerto No.9 in E-flat major, K.271  -  I. Allegro|Ir4Ziem4Ppk|Wolfgang Amadeus Mozart|Scottish Chamber Orchestra, Sir Charles Mackerras; Piano, Alfred Brendel
+Symphony No.36 in C major "Linz", K.425  -  I. Adagio - Allegro spiritoso|sf9Khys1f-w|Wolfgang Amadeus Mozart|Scottish Chamber Orchestra, Sir Charles Mackerras
+Symphony No.31 in D major "Paris", K.297/300a  -  I. Allegro assai|7zIp9EvjqeY|Wolfgang Amadeus Mozart|Scottish Chamber Orchestra, Sir Charles Mackerras
+Symphony No.31 in D major "Paris", K.297/300a  -  II. Andante|dXI6IukTdGE|Wolfgang Amadeus Mozart|Scottish Chamber Orchestra, Sir Charles Mackerras
+Symphony No.31 in D major "Paris", K.297/300a  -  III. Allegro|tAYRY6weijA|Wolfgang Amadeus Mozart|Scottish Chamber Orchestra, Sir Charles Mackerras
+Symphony No.32 in G major, K.318|d1DneNkR1F0|Wolfgang Amadeus Mozart|Scottish Chamber Orchestra, Sir Charles Mackerras
+Symphony No.41 in C major "Jupiter", K.551  -  II. Andante cantabile|VXBaD2a7K6c|Wolfgang Amadeus Mozart|Scottish Chamber Orchestra, Sir Charles Mackerras
+Symphony No.41 in C major "Jupiter", K.551  -  IV. Molto Allegro|prvBEXbnDR0|Wolfgang Amadeus Mozart|Scottish Chamber Orchestra, Sir Charles Mackerras
+Symphony No.41 in C major "Jupiter", K.551  -  III. Menuetto: Allegretto|ZR7xDdg9tMU|Wolfgang Amadeus Mozart|Scottish Chamber Orchestra, Sir Charles Mackerras
+Symphony No.41 in C major "Jupiter", K.551  -  I. Allegro vivace|aJyrRuvo2sg|Wolfgang Amadeus Mozart|Scottish Chamber Orchestra, Sir Charles Mackerras
+Symphony No.35 in D major "Haffner", K.385  -  III. Menuetto|--6Y9sNOgMI|Wolfgang Amadeus Mozart|Scottish Chamber Orchestra, Sir Charles Mackerras
+Symphony No.35 in D major "Haffner", K.385  -  II. Andante|hA89mE11k7c|Wolfgang Amadeus Mozart|Scottish Chamber Orchestra, Sir Charles Mackerras
+Symphony No.35 in D major "Haffner", K.385  -  IV. Presto|SIQW-Askot8|Wolfgang Amadeus Mozart|Scottish Chamber Orchestra, Sir Charles Mackerras
+Symphony No.35 in D major "Haffner", K.385  -  I. Allegro con spirito|Ol3Lb5qYUNI|Wolfgang Amadeus Mozart|Scottish Chamber Orchestra, Sir Charles Mackerras
+Appalachian Spring Orchestral Suite|_KMUKfj_wX8|Aaron Copland|The Carter Chamber Orchestra; Ezequiel Silberstein, Conductor
+Violin Concerto No.5 in A major "Turkish Concerto", K.219  -  I. Allegro aperto|IkGPngX_k30|Wolfgang Amadeus Mozart|Orquesta Filarmónica de Buenos Aires; Soloist: Eduardo Ludueña; Guest Conductor: Ezequiel Silberstein
+Violin Concerto No.5 in A major "Turkish Concerto", K.219  -  II. Adagio|2R3PSHBLyFs|Wolfgang Amadeus Mozart|Orquesta Filarmónica de Buenos Aires; Soloist: Eduardo Ludueña; Guest Conductor: Ezequiel Silberstein
+Violin Concerto No.5 in A major "Turkish Concerto", K.219  -  III. Rondeau: Tempo di Menuetto|gkzqBmDvlnE|Wolfgang Amadeus Mozart|Orquesta Filarmónica de Buenos Aires; Soloist: Eduardo Ludueña; Guest Conductor: Ezequiel Silberstein
+Hungarian Rhapsody No. 2 (Arr. Müller Berghaus)|UvALhyJTdu4|Franz Liszt|Orquesta Filarmónica de Buenos Aires; Guest Conductor: Ezequiel Silberstein
+Viola Concerto|9BnqKyDjVl0|Béla Bartók|Orquesta Académica del Instituto Superior de Arte del Teatro Colón; Soloist: Adrian Felizia; Guest Conductor: Ezequiel Silberstein
+Slavonic Dances, Op.46  -  5-8|tUZ8UduAwNc|Antonin Dvorak|Orquesta Filarmónica de Buenos Aires; Guest Conductor: Ezequiel Silberstein
+The Bartered Bride, JB 1:100  -  Overture|nevOAEZS0TE|Bedrich Smetana|Orquesta Filarmónica de Buenos Aires; Guest Conductor: Ezequiel Silberstein
+Daphnis et Chloé Suite No.2  -  Lever de Jour - Pantomime (excerpts) - Danse Générale|KGC7EtCvQjo|Maurice Ravel|BMSM Symphony Orchestra; Ezequiel Silberstein, Conductor
+Symphony No. 7, Op.92  -  1. Poco sostenuto - Vivace (A major)|bz3fIVCx7LI|Ludwig Van Beethoven|National University of Tucumán Symphony Orchestra; Ezequiel Silberstein, Conductor
+Symphony No. 7, Op.92  -  2. Allegretto (A minor)|4SJQXu1mxEY|Ludwig Van Beethoven|National University of Tucumán Symphony Orchestra; Ezequiel Silberstein, Conductor
+Symphony No. 7, Op.92  -  3. Presto (F major)|5HpF-EWuidU|Ludwig Van Beethoven|National University of Tucumán Symphony Orchestra; Ezequiel Silberstein, Conductor
+Symphony No. 7, Op.92  -  4. Allegro con brio (A major)|1dN7Q78qEfQ|Ludwig Van Beethoven|National University of Tucumán Symphony Orchestra; Ezequiel Silberstein, Conductor
+Erlkönig, D.328|JS91p-vmSf0|Franz Schubert|Daniel Norman - Tenor; Sholto Kynoch - Piano; Jeremy Bidgood - Director & designer
+Concerto for Cello and Orchestra in B Minor, Op. 104  -  1. Allegro (B minor)|W26tu26Zlyo|Antonin Dvorak|The Philadelphia Orchestra, Eugene Ormandy; Cello: Leonard Rose
+Concerto for Cello and Orchestra in B Minor, Op. 104  -  3. Finale. Allegro moderato (B minor)|6zKZvsGaJhk|Antonin Dvorak|The Philadelphia Orchestra, Eugene Ormandy; Cello: Leonard Rose
+Concerto for Cello and Orchestra in B Minor, Op. 104  -  2. Adagio ma non troppo (G major)|DGSwxQoXeC0|Antonin Dvorak|The Philadelphia Orchestra, Eugene Ormandy; Cello: Leonard Rose
+Pines of Rome  -  1. The Pines of Villa Borghese|iP6evgz-AMg|Ottorino Respighi|The Philadelphia Orchestra, Eugene Ormandy
+Pines of Rome  -  2. Pines near a Catacomb|OjkFB0ZolAA|Ottorino Respighi|The Philadelphia Orchestra, Eugene Ormandy
+Symphony No.2, Op.27  -  II. Allegro molto|R8gmHskzKoo|Sergei Rachmaninoff|The Philadelphia Orchestra, Eugene Ormandy
+Piano Concerto No.3, Op.37  -  1. Allegro con brio|x0vmGAFTzg8|Ludwig Van Beethoven|The Philadelphia Orchestra, Eugene Ormandy
+Piano Concerto No.3, Op.37  -  2. Largo|qX1MDLNZICE|Ludwig Van Beethoven|The Philadelphia Orchestra, Eugene Ormandy
+Piano Concerto No.3, Op.37  -  3. Rondo. Allegro – Presto|Hd7ltbMULwI|Ludwig Van Beethoven|The Philadelphia Orchestra, Eugene Ormandy
+Piano Concerto No.27 in B-flat major, K.595  -  II. Larghetto|Znz3biZCZow|Wolfgang Amadeus Mozart|The Philadelphia Orchestra, Eugene Ormandy; Piano: Rudolf Serkin
+Piano Concerto No.27 in B-flat major, K.595  -  I. Allegro|Znz3biZCZow|Wolfgang Amadeus Mozart|The Philadelphia Orchestra, Eugene Ormandy; Piano: Rudolf Serkin
+Horn Concerto No. 1 in D major, K.412/386b  -  II. Rondo. Allegro (K.514)|jaWAJV7jJME|Wolfgang Amadeus Mozart|The Philadelphia Orchestra, Eugene Ormandy; Horn: Mason Jones
+Horn Concerto No. 3 in E-flat major, K.447  -  II. Romance. Larghetto|bMUl8cH5__A|Wolfgang Amadeus Mozart|The Philadelphia Orchestra, Eugene Ormandy; Horn: Mason Jones
+Horn Concerto No. 4 in E-flat major, K.495  -  I. Allegro maestoso|z27p9nM42bs|Wolfgang Amadeus Mozart|The Philadelphia Orchestra, Eugene Ormandy; Horn: Mason Jones
+Clarinet Concerto in A major, K.622  -  II. Adagio|dVgP2hkeNUw|Wolfgang Amadeus Mozart|The Philadelphia Orchestra, Eugene Ormandy; Clarinet: Anthony Gigliotti

@@ -1,6 +1,32 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<h3>Popular Surveys</h3>
+
+<div class="row">
+  {% for survey, i in popular_surveys %}
+    <div class="col-xs-6 col-md-3">
+      
+      <a href="survey/{{ survey.survey_id }}" class="thumbnail">
+        <img src="https://loremflickr.com/242/200" alt="{{ survey.music.name }}">
+        <div class="caption">
+        <h5>{{ survey.music.composer.name }}: {{ survey.music.name }}</h5>
+        
+      </div>
+      </a>
+    </div>
+  {% endfor %}
+</div>
+
+
+
+
+<h3>Survey Index</h3>
+{% if 'teacher_id' in session %}
+  <a href="/add-survey">Add a Survey</a>
+{% endif %}
+
+<div>
 <select id="searchType">
   <option value="composer" selected>Composer</option>
   <option value="Name">Piece Name</option>
@@ -10,19 +36,22 @@
 
 <table id="myTable">
   <tr class="header">
-    <th style="width:60%;">Composer</th>
+    <th style="width:20%;">Composer</th>
     <th style="width:40%;">Name</th>
+    <th style="width:40%;">Ensemble</th>
   </tr>
 
   {% for survey in my_surveys %}
     <tr>
-      <td>{{ survey.music.composer.name }}</td>
+      <td><a href="/composer/{{ survey.music.composer.name }}">{{ survey.music.composer.name }}</a></td>
       <td><a href="/survey/{{ survey.survey_id }}">{{ survey.music.name }}</a></td>
+      <td>{{ survey.music.ensemble }}</td>
     </tr>
 
   {% endfor %}
 
 </table>
+</div>
 
 <script>
 function myFunction() {

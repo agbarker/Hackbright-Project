@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="well spaced" style="width:40%;">
+<h1>Add Student to Group</h1>
+
+
+
+<form action="/add-survey" method="POST">
+
+  <div class="form-group">
+    <label>
+        Select Composer
+        <select name="composer">
+          {% for composer in composers %}
+          <option value="{{ composer.name }}">{{ composer.name }}</option>
+          {% endfor %}
+        </select>
+    </label>
+  </div>
+
+<div class="form-group">
+    <label>
+        Piece Name
+        <input type="text" name="music" class="form-control">
+    </label>
+  </div>
+
+
+  <div class="form-group">
+    <label>
+        Youtube Link
+        <input type="text" name="youtube" class="form-control">
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label>
+        Ensemble
+        <input type="text" name="ensemble" class="form-control">
+    </label>
+  </div>
+
+    
+
+
+
+
+  <div class="form-group">
+    <input type="submit" value="Add Survey" class="btn btn-danger">
+  </div>
+
+</form>
+</div>
+{% endblock %}

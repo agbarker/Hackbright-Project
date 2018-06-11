@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="well spaced" style="width:40%;">
+<h1>Assign Survey to Group</h1>
+
+
+
+<form autocomplete="off" action="/group-assign" method="POST">
+
+
+
+  <div class="form-group">
+    <label>
+        Select Group
+        <select name="group_id">
+          {% for group in groups %}
+          <option value="{{ group.group_id }}">{{ group.classroom.name }}: {{ group.name }}</option>
+          {% endfor %}
+        </select>
+    </label>
+  </div>
+
+
+  
+
+  <div class="form-group">
+    <label>
+      Select Survey
+      <select name="survey_id">
+      {% for survey in surveys %}
+        <option value="{{ survey.survey_id }}">{{ survey.music.composer.name }}: {{ survey.music.name }}</option>
+      {% endfor %}
+    </select>
+    </label>
+
+  </div>
+
+
+
+  
+
+  <div class="form-group">
+    <input type="submit" value="Assign to Group" class="btn btn-danger">
+  </div>
+
+</form>
+
+
+</div>
+{% endblock %}

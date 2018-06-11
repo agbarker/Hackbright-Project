@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<br>
+<div class="well spaced offset-1" style="width:97%">
+  <h2>{{ composer.name }} ({{ composer.country }})</h2>
+
+  <div id="photo">
+
+</div>
+
+  <h3>Periods</h3>
+
+  {% for period in composer_periods %}
+  	{{ period.period.name }} <br>
+
+  {% endfor %}
+  <h3>Country</h3>
+  {{ composer.country }}
+
+  <h3>Available Pieces</h3>
+  {% for survey in surveys %}
+    <a href="/survey/{{ survey.survey_id }}">{{ survey.music.name }}</a><br>
+  {% endfor %}
+
+</div>
+<div class="row">
+  <div class="col offset-1">
+<h3>Biography</h3>
+  </div>
+
+</div>
+<div class="row">
+<div class="col offset-1">
+<div id="article">
+
+</div>
+</div>
+</div>
+
+<script>
+$(document).ready(function(){
+ 
+    $.ajax({
+        type: "GET",
+        url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page={{ composer.name }}&redirects&callback=?",
+        contentType: "application/json; charset=utf-8",
+        async: false,
+        dataType: "json",
+        success: function (data, textStatus, jqXHR) {
+ 
+            var markup = data.parse.text["*"];
+            var blurb = $('<div></div>').html(markup);
+ 
+            // remove links as they will not work
+            blurb.find('a').each(function() { $(this).replaceWith($(this).html()); });
+ 
+            // remove any references
+            blurb.find('sup').remove();
+ 
+            // remove cite error
+            blurb.find('.mw-ext-cite-error').remove();
+            $('#article').html($(blurb).find('p'));
+ 
+        },
+        error: function (errorMessage) {
+        }
+    });
+});
+
+
+// $(document).ready(function(){
+ 
+//     $.ajax({
+//         type: "GET",
+//         url: "http://en.wikipedia.org/w/api.php?action=query&titles={{ composer.name }}&prop=pageimages&format=json&pithumbsize=100",
+//         contentType: "application/json; charset=utf-8",
+//         async: false,
+//         dataType: "json",
+//         success: function (data, textStatus, jqXHR) {
+ 
+//             // console.log(data)
+//             // $('#photo').src(data);
+ 
+//         },
+//         error: function (errorMessage) {
+//         }
+//     });
+// });
+
+
+</script>
+
+
+{% endblock %}
+

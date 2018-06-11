@@ -20,7 +20,7 @@ import random
 UPLOAD_FOLDER = 'user_uploads'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
-from model import connect_to_db, db, Teacher, Classroom, Student, Group, StudentGroup, Music, ListeningSurvey, GroupSurvey, ClassroomSurvey, StudentSurvey, Instrument, InstrumentType, ClassroomInstrumentType
+from model import connect_to_db, db, Teacher, Classroom, Student, Group, StudentGroup, Music, ListeningSurvey, GroupSurvey, ClassroomSurvey, StudentSurvey, Instrument, InstrumentType, ClassroomInstrumentType, Composer, Period, ComposerPeriod
 
 
 app = Flask(__name__)
@@ -134,9 +134,10 @@ def create_class_process():
     registration_code = request.form["registration_code"]
     name = request.form["name"]
     type_class = request.form["type_class"]
+    survey = request.form["survey"]
 
     #Create classroom object
-    new_class = Classroom(teacher_id=teacher_id, registration_code=registration_code, name=name, type_class=type_class)
+    new_class = Classroom(teacher_id=teacher_id, registration_code=registration_code, name=name, type_class=type_class, survey_goal=survey)
 
     #Add classroom to session
     db.session.add(new_class)
@@ -259,9 +260,41 @@ def student_detail(student_id):
 
         if student in students_by_teacher_list:
             instruments = Instrument.query.filter_by(student_id=student_id).all()
-            surveys = StudentSurvey.query.filter_by(student_id=student_id).all()
+            completed_surveys = StudentSurvey.query.filter_by(student_id=student_id).all()
+            percent = 100 * (float(student.get_number_of_completed_surveys())/student.classroom.survey_goal)
+            studentgroups = StudentGroup.query.filter_by(student_id=student_id).all()
+            groups = []
+            groupsurveys = []
 
-            return render_template("student_profile.html", student=student, instruments=instruments, surveys=surveys)
+            survey_check = []
+            for survey in completed_surveys:
+                survey_check.append(survey.survey)
+            
+            class_surveys = []
+            class_surveys_all = ClassroomSurvey.query.filter_by(class_id=student.class_id).all()
+            class_surveys.extend(class_surveys_all)
+
+
+            for class_survey in class_surveys:
+                if class_survey.survey in survey_check:
+                    class_surveys.remove(class_survey)
+
+
+            for group in studentgroups:
+                groups.append(group.group)
+
+                this_groupsurveys = GroupSurvey.query.filter_by(group_id=group.group_id).all()
+
+                groupsurveys.extend(this_groupsurveys)
+
+
+
+            for groupsurvey in groupsurveys:
+                if groupsurvey.survey in survey_check:
+                    groupsurveys.remove(groupsurvey)
+
+
+            return render_template("student_profile.html", student=student, instruments=instruments, surveys=completed_surveys, percent=percent, groups=groups, groupsurveys=groupsurveys, classsurveys=class_surveys)
         else:
             flash("not your student")
             return redirect("/")
@@ -271,9 +304,41 @@ def student_detail(student_id):
         #check if student is logged in and is that student.
         if "student_id" in session and student_id == session["student_id"]:
             instruments = Instrument.query.filter_by(student_id=student_id).all()
-            surveys = StudentSurvey.query.filter_by(student_id=student_id).all()
+            completed_surveys = StudentSurvey.query.filter_by(student_id=student_id).all()
+            percent = 100 * (float(student.get_number_of_completed_surveys())/student.classroom.survey_goal)
+            studentgroups = StudentGroup.query.filter_by(student_id=student_id).all()
+            groups = []
+            groupsurveys = []
 
-            return render_template("student_profile.html", student=student, instruments=instruments, surveys=surveys)
+            survey_check = []
+            for survey in completed_surveys:
+                survey_check.append(survey.survey)
+            
+            class_surveys = []
+            class_surveys_all = ClassroomSurvey.query.filter_by(class_id=student.class_id).all()
+            class_surveys.extend(class_surveys_all)
+
+
+            for class_survey in class_surveys:
+                if class_survey.survey in survey_check:
+                    class_surveys.remove(class_survey)
+
+
+            for group in studentgroups:
+                groups.append(group.group)
+
+                this_groupsurveys = GroupSurvey.query.filter_by(group_id=group.group_id).all()
+
+                groupsurveys.extend(this_groupsurveys)
+
+
+
+            for groupsurvey in groupsurveys:
+                if groupsurvey.survey in survey_check:
+                    groupsurveys.remove(groupsurvey)
+
+
+            return render_template("student_profile.html", student=student, instruments=instruments, surveys=completed_surveys, percent=percent, groups=groups, groupsurveys=groupsurveys, classsurveys=class_surveys)
 
     else:
         flash("You must be logged in to access")
@@ -357,7 +422,29 @@ def classroom_profile_page(class_id):
     for item in classroominstrumenttype:
         instruments.append(item.instrument)
 
-    return render_template("class_profile.html", classroom=classroom, students=students, instruments=instruments)
+
+
+    #get students in class
+
+    names_list = []
+    survey_numbers = []
+    for classmate in students:
+        full_name = str(classmate.fname) + " " + str(classmate.lname)
+        names_list.append(full_name)
+        survey_numbers.append(str(classmate.get_number_of_completed_surveys()))
+
+    surveys = []
+    for student in students:
+
+        their_surveys = student.get_completed_surveys()
+        surveys.extend(their_surveys)
+
+    class_surveys = ClassroomSurvey.query.filter_by(class_id=class_id).all()
+
+
+    return render_template("class_profile.html", classroom=classroom, students=students, instruments=instruments, names_list=names_list, survey_numbers=survey_numbers, surveys=class_surveys)
+
+
 
 
 @app.route("/teacher-add-student/<int:class_id>", methods=['GET'])
@@ -567,6 +654,7 @@ def display_add_instrument_to_inventory():
 
 @app.route("/add-instrument-to-inventory", methods=['POST'])
 def add_instrument_to_inventory():
+    """Adds instrument to inventory."""
 
     serial_number = request.form["serial_number"]
     instrument_name = request.form["instrument_type"]
@@ -589,7 +677,11 @@ def add_instrument_to_inventory():
 def create_group_form():
     """Displays create group form"""
 
-    return render_template("create_group_form.html")
+    
+
+    all_classes = Classroom.query.filter_by(teacher_id=session["teacher_id"]).all()
+
+    return render_template("create_group_form.html", classrooms=all_classes)
 
 
 @app.route("/create-group", methods=['POST'])
@@ -609,7 +701,7 @@ def create_group_process():
 
     #flash confirmation and redirect to add another group
     flash("New Group successfully created.")
-    return redirect("/create-group")
+    return redirect("/groups")
 
 
 @app.route("/add-student-to-group", methods=['GET'])
@@ -625,17 +717,15 @@ def add_student_to_group_form():
 
 
 @app.route("/add-student-to-group", methods=['POST'])
-def add_student_to_group():
+def add_student_to_group_process():
     """Adds student to group."""
 
-
-
-
     #get form variables
-    student_id = int(request.form["student"])
+    students = request.form.getlist("student")
     group_id = int(request.form["group"])
 
-    add_student_to_group(student_id, group_id)
+    for student in students:
+        add_student_to_group(student, group_id)
 
     flash("Student successfully added!")
     return redirect("/add-student-to-group")
@@ -643,18 +733,22 @@ def add_student_to_group():
 
 @app.route("/resources")
 def display_resources():
+    """Displays resources."""
 
     return render_template("resources.html")
 
 
 @app.route('/upload-resource', methods=['GET'])
 def upload_file_form():
+    """Upload resources page."""
 
     return render_template("upload_resources.html")
 
 
 @app.route('/upload-resource', methods=['GET', 'POST'])
 def upload_file():
+    """Uploads file to system."""
+
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
@@ -675,6 +769,8 @@ def upload_file():
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
+    """Displays upload at url."""
+
     return send_from_directory(app.config['UPLOAD_FOLDER'],
                                filename)
 
@@ -685,7 +781,11 @@ def display_all_surveys():
 
     my_surveys = ListeningSurvey.query.all()
 
-    return render_template("view_surveys_table.html", my_surveys=my_surveys)
+    my_surveys.sort(key=lambda x: x.music.name)
+
+    my_popular_surveys = popular_surveys()
+
+    return render_template("view_surveys_table.html", my_surveys=my_surveys, popular_surveys=my_popular_surveys)
 
 
 
@@ -693,33 +793,45 @@ def display_all_surveys():
 @app.route('/survey/<survey_id>', methods=['GET'])
 def display_survey(survey_id):
     """Displays individual survey."""
+    survey = ListeningSurvey.query.get(survey_id)
 
-    music_id = ListeningSurvey.query.get(survey_id).music_id
+    music_id = survey.music_id
 
-    music_src = Music.query.get(music_id).mp3_src
+    music = Music.query.get(music_id)
+    music_name = music.name
+    
 
 
-    return render_template("survey.html", music_src=music_src, survey_id=survey_id)
+    return render_template("survey.html", survey_id=survey_id, music=music)
 
 
 @app.route('/survey/<survey_id>', methods=['POST'])
 def complete_survey(survey_id):
     """Changes student id in student surveys to marked completed."""
 
-    student_comment = request.form['student_comment']
-    student_id = session['student_id']
+    
+    if "student_id" in session:
+        student_comment = request.form['student_comment']
+        student_id = session['student_id']
 
-    current_survey = StudentSurvey.query.filter_by(student_id=student_id).filter_by(survey_id=survey_id).first()
+        current_survey = StudentSurvey.query.filter_by(student_id=student_id).filter_by(survey_id=survey_id).first()
 
-    if not current_survey:
-        create_student_survey(student_id, survey_id, student_comment)
+        if not current_survey:
+            create_student_survey(student_id, survey_id, student_comment)
 
-        flash("Assignment completed!")
+            flash("Assignment completed!")
+            return redirect("/survey")
+
+        else:
+            flash("You've already completed this assignment!")
+            return redirect("/survey")
+    elif "teacher_id" in session:
+        flash("You are a teacher.")
         return redirect("/survey")
-
     else:
-        flash("You've already completed this assignment!")
-        return redirect("/survey")
+        flash("You are not logged in.")
+        return redirect("/")
+
 
 @app.route('/my-classmates')
 def show_classmates():
@@ -750,12 +862,14 @@ def show_classmates():
 
 @app.route('/composer-timeline')
 def composer_life():
+    """Displays D3 of composer timeline."""
 
     return render_template('composer_life.html')
 
 
 @app.route('/groups')
 def display_groups():
+    """Displays all groups belonging to a teacher."""
 
 
     teacher = Teacher.query.get(session["teacher_id"])
@@ -767,6 +881,7 @@ def display_groups():
 
 @app.route("/groups/<group_id>")
 def group_profile(group_id):
+    """Displays group profile page."""
 
     group = Group.query.get(group_id)
 
@@ -778,24 +893,126 @@ def group_profile(group_id):
         student = studentgroup.student
         students.append(student)
 
-    return render_template("group_profile.html", group=group, students=students)
+    groupsurveys = GroupSurvey.query.filter_by(group_id=group_id).all()
+
+    return render_template("group_profile.html", group=group, students=students, surveys=groupsurveys)
 
 
-@app.route("/test-score")
-def test_score():
+@app.route("/groups/<group_id>/edit-message", methods=['GET'])
+def group_message_form(group_id):
 
-    return render_template("test_render_xml_page.html")
+    group = Group.query.get(group_id)
+    # session["group_id"] = group.group_id
+
+    return render_template("group_message_form.html", group=group)
 
 
+@app.route("/groups/<group_id>/edit-message", methods=['POST'])
+def group_message(group_id):
 
-@app.route("/tuner")
-def tuner():
+    print group_id
+    # group_id = session["group_id"]
+    group = Group.query.get(group_id)
 
-    return render_template("tuner.html")
+    group.teacher_message = request.form.get("teacher_message")
+    db.session.commit()
+
+    return redirect("/groups/"+ str(group.group_id))
+
+
+@app.route("/group-assign", methods=['GET'])
+def assign_group_form():
+
+    teacher = Teacher.query.get(session["teacher_id"])
+    groups = teacher.get_groups_by_teacher()
+
+    all_surveys = ListeningSurvey.query.all()
+
+
+    return render_template("assign_group_survey_form.html", groups=groups, surveys=all_surveys)
+
+
+@app.route("/group-assign", methods=['POST'])
+def assign_group():
+
+    group_id = request.form.get("group_id")
+    survey_id = request.form.get("survey_id")
+
+    new_group_survey = GroupSurvey(group_id=group_id, survey_id=survey_id)
+    db.session.add(new_group_survey)
+    db.session.commit()
+
+    flash("Assignment added.")
+
+    return redirect("/groups")
+
+
+@app.route("/class-assign", methods=['GET'])
+def assign_class_form():
+    """Displays assign survey to class form."""
+
+    classrooms = Classroom.query.filter_by(teacher_id=session["teacher_id"])
+
+    all_surveys = ListeningSurvey.query.all()
+
+
+    return render_template("assign_class_survey_form.html", classrooms=classrooms, surveys=all_surveys)
+
+
+@app.route("/class-assign", methods=['POST'])
+def assign_class():
+    """Creates class survey relationship."""
+
+    class_id = request.form.get("class_id")
+    survey_id = request.form.get("survey_id")
+
+    new_class_survey = ClassroomSurvey(class_id=class_id, survey_id=survey_id)
+    db.session.add(new_class_survey)
+    db.session.commit()
+
+    flash("Assignment added.")
+
+    return redirect("/classes")
+
+
+@app.route("/add-survey", methods=['GET'])
+def add_survey_form():
+    """Displays survey form."""
+
+    composers = Composer.query.all()
+    composers.sort(key=lambda x: x.name)
+
+    return render_template("add_survey.html", composers=composers)
+
+
+@app.route("/add-survey", methods=['POST'])
+def add_survey():
+    """Adds survey to db."""
+
+    composer = request.form.get('composer')
+    music_name = request.form.get('music')
+    youtube = request.form.get('youtube')
+    ensemble = request.form.get('ensemble')
+
+    youtube_id_a = youtube.split("/")[3]
+    youtube_id_b = youtube_id_a.split("=")[1]
+
+    new_music = Music(name=music_name, youtube_id=youtube_id_b, composer_id=composer, ensemble=ensemble)
+    db.session.add(new_music)
+
+    music_object = Music.query.filter_by(name=music_name).one()
+    new_survey = ListeningSurvey(music_id=music_object.music_id)
+    db.session.add(new_survey)
+    db.session.commit()
+
+    flash("Music successfully added")
+    return redirect("/add-survey")
+
 
 
 @app.route("/learn-about")
 def learn_about():
+    """Holder for all my cool things."""
 
     return render_template("learn_about.html")
 
@@ -822,8 +1039,84 @@ def color_scale():
     return render_template("color_test.html")
 
 
+@app.route("/pitch-detector")
+def test_pitch_detector():
+
+    return render_template("pitch_reader.html")
+
+
+@app.route("/sight-reading")
+def sight_reading():
+    """Javascript sight reading game."""
+
+    return render_template("sight_reading.html")
+
+
+@app.route("/composer")
+def display_all_composers():
+    """Index of composers.  Debating necessity of this."""
+
+    all_composers = Composer.query.all()
+
+    all_composers.sort(key=lambda composer: composer.name)
+
+    return render_template("view_composers.html", composers=all_composers)
+
+
+
+@app.route("/composer/<name>")
+def composer_profile(name):
+    """Composer profile page."""
+
+    composer = Composer.query.get(name)
+
+    composer_periods = ComposerPeriod.query.filter_by(composer_id=name)
+
+    all_surveys = ListeningSurvey.query.all()
+    surveys = []
+
+    for survey in all_surveys:
+        if survey.music.composer.name == name:
+            surveys.append(survey)
+
+    surveys.sort(key=lambda x: x.music.name)
+
+    return render_template("composer_profile.html", composer=composer, composer_periods=composer_periods, surveys=surveys)
+
+
+
+@app.route("/period")
+def view_periods():
+
+    periods = Period.query.all()
+
+    return render_template("view_periods.html", periods=periods)
+
+
+
 #####################################################################
 # Helper functions
+
+def popular_surveys():
+    """Generates list of popular surveys"""
+
+    from collections import Counter
+
+    all_student_surveys = StudentSurvey.query.all()
+
+    completed_surveys = []
+
+    for student_survey in all_student_surveys:
+        if student_survey.completed_at != None:
+            completed_surveys.append(student_survey.survey)
+
+    data = Counter(completed_surveys)
+
+    return data.most_common(4)
+
+
+
+
 
 def random_note_generator():
     """Generates random note from list, formatted for Vexflow."""
@@ -869,10 +1162,10 @@ def auto_create_by_instrument_family(class_id, family):
     # new_group = Group.query.filter_by(class_id=class_id).filter_by(name=family).one()
 
     # if new_group is []:
-    #     new_group = Group(class_id=class_id, name=family)
-    #     db.session.add(new_group)
-
     new_group = Group(class_id=class_id, name=family)
+    db.session.add(new_group)
+
+    # new_group = Group(class_id=class_id, name=family)
 
     #find students with woodwind instruments
     all_students = Student.query.filter_by(class_id=class_id).all()
@@ -881,9 +1174,8 @@ def auto_create_by_instrument_family(class_id, family):
         all_instruments = Instrument.query.filter_by(student_id=student.student_id).all()
         for instrument in all_instruments:
             if instrument.name.family == family:
-                if StudentGroup.query.filter_by(student_id=student.student_id, group_id=new_group.group_id).all() is not []:
-                    this_student = StudentGroup(student_id=student.student_id, group_id=new_group.group_id)
-                    db.session.add(this_student)
+                this_student = StudentGroup(student_id=student.student_id, group_id=new_group.group_id)
+                db.session.add(this_student)
 
     db.session.commit()
 

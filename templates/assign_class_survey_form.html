@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="well spaced" style="width:40%;">
+<h1>Assign Survey to Class</h1>
+
+
+
+<form action="/class-assign" method="POST">
+
+
+
+  <div class="form-group">
+    <label>
+        Select Class
+        <select name="class_id">
+          {% for classroom in classrooms %}
+          <option value="{{ classroom.class_id }}">{{ classroom.name }}</option>
+          {% endfor %}
+        </select>
+    </label>
+  </div>
+
+
+  
+
+  <div class="form-group">
+    <label>
+      Select Survey
+      <select name="survey_id">
+      {% for survey in surveys %}
+        <option value="{{ survey.survey_id }}">{{ survey.music.composer.name }}: {{ survey.music.name }}</option>
+      {% endfor %}
+    </select>
+    </label>
+
+  </div>
+
+
+
+  
+
+  <div class="form-group">
+    <input type="submit" value="Assign to Class" class="btn btn-danger">
+  </div>
+
+</form>
+
+
+</div>
+{% endblock %}

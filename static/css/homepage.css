@@ -1,0 +1,42 @@
+body, html {
+    height: 100%;
+}
+.bg { 
+    /* The image used */
+    background-image: url("/static/symphony-hall.jpg");
+
+    /* Full height */
+    height: 100%; 
+
+    /*opacity: 0.5;*/
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+} 
+
+.register-box {
+	background-color: #BE916B;
+	color: #1F120C;
+	padding: 20px;
+	border: white;
+	border-width: medium;
+    border: 4px solid #A43C4C;
+
+}
+
+a {
+    color: #A43C4C;
+}
+
+.icon	{
+	width: 30px;
+	height: 30px;
+}
+
+.btn-primary	{
+	background-color: #A43C4C;
+	border: #A43C4C;
+}
+

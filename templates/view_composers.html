@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="well spaced offset-1" style="width:60%">
+  <h2>Composers</h2>
+
+
+<!-- Currently thinking about the necessity of this.  Model copied in from view groups. -->
+
+
+  
+  <ul>
+    {% for composer in composers %}
+        <a href="/composer/{{ composer.name }}">
+          {{ composer.name }}
+        </a><br>
+    {% endfor %}
+  </ul>
+
+</div>
+{% endblock %}
+
+

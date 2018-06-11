@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <meta charset="utf-8">
+
+    
+
+    
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+
+
+
+    <script src="../static/period-timeline.js"></script>
+    <link href="../static/css/timeline.css" rel="stylesheet" type="text/css" />
+
+</head>
+<div class="well spaced" style="width:60%">
+  <h2>Periods</h2>
+
+  
+  <ul>
+    {% for period in periods %}
+        <a href="/period/{{ period.name }}">
+          {{ period.name }}
+        </a><br>
+    {% endfor %}
+  </ul>
+
+
+
+
+</div>
+
+<div id="timeline"></div>
+
+<script>
+
+
+
+    // Define domElement and sourceFile
+    var domElement = "#timeline";
+    var sourceFile = "../static/css/composers.csv";
+
+    // Read in the data and construct the timeline
+    d3.csv(sourceFile, function(dataset) {
+        timeline(domElement)
+            .data(dataset)
+            .band("mainBand", 0.82)
+            .band("naviBand", 0.08)
+            .xAxis("mainBand")
+            .tooltips("mainBand")
+            .xAxis("naviBand")
+            .labels("mainBand")
+            .labels("naviBand")
+            .brush("naviBand", ["mainBand"])
+            .redraw();
+
+    });
+
+</script>
+</div>
+{% endblock %}
+
+

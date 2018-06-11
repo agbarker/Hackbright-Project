@@ -4,13 +4,35 @@
 <div class="well spaced" style="width:97%">
   <h2>{{ group.name }} ({{ group.classroom.name }})</h2>
 
+  <h3>Teacher Message</h3>
+  <p>{{ group.teacher_message }}</p>
+
+
   <h3>Students</h3>
 
-  <b><a href="/add-student-to-group/">Add a student</a></b><br>
-  
+  {% if "teacher_id" in session %}
+
+	  <b><a href="/add-student-to-group">Add a student</a></b><br>
+
+
+  {% endif %}
+
   {% for student in students %}
   	<a href="/students/{{ student.student_id }}">{{ student.fname }} {{ student.lname }}</a><br>
 
+  {% endfor %}
+
+  <h3>Group Survey Assignments</h3>
+
+  {% if "teacher_id" in session %}
+
+	  <b><a href="/group-assign">Add a Group Survey Assignment</a></b><br>
+
+	{% endif %}
+
+
+  {% for survey in surveys %}
+  	<a href="/survey/{{ survey.survey_id }}">{{ survey.survey.music.composer.name }}: {{ survey.survey.music.name }}</a>
   {% endfor %}
 
   

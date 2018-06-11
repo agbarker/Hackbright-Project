@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="well spaced" style="width:40%;">
-<h1>Add Student to Group</h1>
+<h1>Add Students to Group</h1>
 
 
 
@@ -23,27 +23,31 @@
         Select Group
         <select name="group">
           {% for group in groups %}
-            {% if group.class_id == ${}}
+            
               <option value="{{ group.group_id }}">{{ group.name }}</option>
-            {% endif %}
+
           {% endfor %}
         </select>
     </label>
   </div>
 
-
+<!-- display classroom, dislay dropdowns, no values, event listener, use jquery to make call based on selection -->
 
 
   <div class="form-group">
-    <label>
-        Select Student
-        <select name="student">
-          {% for student in students %}
-          <option value="{{ student.student_id }}">{{ student.fname }} {{ student.lname }}</option>
-          {% endfor %}
-        </select>
-    </label>
+      <legend>Add Students</legend>
+    {% for student in students %}
+    <div>
+      <input type="checkbox" id="{{ student.student_id }}" name="student" value="{{ student.student_id }}">
+      <label for="{{ student.student_id }}">{{ student.fname }} {{ student.lname }}</label>
+    </div>
+
+    {% endfor %}
   </div>
+
+
+    
+
 
     
 
@@ -51,7 +55,7 @@
 
 
   <div class="form-group">
-    <input type="submit" value="Add student to group" class="btn btn-danger">
+    <input type="submit" value="Add students to group" class="btn btn-danger">
   </div>
 
 </form>

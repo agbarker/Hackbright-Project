@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<head>
+
+<link rel="stylesheet" href="static/sight_reading_game.css">
+
+
+</head>
+<br>
+<div class="well spaced" style="width:97%">
+
+
+
+<div id="container">
+  <div id="boo"></div>
+</div>
+<div id="controls">
+  <button id='startgame'>Start Game</button>
+</div>
+
+<div id="correct">Correct:</div>
+<div id="tries">Tries:</div>
+<div id="fail">Fails:</div>
+
+
+<script src="static/sight_reading_src/mozart_clarinet.js"></script>
+<script src="static/sight_reading_game.js"></script>
+
+
+
+
+  
+</div>
+{% endblock %}

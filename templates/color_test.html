@@ -27,11 +27,14 @@
   <div id="c"></div>
 </div>
 <div id="controls">
-  <button id='success-note'>Success Note</button>
+  <button id='startscale' onclick="this.innerText = togglePlayback()">Start Scale</button>
 </div>
+<!-- 
+<button type="button" class="btn btn-primary" style="background-color: #6E4932; color: white; border: 1px solid #A43C4C" onclick="this.innerText = togglePlayback()">use demo audio</button> -->
+<!-- 
 <div id="controls">
   <button id='fail-note'>Fail Note</button>
-</div>
+</div> -->
 
 <script type="text/javascript">
 
@@ -89,19 +92,34 @@ voice.draw(context, stave);
 
 var i = 0
 
-document.getElementById('fail-note').addEventListener('click', (e) => {
-  stave_notes[i].setKeyStyle(0, { fillStyle: 'red'});
-  i += 1;
-  voice.draw(context, stave);
+// document.getElementById('fail-note').addEventListener('click', (e) => {
+//   stave_notes[i].setKeyStyle(0, { fillStyle: 'red'});
+//   i += 1;
+//   voice.draw(context, stave);
 
+// });
+
+// document.getElementById('success-note').addEventListener('click', (e) => {
+//   stave_notes[i].setKeyStyle(0, { fillStyle: 'blue'});
+//   i += 1;
+//   voice.draw(context, stave);
+
+// });
+
+
+$(document).ready(function()  {
+  $("#startscale").click(startScale)    
 });
 
-document.getElementById('success-note').addEventListener('click', (e) => {
+function startScale()  {
+  interval = setInterval(colorNotes, 760);
+}
+
+function colorNotes() {
   stave_notes[i].setKeyStyle(0, { fillStyle: 'blue'});
   i += 1;
   voice.draw(context, stave);
-
-});
+}
 
 
 

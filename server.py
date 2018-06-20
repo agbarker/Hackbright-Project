@@ -1033,7 +1033,12 @@ def major_scales():
     return render_template("major_scales.html")
 
 
-@app.route("/color-test")
+@app.route("/scale-test")
+def all_scale_tests():
+
+    return render_template("all_scales.html")
+
+@app.route("/scale-test-c")
 def color_scale():
 
     return render_template("color_test.html")
@@ -1255,7 +1260,7 @@ if __name__ == "__main__":
     # that we invoke the DebugToolbarExtension
 
     # Do not debug for demo
-    app.debug = True
+    app.debug = False
     app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 

@@ -197,48 +197,17 @@ function centsOffFromPitch( frequency, note ) {
 	return Math.floor( 1200 * Math.log( frequency / frequencyFromNoteNumber( note ))/Math.log(2) );
 }
 
-// this is a float version of the algorithm below - but it's not currently used.
-/*
-function autoCorrelateFloat( buf, sampleRate ) {
-	var MIN_SAMPLES = 4;	// corresponds to an 11kHz signal
-	var MAX_SAMPLES = 1000; // corresponds to a 44Hz signal
-	var SIZE = 1000;
-	var best_offset = -1;
-	var best_correlation = 0;
-	var rms = 0;
-	if (buf.length < (SIZE + MAX_SAMPLES - MIN_SAMPLES))
-		return -1;  // Not enough data
-	for (var i=0;i<SIZE;i++)
-		rms += buf[i]*buf[i];
-	rms = Math.sqrt(rms/SIZE);
-	for (var offset = MIN_SAMPLES; offset <= MAX_SAMPLES; offset++) {
-		var correlation = 0;
-		for (var i=0; i<SIZE; i++) {
-			correlation += Math.abs(buf[i]-buf[i+offset]);
-		}
-		correlation = 1 - (correlation/SIZE);
-		if (correlation > best_correlation) {
-			best_correlation = correlation;
-			best_offset = offset;
-		}
-	}
-	if ((rms>0.1)&&(best_correlation > 0.1)) {
-		console.log("f = " + sampleRate/best_offset + "Hz (rms: " + rms + " confidence: " + best_correlation + ")");
-	}
-//	var best_frequency = sampleRate/best_offset;
-}
-*/
 
 var MIN_SAMPLES = 0;  // will be initialized when AudioContext is created.
-var GOOD_ENOUGH_CORRELATION = 0.9; // this is the "bar" for how close a correlation needs to be
+var CORRELATION_BASE_VALUE = 0.9; // this is the "bar" for how close a correlation needs to be
 
 function autoCorrelate( buf, sampleRate ) {
 	var SIZE = buf.length;
 	var MAX_SAMPLES = Math.floor(SIZE/2);
-	var best_offset = -1;
+	var greatest_offset = -1;
 	var best_correlation = 0;
 	var rms = 0;
-	var foundGoodCorrelation = false;
+	var haveFoundCorrelation = false;
 	var correlations = new Array(MAX_SAMPLES);
 
 	for (var i=0;i<SIZE;i++) {
@@ -258,33 +227,32 @@ function autoCorrelate( buf, sampleRate ) {
 		}
 		correlation = 1 - (correlation/MAX_SAMPLES);
 		correlations[offset] = correlation; // store it, for the tweaking we need to do below.
-		if ((correlation>GOOD_ENOUGH_CORRELATION) && (correlation > lastCorrelation)) {
-			foundGoodCorrelation = true;
+		if ((correlation>CORRELATION_BASE_VALUE) && (correlation > lastCorrelation)) {
+			haveFoundCorrelation = true;
 			if (correlation > best_correlation) {
 				best_correlation = correlation;
-				best_offset = offset;
+				greatest_offset = offset;
 			}
-		} else if (foundGoodCorrelation) {
-			// short-circuit - we found a good correlation, then a bad one, so we'd just be seeing copies from here.
-			// Now we need to tweak the offset - by interpolating between the values to the left and right of the
-			// best offset, and shifting it a bit.  This is complex, and HACKY in this code (happy to take PRs!) -
-			// we need to do a curve fit on correlations[] around best_offset in order to better determine precise
+		} else if (haveFoundCorrelation) {
+			// short-circuit - we found a good correlation, then a bad one, so only copies
+			// Interpolate between the values to the left and right of the best offset, and shifting it
+			// Do a curve fit on correlations[] around greatest_offset in order to better determine precise
 			// (anti-aliased) offset.
 
-			// we know best_offset >=1, 
-			// since foundGoodCorrelation cannot go to true until the second pass (offset=1), and 
+			// we know greatest_offset >=1, 
+			// since haveFoundCorrelation cannot go to true until the second pass (offset=1), and 
 			// we can't drop into this clause until the following pass (else if).
-			var shift = (correlations[best_offset+1] - correlations[best_offset-1])/correlations[best_offset];  
-			return sampleRate/(best_offset+(8*shift));
+			var shift = (correlations[greatest_offset+1] - correlations[greatest_offset-1])/correlations[greatest_offset];  
+			return sampleRate/(greatest_offset+(8*shift));
 		}
 		lastCorrelation = correlation;
 	}
 	if (best_correlation > 0.01) {
-		// console.log("f = " + sampleRate/best_offset + "Hz (rms: " + rms + " confidence: " + best_correlation + ")")
-		return sampleRate/best_offset;
+		// console.log("f = " + sampleRate/greatest_offset + "Hz (rms: " + rms + " confidence: " + best_correlation + ")")
+		return sampleRate/greatest_offset;
 	}
 	return -1;
-//	var best_frequency = sampleRate/best_offset;
+//	var best_frequency = sampleRate/greatest_offset;
 }
 
 function updatePitch( time ) {
@@ -293,29 +261,29 @@ function updatePitch( time ) {
 	var ac = autoCorrelate( buf, audioContext.sampleRate );
 	// TODO: Paint confidence meter on canvasElem here.
 
-	if (DEBUGCANVAS) {  // This draws the current waveform, useful for debugging
-		waveCanvas.clearRect(0,0,512,256);
-		waveCanvas.strokeStyle = "red";
-		waveCanvas.beginPath();
-		waveCanvas.moveTo(0,0);
-		waveCanvas.lineTo(0,256);
-		waveCanvas.moveTo(128,0);
-		waveCanvas.lineTo(128,256);
-		waveCanvas.moveTo(256,0);
-		waveCanvas.lineTo(256,256);
-		waveCanvas.moveTo(384,0);
-		waveCanvas.lineTo(384,256);
-		waveCanvas.moveTo(512,0);
-		waveCanvas.lineTo(512,256);
-		waveCanvas.stroke();
-		waveCanvas.strokeStyle = "black";
-		waveCanvas.beginPath();
-		waveCanvas.moveTo(0,buf[0]);
-		for (var i=1;i<512;i++) {
-			waveCanvas.lineTo(i,128+(buf[i]*128));
-		}
-		waveCanvas.stroke();
+
+	waveCanvas.clearRect(0,0,512,256);
+	waveCanvas.strokeStyle = "red";
+	waveCanvas.beginPath();
+	waveCanvas.moveTo(0,0);
+	waveCanvas.lineTo(0,256);
+	waveCanvas.moveTo(128,0);
+	waveCanvas.lineTo(128,256);
+	waveCanvas.moveTo(256,0);
+	waveCanvas.lineTo(256,256);
+	waveCanvas.moveTo(384,0);
+	waveCanvas.lineTo(384,256);
+	waveCanvas.moveTo(512,0);
+	waveCanvas.lineTo(512,256);
+	waveCanvas.stroke();
+	waveCanvas.strokeStyle = "black";
+	waveCanvas.beginPath();
+	waveCanvas.moveTo(0,buf[0]);
+	for (var i=1;i<512;i++) {
+		waveCanvas.lineTo(i,128+(buf[i]*128));
 	}
+	waveCanvas.stroke();
+
 
  	if (ac == -1) {
  		detectorElem.className = "vague";
